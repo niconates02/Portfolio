@@ -105,7 +105,7 @@ figcaption { font-family:var(--f-mono); font-size:11.5px; color:var(--muted); ma
 .software { padding-block:22px 0 }
 .chips.sm span { font-family:var(--f-mono); font-size:12px; padding:3px 9px; border-radius:3px; color:var(--muted); background:var(--paper) }
 h1 { margin-bottom:0 }
-.role-big { margin:-4px 0 0; font-family:var(--f-display); font-stretch:78%; font-weight:700; font-size:clamp(28px,4.6vw,50px); line-height:1.02; color:var(--accent); letter-spacing:-.005em }
+.role-big { margin:-4px 0 0; font-family:var(--f-display); font-stretch:78%; font-weight:700; font-size:clamp(32px,5.6vw,60px); line-height:1.02; color:var(--accent); letter-spacing:-.005em }
 .role-sub { margin:6px 0 4px; display:flex; flex-wrap:wrap; align-items:center; gap:6px 14px; font-family:var(--f-mono); font-size:clamp(13px,1.6vw,16px); letter-spacing:.1em; text-transform:uppercase; color:var(--ink) }
 .role-sub i { width:6px; height:6px; background:var(--accent); transform:rotate(45deg); display:inline-block }
 .model.wide { aspect-ratio:16/7; border-radius:0; border-width:0 0 1.5px 0 }
@@ -259,7 +259,62 @@ h1.wave .ch.sp { width:.28em }
   .page.enter .sechead h2 { animation:clip .7s cubic-bezier(.2,.7,.2,1) both }
   @keyframes clip { from { clip-path:inset(0 100% 0 0) } to { clip-path:inset(0 0 0 0) } }
 }
+/* ---------- Pressure Hold (game page) ---------- */
+.game { --ok:#2E7D4F; --bad:#B3261E; background:var(--paper); border:1px solid var(--line); padding:18px; display:grid; gap:14px; min-width:0 }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .game { --ok:#7FD39B; --bad:#FF8A80 } }
+:root[data-theme="dark"] .game { --ok:#7FD39B; --bad:#FF8A80 }
+.gtop { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap }
+.gtop .tb { margin:0 }
+.ghud { display:grid; grid-template-columns:repeat(4,auto); gap:1px; background:var(--line); border:1px solid var(--line) }
+.ghud div { background:var(--paper); padding:6px 14px; display:grid; min-width:78px }
+.ghud span { font-family:var(--f-mono); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted) }
+.ghud b { font-family:var(--f-display); font-stretch:80%; font-size:24px; font-weight:700; color:var(--accent); font-variant-numeric:tabular-nums; line-height:1.15 }
+.gstage { position:relative; border:1px solid var(--line); background:var(--bg); touch-action:none; user-select:none; -webkit-user-select:none; -webkit-touch-callout:none }
+#gc { display:block; width:100%; height:360px; cursor:pointer }
+.gover { position:absolute; inset:0; display:grid; place-content:center; justify-items:center; text-align:center; gap:10px; padding:20px; background:color-mix(in srgb, var(--paper) 84%, transparent); -webkit-backdrop-filter:blur(3px); backdrop-filter:blur(3px) }
+.gover h3 { font-size:clamp(30px,4.4vw,44px); font-weight:800 }
+.gover p { margin:0; max-width:48ch; color:var(--muted) }
+.gover .gbtn { margin-top:6px }
+.gctl { display:flex; gap:10px; flex-wrap:wrap; align-items:center }
+.gbtn { font:600 15px var(--f-body); border-radius:6px; padding:14px 22px; cursor:pointer; border:1px solid var(--line); background:var(--bg); color:var(--ink); touch-action:none; user-select:none; -webkit-user-select:none; display:inline-flex; gap:10px; align-items:center; justify-content:center; min-width:150px }
+.gbtn.pump { background:var(--accent); color:var(--paper); border-color:var(--accent) }
+.gbtn.on { transform:translateY(1px); box-shadow:inset 0 3px 8px rgba(0,0,0,.28) }
+.gbtn kbd { font-family:var(--f-mono); font-size:11px; padding:1px 6px; border:1px solid currentColor; border-radius:3px; opacity:.75 }
+.ghelp { margin:0 0 0 auto; font-size:13px; color:var(--muted); max-width:46ch }
+.gnotes { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px 28px; margin-top:18px }
+@media (hover:none) { .gbtn kbd { display:none } }
+@media (max-width:820px) {
+  .gnotes { grid-template-columns:minmax(0,1fr) }
+  .ghelp { margin-left:0 }
+  .ghud { grid-template-columns:repeat(4,minmax(0,1fr)); width:100% }
+  .ghud div { min-width:0; padding:6px 10px }
+  .gbtn { flex:1; min-width:0 }
+  .game { padding:12px }
+}
 @media (max-width:820px) { .tab { padding:14px 10px 14px } .tab::after { bottom:6px } .ind { bottom:4px } .topbar .in { min-height:0; padding-top:8px } }
+/* ---------- games hub ---------- */
+.gback { display:inline-block; margin-bottom:14px; font-family:var(--f-mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); text-decoration:none }
+.gback:hover { color:var(--accent) }
+.fgame, .gcard { --skin:#EBC4A8; --skin2:#D2A184; --field:#FBEFE5; --hair:#3A2B25; --bulb:#F6E7D8; --comb:#2E6F95; --comb2:#1D4C69; --flea:#7A3320 }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .fgame, :root:not([data-theme="light"]) .gcard { --skin:#6E4A3C; --skin2:#4F3328; --field:#2A1E1B; --hair:#D6C2AE; --bulb:#EBDDCB; --comb:#6FB4D6; --comb2:#3F82A5; --flea:#D0714F } }
+:root[data-theme="dark"] .fgame, :root[data-theme="dark"] .gcard { --skin:#6E4A3C; --skin2:#4F3328; --field:#2A1E1B; --hair:#D6C2AE; --bulb:#EBDDCB; --comb:#6FB4D6; --comb2:#3F82A5; --flea:#D0714F }
+.gcard { display:flex; flex-direction:column; background:var(--paper); border:1px solid var(--line); color:var(--ink); text-decoration:none; min-width:0; overflow:hidden }
+.gthumb { aspect-ratio:16/9; border-bottom:1px solid var(--line); background:var(--bg); overflow:hidden }
+.gthumb svg { display:block; width:100%; height:100% }
+.gbody { padding:16px 20px 20px; display:grid; gap:6px; flex:1; align-content:start }
+.gbody .tb { justify-self:start; margin-bottom:6px }
+.gbody h3 { font-size:clamp(22px,2.6vw,28px); font-weight:700 }
+.gbody p { margin:0; font-size:14.5px }
+.gmeta { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-top:8px; font-family:var(--f-mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted) }
+.gmeta b { color:var(--accent); font-weight:600 }
+.gmeta .go { color:var(--accent); font-weight:600 }
+.gsoon { display:grid; place-content:center; justify-items:center; gap:4px; text-align:center; min-height:260px; color:var(--muted); border:1.5px dashed color-mix(in srgb, var(--accent) 40%, var(--line)); background:repeating-linear-gradient(135deg, transparent 0 14px, color-mix(in srgb, var(--accent) 5%, transparent) 14px 28px), var(--bg) }
+.gsoon b { font-family:var(--f-display); font-stretch:85%; font-size:19px; color:var(--ink) }
+/* ---------- Flea Hop ---------- */
+.ghud.two { grid-template-columns:repeat(2,auto) }
+#fc { display:block; width:100%; height:400px; cursor:pointer }
+@media (max-width:820px) { .ghud.two { grid-template-columns:repeat(2,minmax(0,1fr)) } }
+@media (prefers-reduced-motion:no-preference) { .gcard .gmeta .go { transition:transform .25s } .gcard:hover .gmeta .go { transform:translateX(4px) } }
 </style>
 </head>
 <body>
@@ -272,6 +327,7 @@ h1.wave .ch.sp { width:.28em }
       <a class="tab" href="#home" data-go="home" data-group="home">Home</a>
       <a class="tab tab-projects" href="#projects" data-go="projects" data-group="projects" aria-haspopup="true">Projects <span class="car" aria-hidden="true">&#9662;</span></a>
       <a class="tab" href="#demos" data-go="demos" data-group="demos">Demos</a>
+      <a class="tab" href="#games" data-go="games" data-group="games">Games</a>
       <span class="ind" aria-hidden="true"></span>
     </nav>
   </div>
@@ -293,21 +349,22 @@ h1.wave .ch.sp { width:.28em }
  <main>
   <div class="page" id="home">
   <header class="top">
-    <div class="eyebrow rv">Engineering portfolio &middot; Houston, TX &middot; B.S. Multidisciplinary Engineering, Minor in Embedded Systems</div>
+    <div class="eyebrow rv">Engineering portfolio &middot; Houston, TX &middot; B.S. Mechatronics, Minor in Embedded Systems</div>
     <h1 class="wave rv" aria-label="Nicolas Nates"><span class="ch" aria-hidden="true">N</span><span class="ch" aria-hidden="true">i</span><span class="ch" aria-hidden="true">c</span><span class="ch" aria-hidden="true">o</span><span class="ch" aria-hidden="true">l</span><span class="ch" aria-hidden="true">a</span><span class="ch" aria-hidden="true">s</span><span class="ch sp" aria-hidden="true"> </span><span class="ch" aria-hidden="true">N</span><span class="ch" aria-hidden="true">a</span><span class="ch" aria-hidden="true">t</span><span class="ch" aria-hidden="true">e</span><span class="ch" aria-hidden="true">s</span></h1>
     <p class="role-big rv">Mechatronics Engineer</p>
-    <p class="role-sub rv"><span>Embedded Systems</span><i aria-hidden="true"></i><span>Robotics</span><i aria-hidden="true"></i><span>Industrial Automation</span><i aria-hidden="true"></i><span>Electrical Design</span><i aria-hidden="true"></i><span>Mechanical Design</span></p>
+    <p class="role-sub rv"><span>Embedded Systems</span><i aria-hidden="true"></i><span>Robotics</span><i aria-hidden="true"></i><span>Industrial Automation</span></p>
+    <p class="lede rv">Focused on electromechanical design, robotics and industrial automation. I design automated test systems from concept to commissioning, including mechanical assemblies, electrical and fluid-power circuits, control panels and PLC/HMI controls, and build robotic and embedded hardware prototypes. B.S. Mechatronics Engineering, Minor in Embedded Systems.</p>
     <div class="contact rv">
       <span id="em">niconates@gmail.com</span><button type="button" id="copyem">Copy email</button>
       <span>+1 (832) 459-9065</span>
       <a href="https://www.linkedin.com/in/niconates" target="_blank" rel="noopener">linkedin.com/in/niconates</a>
     </div>
-    <div class="stats rv"><div><b>10+</b><span>automated test systems designed</span></div><div><b>10+</b><span>robotics projects built</span></div><div><b>$3M+</b><span>in concurrent projects managed</span></div><div><b>5+</b><span>projects run at once</span></div><div><b>US-wide</b><span>commissioning and service</span></div></div>
+    <div class="stats rv"><div><b>10+</b><span>automated test systems designed</span></div><div><b>5+</b><span>robotics projects built</span></div><div><b>$3M+</b><span>in concurrent projects managed</span></div><div><b>5+</b><span>projects run at once</span></div><div><b>US-wide</b><span>commissioning and service</span></div></div>
   </header>
   <section class="about rv" aria-labelledby="about-h">
     <div class="about-txt">
       <h2 id="about-h">About</h2>
-      <p>Focused on electromechanical design, robotics and industrial automation. I design automated test systems from concept to commissioning, including mechanical assemblies, electrical and fluid-power circuits, control panels and PLC/HMI controls, and build robotic and embedded hardware prototypes. B.S. Multidisciplinary Engineering, Minor in Embedded Systems.</p><p>I&#x27;m a project engineer at Dunn&#x27;s Valve Testers in Houston, where I take automated valve test systems from requirements through design release, fabrication, testing and commissioning at customer sites across the U.S.</p><p>At Texas A&amp;M I built robotic hands, animatronic mechanisms, UR robot workcells and embedded controllers, and led the student teams that assembled and documented them.</p><p>Native Spanish speaker, intermediate French.</p>
+      <p>I&#x27;m a project engineer at Dunn&#x27;s Valve Testers in Houston, where I take automated valve test systems from requirements through design release, fabrication, testing and commissioning at customer sites across the U.S.</p><p>At Texas A&amp;M I built robotic hands, animatronic mechanisms, UR robot workcells and embedded controllers, and led the student teams that assembled and documented them.</p><p>Native Spanish speaker, intermediate French.</p>
     </div>
     <div class="skills">
       <h2>Skills</h2>
@@ -500,9 +557,139 @@ h1.wave .ch.sp { width:.28em }
   <div class="vframe"><div class="vph"><span class="play" aria-hidden="true"></span><b>Coming soon</b></div></div>
   <div class="vbody"><h3><span class="sweep">Patient Simulator Device</span></h3><p class="subt">Engineering</p></div>
 </article></div>
-    <div class="pnav"><a class="prev" href="#projects" data-go="projects"><b class="ar">&larr;</b> Projects <span>Back</span></a><a class="next" href="#home" data-go="home"><span>Back to</span> Home <b class="ar">&uarr;</b></a></div>
+    <div class="pnav"><a class="prev" href="#projects" data-go="projects"><b class="ar">&larr;</b> Projects <span>Back</span></a><a class="next" href="#games" data-go="games"><span>Next</span> Games <b class="ar">&rarr;</b></a></div>
+  </section>
+  <section class="page" id="games" hidden>
+    <div class="sechead"><h2>Games</h2><p>Pick one. More on the way.</p></div>
+    <div class="pgrid">
+      <a class="gcard card" href="#game-pressure" data-go="game-pressure">
+        <div class="gthumb" aria-hidden="true">
+          <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <circle cx="100" cy="92" r="62" style="fill:var(--paper);stroke:var(--ink)" stroke-width="4"/>
+            <path d="M61.8 130.2A54 54 0 1 1 138.2 130.2" fill="none" style="stroke:var(--muted)" stroke-width="6" stroke-dasharray="1.5 7.4"/>
+            <path d="M111.2 45.3A48 48 0 0 1 136 60.3" fill="none" stroke="#2E7D4F" stroke-width="8"/>
+            <path d="M140.9 117.1A48 48 0 0 1 133.9 125.9" fill="none" stroke="#B3261E" stroke-width="8"/>
+            <path d="M100 92L119.5 53.7" style="stroke:var(--accent)" stroke-width="3.5" stroke-linecap="round"/>
+            <circle cx="100" cy="92" r="6" style="fill:var(--ink)"/>
+            <rect x="186" y="38" width="116" height="104" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.5"/>
+            <rect x="187" y="62" width="114" height="24" style="fill:#2E7D4F" opacity=".22"/>
+            <path d="M190 136L203 120L216 94L230 76L244 70L260 73L276 71L298 72" fill="none" style="stroke:var(--ink)" stroke-width="2.5" stroke-linejoin="round"/>
+            <circle cx="298" cy="72" r="4" style="fill:var(--accent)"/>
+          </svg>
+        </div>
+        <div class="gbody">
+          <div class="tb"><span>GAME</span><b>001</b><span>HYDRO</span></div>
+          <h3><span class="sweep">Pressure Hold</span></h3>
+          <p>Pump a valve up to test pressure and hold it in the band. The valve leaks and the pump lags.</p>
+          <div class="gmeta"><span>Best <b id="gbPressure">0</b></span><span class="go">Play &rarr;</span></div>
+        </div>
+      </a>
+      <a class="gcard card" href="#game-flea" data-go="game-flea">
+        <div class="gthumb" aria-hidden="true">
+          <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <rect width="320" height="180" style="fill:var(--field)"/>
+            <g fill="none" stroke-linecap="round" stroke-width="6" style="stroke:var(--comb)">
+              <path d="M143 28V54M153.8 28V54M164.6 28V54M175.4 28V54M186.2 28V54M197 28V54"/>
+              <path d="M143 152V120M153.8 152V120M164.6 152V120M175.4 152V120M186.2 152V120M197 152V120"/>
+            </g>
+            <rect width="320" height="22" style="fill:var(--skin)"/><rect y="158" width="320" height="22" style="fill:var(--skin)"/>
+            <g style="fill:var(--comb2)"><rect x="140" y="14" width="60" height="16" rx="8"/><rect x="140" y="150" width="60" height="16" rx="8"/></g>
+            <g style="fill:var(--bulb);stroke:var(--skin2)" stroke-width="1.5">
+              <circle cx="226" cy="14" r="5"/><circle cx="240" cy="14" r="5.5"/><circle cx="254" cy="14" r="5"/>
+              <circle cx="226" cy="166" r="5"/><circle cx="240" cy="166" r="5.5"/><circle cx="254" cy="166" r="5"/>
+            </g>
+            <g fill="none" stroke-linecap="round" style="stroke:var(--hair)">
+              <path d="M226 14Q226 40 228 56" stroke-width="7"/><path d="M240 14Q241 42 240 66" stroke-width="9"/><path d="M254 14Q252 40 253 56" stroke-width="7"/>
+              <path d="M226 166Q226 140 228 124" stroke-width="7"/><path d="M240 166Q241 138 240 114" stroke-width="9"/><path d="M254 166Q252 140 253 124" stroke-width="7"/>
+            </g>
+            <g transform="translate(66 92) rotate(-10) scale(1.7)" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M-5 5L-16 9L-26 15M5 6L9 13M1 7L3 14" fill="none" style="stroke:var(--flea)" stroke-width="2.6"/>
+              <ellipse rx="13" ry="9" style="fill:var(--flea);stroke:var(--ink)" stroke-width="1.2"/>
+              <ellipse cx="12" cy="-1" rx="6.5" ry="5.5" style="fill:var(--flea);stroke:var(--ink)" stroke-width="1.2"/>
+              <circle cx="14" cy="-2.5" r="2" fill="#fff"/><circle cx="14.6" cy="-2.5" r="1" fill="#111"/>
+              <path d="M15 -5.5L19 -9M17 2L23 5" fill="none" style="stroke:var(--ink)" stroke-width="1.3"/>
+            </g>
+          </svg>
+        </div>
+        <div class="gbody">
+          <div class="tb"><span>GAME</span><b>002</b><span>SCALP</span></div>
+          <h3><span class="sweep">Flea Hop</span></h3>
+          <p>Hop a flea through the scalp. Dodge the hair follicles and the combs, and don&#x27;t touch the skin.</p>
+          <div class="gmeta"><span>Best <b id="gbFlea">0</b></span><span class="go">Play &rarr;</span></div>
+        </div>
+      </a>
+      <div class="gsoon" role="img" aria-label="More games coming soon"><b>More games</b><span>Coming soon</span></div>
+    </div>
+    <div class="pnav"><a class="prev" href="#demos" data-go="demos"><b class="ar">&larr;</b> Demo videos <span>Back</span></a><a class="next" href="#home" data-go="home"><span>Back to</span> Home <b class="ar">&uarr;</b></a></div>
+  </section>
+
+  <section class="page" id="game-pressure" hidden>
+    <a class="gback" href="#games" data-go="games">&larr; All games</a>
+    <div class="sechead"><h2>Pressure Hold</h2><p>A hydrostatic test you are allowed to fail</p></div>
+    <div class="game rv">
+      <div class="gtop">
+        <div class="tb"><span>TEST</span><b>PH-001</b><span>HYDRO</span></div>
+        <div class="ghud" aria-live="polite">
+          <div><span>Valve</span><b id="gValve">1</b></div>
+          <div><span>Score</span><b id="gScore">0</b></div>
+          <div><span>Best</span><b id="gBest">0</b></div>
+          <div><span>Seals</span><b id="gLives" aria-label="3 seals left">&#9670;&#9670;&#9670;</b></div>
+        </div>
+      </div>
+      <div class="gstage">
+        <canvas id="gc" role="img" aria-label="Pressure gauge and chart recorder"></canvas>
+        <div class="gover" id="gOver">
+          <h3 id="gTitle">Pressure Hold</h3>
+          <p id="gMsg">Bring each valve up to its test pressure and hold it inside the band until the ring around the gauge closes. The valve leaks and the pump lags.</p>
+          <button class="gbtn pump" type="button" id="gStart">Start test</button>
+        </div>
+      </div>
+      <div class="gctl">
+        <button class="gbtn pump" type="button" id="gPump">Pump <kbd>Space</kbd></button>
+        <button class="gbtn bleed" type="button" id="gBleed">Bleed <kbd>B</kbd></button>
+        <p class="ghelp">Hold to run. You can also press and hold on the gauge to pump. <b>P</b> or <b>Esc</b> pauses.</p>
+      </div>
+    </div>
+    <div class="gnotes rv">
+      <div class="wh"><h4>The test</h4><ul><li>Each valve gets a test pressure and a tolerance band.</li><li>Stay in the band until the hold timer fills. Drift out and the timer drains.</li></ul></div>
+      <div class="wh"><h4>The catch</h4><ul><li>The pump takes a moment to respond and the valve leaks.</li><li>From valve 3, seals start to weep. Above 9,500 psi the relief valve lifts and the valve fails.</li></ul></div>
+      <div class="wh"><h4>Scoring</h4><ul><li>100 per valve, up to 100 more for staying near the target, plus 5 per second left.</li><li>Fail three valves and the shift is over.</li></ul></div>
+    </div>
+    <div class="pnav"><a class="prev" href="#games" data-go="games"><b class="ar">&larr;</b> All games <span>Back</span></a><a class="next" href="#game-flea" data-go="game-flea"><span>Next</span> Flea Hop <b class="ar">&rarr;</b></a></div>
+  </section>
+  <section class="page" id="game-flea" hidden>
+    <a class="gback" href="#games" data-go="games">&larr; All games</a>
+    <div class="sechead"><h2>Flea Hop</h2><p>Thread a flea through the scalp</p></div>
+    <div class="game fgame rv">
+      <div class="gtop">
+        <div class="tb"><span>GAME</span><b>FH-002</b><span>SCALP</span></div>
+        <div class="ghud two" aria-live="polite">
+          <div><span>Score</span><b id="fScore">0</b></div>
+          <div><span>Best</span><b id="fBest">0</b></div>
+        </div>
+      </div>
+      <div class="gstage">
+        <canvas id="fc" role="img" aria-label="A flea hopping between hair follicles and combs"></canvas>
+        <div class="gover" id="fOver">
+          <h3 id="fTitle">Flea Hop</h3>
+          <p id="fMsg">Hop your flea through the gaps between hairs and combs. Gravity is not on your side, and neither is the skin.</p>
+          <button class="gbtn pump" type="button" id="fStart">Start hopping</button>
+        </div>
+      </div>
+      <div class="gctl">
+        <button class="gbtn pump" type="button" id="fHop">Hop <kbd>Space</kbd></button>
+        <p class="ghelp">Tap the scene, click, or press <b>Space</b> to hop. <b>P</b> or <b>Esc</b> pauses.</p>
+      </div>
+    </div>
+    <div class="gnotes rv">
+      <div class="wh"><h4>The goal</h4><ul><li>Hop between the hairs and combs without touching either one.</li><li>Every gap you clear is one point.</li></ul></div>
+      <div class="wh"><h4>The hazards</h4><ul><li>Hair follicles grow thick bundles of hair from the scalp above and below.</li><li>Combs reach in from above and below, and their teeth are packed too tight to squeeze between. The skin counts as a wall too.</li></ul></div>
+      <div class="wh"><h4>The catch</h4><ul><li>Each hop is short and gravity is not. Tap in rhythm instead of mashing.</li><li>The scalp scrolls faster and the gaps tighten as your score climbs.</li></ul></div>
+    </div>
+    <div class="pnav"><a class="prev" href="#game-pressure" data-go="game-pressure"><b class="ar">&larr;</b> Pressure Hold <span>Back</span></a><a class="next" href="#games" data-go="games"><span>Back to</span> All games <b class="ar">&uarr;</b></a></div>
   </section>
  </main>
+
   <footer>Layout drawings shown with permission of Dunn's Valve Testers, Inc. Tap any image to enlarge.</footer>
 </div>
 <div id="lb" hidden role="dialog" aria-label="Enlarged image"><button type="button" id="lbx">Close</button><img alt=""></div>
@@ -545,17 +732,19 @@ h1.wave .ch.sp { width:.28em }
     });
   }
   function show(id, target, push){
+    if(id==='play') id='games';
     var pg=document.getElementById(id);
     if(!pg || !pg.classList.contains('page')){ var el=document.getElementById(id); pg=el && el.closest('.page'); target=el; }
     if(!pg) pg=pages[0];
     pages.forEach(function(p){ p.hidden=(p!==pg); p.classList.remove('enter'); });
     void pg.offsetWidth; pg.classList.add('enter');
     onProj = PROJ.indexOf(pg.id) >= 0;
-    var grp = onProj ? 'projects' : (pg.id==='demos' ? 'demos' : 'home');
+    var grp = onProj ? 'projects' : (pg.id==='demos' ? 'demos' : (pg.id==='games' || pg.id.indexOf('game-')===0) ? 'games' : 'home');
     tabs.forEach(function(t){ if(t.getAttribute('data-group')===grp) t.setAttribute('aria-current','page'); else t.removeAttribute('aria-current'); });
     stabs.forEach(function(t){ if(t.getAttribute('data-go')===pg.id) t.setAttribute('aria-current','page'); else t.removeAttribute('aria-current'); });
     openSub(false); moveInd(); moveInd2();
     if(pg.id==='home') countUp();
+    try { window.dispatchEvent(new CustomEvent('nn:page',{detail:pg.id})); } catch(e) {}
     if(target && target!==pg) setTimeout(function(){ target.scrollIntoView({behavior: reduce?'auto':'smooth', block:'start'}); }, 60);
     else { window.scrollTo(0,0); setTimeout(function(){ window.scrollTo(0,0); }, 0); }
     if(push){ try { history.pushState(null,'','#'+(target && target!==pg ? target.id : pg.id)); } catch(e) {} }
@@ -597,6 +786,442 @@ h1.wave .ch.sp { width:.28em }
     try { navigator.clipboard.writeText(t).then(function(){ cb.textContent='Copied'; }, sel); } catch(e) { sel(); }
     setTimeout(function(){ cb.textContent='Copy email'; }, 2000);
   });
+})();
+</script>
+<script>
+/* Pressure Hold: pump a valve to test pressure and hold it in band. */
+(function(){
+  var page=document.getElementById('game-pressure'); if(!page) return;
+  function $(id){ return document.getElementById(id); }
+  var game=page.querySelector('.game'), stage=page.querySelector('.gstage'), cv=$('gc'), cx=cv.getContext('2d');
+  var elValve=$('gValve'), elScore=$('gScore'), elBest=$('gBest'), elLives=$('gLives');
+  var over=$('gOver'), oTitle=$('gTitle'), oMsg=$('gMsg'), oBtn=$('gStart'), bPump=$('gPump'), bBleed=$('gBleed');
+  var PMAX=10000, RELIEF=9500, LIMIT=20, CHART_S=12, LIVES=3, PUMP=1800, BLEED=2600, KEY='nn-pressure-hold-best';
+  var MONO='"IBM Plex Mono", ui-monospace, Consolas, monospace', DISP='"Archivo", "Arial Narrow", Arial, sans-serif';
+  var best=0; try { best=+localStorage.getItem(KEY)||0; } catch(e) {}
+  elBest.textContent=best;
+
+  var S={ mode:'idle', paused:false, n:0, score:0, lives:LIVES, P:0, Pd:0, q:0, b:0, t:0, hold:0, need:4, T:0, hw:0, leak:0, weep:0, weepAt:Infinity, devSum:0, devN:0, hist:[], msgT:0, msg:'', sub:'', ok:false };
+  var keys={ pump:false, bleed:false }, ptr={ pump:false, bleed:false };
+
+  var C={};
+  function readColors(){ var s=getComputedStyle(game); ['paper','ink','muted','line','accent','bg','ok','bad'].forEach(function(k){ C[k]=s.getPropertyValue('--'+k).trim(); }); }
+  function fmt(n){ return Math.round(n).toLocaleString('en-US'); }
+  function font(w,px,fam){ return w+' '+Math.round(px)+'px '+fam; }
+
+  /* ---- layout: gauge left + chart right, stacked on narrow screens ---- */
+  var W=0, H=0, dpr=1, G={}, R={};
+  function layout(){
+    var w=stage.clientWidth; if(!w) return;
+    var wide=w>=620, h=wide ? Math.round(Math.min(480, w*.5)) : Math.round(w*1.5), pad=Math.max(14, Math.round(w*.03));
+    dpr=Math.min(2, window.devicePixelRatio||1);
+    cv.width=Math.round(w*dpr); cv.height=Math.round(h*dpr); cv.style.height=h+'px'; W=w; H=h;
+    if(wide){ var gs=Math.min(h-pad*2, w*.42); G={ x:pad+gs/2, y:h/2, r:gs/2 }; R={ x:pad*2+gs, y:pad, w:w-pad*3-gs, h:h-pad*2 }; }
+    else { var gs2=Math.min(w-pad*2, h*.46); G={ x:w/2, y:pad+gs2/2, r:gs2/2 }; R={ x:pad, y:pad*2+gs2, w:w-pad*2, h:h-pad*3-gs2 }; }
+    readColors(); draw();
+  }
+
+  /* ---- game flow ---- */
+  function hud(){
+    elValve.textContent=Math.max(1,S.n); elScore.textContent=S.score; elBest.textContent=best;
+    var s=''; for(var i=0;i<LIVES;i++) s+= i<S.lives ? '◆' : '◇';
+    elLives.textContent=s; elLives.setAttribute('aria-label', S.lives+' seals left');
+  }
+  function showOver(title,msg,btn){ oTitle.textContent=title; oMsg.textContent=msg; oBtn.textContent=btn; over.hidden=false; }
+  function start(){ S.score=0; S.lives=LIVES; S.n=0; S.paused=false; newValve(); over.hidden=true; }
+  function newValve(){
+    S.n++; S.P=0; S.Pd=0; S.q=0; S.b=0; S.t=0; S.hold=0; S.devSum=0; S.devN=0; S.hist=[]; S.weep=0;
+    S.T=Math.round((1500+Math.random()*6500)/250)*250;
+    S.hw=Math.max(140, S.T*Math.max(.02, .045-.003*(S.n-1)));
+    S.need=Math.min(7, 4+.3*(S.n-1));
+    S.leak=.02+Math.random()*.04+Math.min(.04, .005*(S.n-1));
+    S.weepAt= S.n>=3 ? 3+Math.random()*4 : Infinity;
+    S.mode='run'; hud();
+  }
+  function pass(){
+    var prec=S.devN ? Math.max(0, 1-S.devSum/S.devN) : 0, pts=100+Math.round(prec*100)+Math.round((LIMIT-S.t)*5);
+    S.score+=pts; S.mode='result'; S.msgT=1.6; S.ok=true; S.msg='PASS  +'+pts; S.sub='Precision '+Math.round(prec*100)+'%'; hud();
+  }
+  function fail(why){ S.lives--; S.mode='result'; S.msgT=2; S.ok=false; S.msg='FAIL'; S.sub=why; hud(); }
+  function gameOver(){
+    S.mode='over'; var passed=S.n-LIVES, nb=S.score>best;
+    if(nb){ best=S.score; try { localStorage.setItem(KEY, best); } catch(e) {} }
+    hud();
+    showOver(nb && S.score ? 'New best' : 'Shift over', passed+' valve'+(passed===1?'':'s')+' passed, score '+fmt(S.score)+'.', 'Run another shift');
+  }
+  function pause(){
+    keys.pump=keys.bleed=ptr.pump=ptr.bleed=false; btnState();
+    if((S.mode==='run' || S.mode==='result') && !S.paused){ S.paused=true; showOver('Paused', 'Test on hold. Pressure stays where you left it.', 'Resume'); }
+  }
+  oBtn.addEventListener('click', function(){ if(S.paused){ S.paused=false; over.hidden=true; } else start(); });
+
+  function update(dt){
+    if(S.mode==='result'){ S.msgT-=dt; S.Pd+=(S.P-S.Pd)*Math.min(1,dt*18); if(S.msgT<=0){ if(S.lives<=0) gameOver(); else newValve(); } return; }
+    if(S.mode!=='run') return;
+    S.t+=dt;
+    var pin=(keys.pump||ptr.pump)?1:0, bin=(keys.bleed||ptr.bleed)?1:0;
+    S.q+=(pin-S.q)*Math.min(1, dt/.22);
+    S.b+=(bin-S.b)*Math.min(1, dt/.12);
+    if(S.t>=S.weepAt){ S.weep=1.6; S.weepAt=S.t+3+Math.random()*5; }
+    var leak=S.leak+(S.weep>0 ? .09 : 0); S.weep=Math.max(0, S.weep-dt);
+    S.P=Math.max(0, S.P+(PUMP*S.q-BLEED*S.b-leak*S.P)*dt);
+    S.Pd+=(S.P-S.Pd)*Math.min(1,dt*18);
+    var d=Math.abs(S.P-S.T);
+    if(d<=S.hw){ S.hold+=dt; S.devSum+=d/S.hw*dt; S.devN+=dt; } else S.hold=Math.max(0, S.hold-dt*.5);
+    S.hist.push([S.t,S.P]); while(S.hist.length && S.hist[0][0]<S.t-CHART_S-1) S.hist.shift();
+    if(S.P>=RELIEF){ S.P=RELIEF; fail('Relief valve lifted at '+fmt(RELIEF)+' psi'); return; }
+    if(S.hold>=S.need){ pass(); return; }
+    if(S.t>=LIMIT) fail('Out of time. The pressure never held.');
+  }
+
+  /* ---- drawing ---- */
+  var A0=Math.PI*.75, SWEEP=Math.PI*1.5;
+  function ang(p){ return A0+SWEEP*Math.min(1, Math.max(0, p/PMAX)); }
+  function band(x,y,r,a1,a2,w,col){ cx.beginPath(); cx.arc(x,y,r,a1,a2); cx.lineWidth=w; cx.strokeStyle=col; cx.lineCap='butt'; cx.stroke(); }
+  function drawGauge(){
+    var x=G.x, y=G.y, r=G.r, Rr=r*.8, i, a, v;
+    cx.beginPath(); cx.arc(x,y,r,0,Math.PI*2); cx.fillStyle=C.paper; cx.fill(); cx.lineWidth=Math.max(2,r*.035); cx.strokeStyle=C.ink; cx.stroke();
+    cx.beginPath(); cx.arc(x,y,r*.92,0,Math.PI*2); cx.lineWidth=1; cx.strokeStyle=C.line; cx.stroke();
+    band(x,y,Rr,ang(RELIEF),ang(PMAX),r*.07,C.bad);
+    if(S.T && S.mode!=='idle' && S.mode!=='over') band(x,y,Rr-r*.02,ang(S.T-S.hw),ang(S.T+S.hw),r*.11,C.ok);
+    for(v=0; v<=PMAX; v+=250){
+      a=ang(v); var maj=v%1000===0, mid=v%500===0, r2=Rr-(maj ? r*.1 : mid ? r*.065 : r*.035), c=Math.cos(a), s=Math.sin(a);
+      cx.beginPath(); cx.moveTo(x+c*(Rr+r*.035), y+s*(Rr+r*.035)); cx.lineTo(x+c*r2, y+s*r2);
+      cx.lineWidth=maj?2:1; cx.strokeStyle=maj?C.ink:C.muted; cx.stroke();
+    }
+    cx.fillStyle=C.ink; cx.font=font(500,r*.095,MONO); cx.textAlign='center'; cx.textBaseline='middle';
+    for(i=0; i<=10; i++){ a=ang(i*1000); cx.fillText(i, x+Math.cos(a)*(Rr-r*.2), y+Math.sin(a)*(Rr-r*.2)); }
+    cx.fillStyle=C.muted; cx.font=font(500,r*.065,MONO); cx.fillText('PSI ×1000', x, y-r*.3);
+    // digital readout
+    var bw=r*.78, bh=r*.2, by=y+r*.42;
+    cx.fillStyle=C.bg; cx.fillRect(x-bw/2, by-bh/2, bw, bh); cx.strokeStyle=C.line; cx.lineWidth=1; cx.strokeRect(x-bw/2, by-bh/2, bw, bh);
+    cx.fillStyle=C.ink; cx.font=font(700,r*.13,DISP); cx.fillText(fmt(S.Pd)+' psi', x, by+1);
+    // hold ring
+    if(S.need && S.hold>0){ cx.beginPath(); cx.arc(x,y,r*.96,-Math.PI/2,-Math.PI/2+Math.PI*2*Math.min(1,S.hold/S.need)); cx.lineWidth=r*.035; cx.lineCap='round'; cx.strokeStyle=C.ok; cx.stroke(); cx.lineCap='butt'; }
+    // needle (with a little pump pulsation)
+    var jit=S.mode==='run' ? Math.sin(S.t*46)*28*S.q : 0;
+    cx.save(); cx.translate(x,y); cx.rotate(ang(S.Pd+jit));
+    cx.beginPath(); cx.moveTo(-r*.14,-r*.03); cx.lineTo(Rr*.97,0); cx.lineTo(-r*.14,r*.03); cx.closePath(); cx.fillStyle=C.accent; cx.fill(); cx.restore();
+    cx.beginPath(); cx.arc(x,y,r*.065,0,Math.PI*2); cx.fillStyle=C.ink; cx.fill();
+    cx.beginPath(); cx.arc(x,y,r*.025,0,Math.PI*2); cx.fillStyle=C.paper; cx.fill();
+  }
+  function drawChart(){
+    var x=R.x, y=R.y, w=R.w, hh=Math.min(64, Math.max(52, R.h*.18)), py=y+hh, ph=R.h-hh-18, live=S.mode==='run' || S.mode==='result';
+    var t1=Math.max(CHART_S, S.t), t0=t1-CHART_S, p, s;
+    function X(t){ return x+(t-t0)/CHART_S*w; } function Y(v){ return py+ph-v/PMAX*ph; }
+    // header
+    cx.textBaseline='alphabetic'; cx.textAlign='left'; cx.fillStyle=C.ink; cx.font=font(700,Math.min(22,w*.055),DISP);
+    cx.fillText(live ? 'Test '+fmt(S.T)+' psi ±'+fmt(S.hw) : 'Valve not loaded', x, y+20);
+    var status='', sc=C.muted;
+    if(S.mode==='run'){
+      if(S.weep>0){ status='SEAL WEEP'; sc=C.bad; }
+      else if(S.P<S.T-S.hw){ status='PRESSURIZE'; }
+      else if(S.P>S.T+S.hw){ status='OVER BAND: BLEED'; sc=C.bad; }
+      else { status='HOLDING STEADY'; sc=C.ok; }
+    } else if(S.mode==='result') { status=S.ok ? 'VALVE PASSED' : 'VALVE FAILED'; sc=S.ok?C.ok:C.bad; }
+    else status='RECORDER STANDING BY';
+    cx.font=font(500,11.5,MONO); cx.fillStyle=sc; cx.fillText(status, x, y+40);
+    if(live){
+      cx.textAlign='right'; cx.fillStyle=C.ink; cx.font=font(500,Math.min(20,w*.05),MONO);
+      cx.fillText(Math.max(0,LIMIT-S.t).toFixed(1)+' s', x+w, y+20);
+      cx.font=font(500,11.5,MONO); cx.fillStyle=C.muted; cx.fillText('HOLD '+S.hold.toFixed(1)+'/'+S.need.toFixed(1)+' s', x+w, y+40);
+    }
+    var bar=py-9; cx.fillStyle=C.line; cx.fillRect(x,bar,w,4);
+    if(live){ cx.fillStyle=C.ok; cx.fillRect(x,bar,w*Math.min(1,S.hold/S.need),4); }
+    // plot
+    cx.fillStyle=C.paper; cx.fillRect(x,py,w,ph); cx.strokeStyle=C.line; cx.lineWidth=1; cx.strokeRect(x+.5,py+.5,w-1,ph-1);
+    cx.save(); cx.beginPath(); cx.rect(x,py,w,ph); cx.clip();
+    for(p=1000; p<PMAX; p+=1000){ cx.beginPath(); cx.moveTo(x,Y(p)+.5); cx.lineTo(x+w,Y(p)+.5); cx.strokeStyle=C.line; cx.stroke(); }
+    for(s=Math.ceil(t0); s<=t1; s++){ cx.beginPath(); cx.moveTo(X(s)+.5,py); cx.lineTo(X(s)+.5,py+ph); cx.strokeStyle=C.line; cx.globalAlpha=s%5===0?1:.45; cx.stroke(); cx.globalAlpha=1; }
+    cx.setLineDash([5,4]); cx.beginPath(); cx.moveTo(x,Y(RELIEF)); cx.lineTo(x+w,Y(RELIEF)); cx.strokeStyle=C.bad; cx.stroke(); cx.setLineDash([]);
+    if(live){
+      cx.globalAlpha=.2; cx.fillStyle=C.ok; cx.fillRect(x,Y(S.T+S.hw),w,Y(S.T-S.hw)-Y(S.T+S.hw)); cx.globalAlpha=1;
+      cx.setLineDash([2,3]); cx.beginPath(); cx.moveTo(x,Y(S.T)); cx.lineTo(x+w,Y(S.T)); cx.strokeStyle=C.ok; cx.stroke(); cx.setLineDash([]);
+      if(S.hist.length>1){
+        cx.beginPath(); S.hist.forEach(function(h,i){ if(i) cx.lineTo(X(h[0]),Y(h[1])); else cx.moveTo(X(h[0]),Y(h[1])); });
+        cx.lineWidth=2; cx.lineJoin='round'; cx.strokeStyle=C.ink; cx.stroke();
+        var e=S.hist[S.hist.length-1]; cx.beginPath(); cx.arc(X(e[0]),Y(e[1]),4,0,Math.PI*2); cx.fillStyle=C.accent; cx.fill();
+      }
+    }
+    cx.restore();
+    cx.fillStyle=C.muted; cx.font=font(400,10.5,MONO); cx.textAlign='right'; cx.textBaseline='middle';
+    for(p=2000; p<PMAX; p+=2000) cx.fillText(p/1000+'k', x+w-4, Y(p)-7);
+    cx.textAlign='left'; cx.fillStyle=C.bad; cx.fillText('RELIEF', x+4, Y(RELIEF)+9);
+    cx.textAlign='left'; cx.textBaseline='alphabetic'; cx.fillStyle=C.muted; cx.fillText('LAST '+CHART_S+' s', x, py+ph+14);
+    // pass / fail stamp
+    if(S.mode==='result'){
+      var mw=Math.min(w*.8,300), mh=74, mx=x+w/2-mw/2, my=py+ph/2-mh/2;
+      cx.fillStyle=C.paper; cx.globalAlpha=.94; cx.fillRect(mx,my,mw,mh); cx.globalAlpha=1;
+      cx.lineWidth=2; cx.strokeStyle=S.ok?C.ok:C.bad; cx.strokeRect(mx,my,mw,mh);
+      cx.textAlign='center'; cx.fillStyle=S.ok?C.ok:C.bad; cx.font=font(800,28,DISP); cx.fillText(S.msg, x+w/2, my+34);
+      cx.fillStyle=C.ink; cx.font=font(500,11.5,MONO); cx.fillText(S.sub, x+w/2, my+56);
+    }
+  }
+  function draw(){
+    if(!W) return;
+    cx.setTransform(dpr,0,0,dpr,0,0); cx.fillStyle=C.bg; cx.fillRect(0,0,W,H);
+    drawGauge(); drawChart();
+  }
+
+  /* ---- loop ---- */
+  var last=0, raf=0;
+  function frame(ts){ raf=requestAnimationFrame(frame); var dt=last ? Math.min(.05,(ts-last)/1000) : 0; last=ts; if(!S.paused) update(dt); draw(); }
+  function startLoop(){ if(!raf){ last=0; raf=requestAnimationFrame(frame); } }
+  function stopLoop(){ if(raf) cancelAnimationFrame(raf); raf=0; }
+
+  /* ---- input ---- */
+  function btnState(){ bPump.classList.toggle('on', keys.pump||ptr.pump); bBleed.classList.toggle('on', keys.bleed||ptr.bleed); }
+  function holdable(el,name){
+    function on(e){ if(e.button>0) return; e.preventDefault(); ptr[name]=true; try { el.setPointerCapture(e.pointerId); } catch(_) {} btnState(); }
+    function off(){ ptr[name]=false; btnState(); }
+    el.addEventListener('pointerdown',on); el.addEventListener('pointerup',off); el.addEventListener('pointercancel',off); el.addEventListener('lostpointercapture',off);
+    el.addEventListener('contextmenu',function(e){ e.preventDefault(); });
+  }
+  holdable(bPump,'pump'); holdable(bBleed,'bleed'); holdable(cv,'pump');
+  function keyName(k){ return (k===' '||k==='ArrowUp'||k==='w'||k==='W') ? 'pump' : (k==='b'||k==='B'||k==='ArrowDown'||k==='s'||k==='S') ? 'bleed' : null; }
+  document.addEventListener('keydown',function(e){
+    if(page.hidden || e.ctrlKey || e.metaKey || e.altKey) return;
+    var n=keyName(e.key), playing=over.hidden && S.mode!=='idle' && S.mode!=='over';
+    if(!over.hidden){ if(e.key===' '){ e.preventDefault(); if(!e.repeat) oBtn.click(); } return; }
+    if((e.key==='p'||e.key==='P'||e.key==='Escape') && playing){ e.preventDefault(); pause(); return; }
+    if(n && playing){ e.preventDefault(); keys[n]=true; btnState(); }
+  });
+  document.addEventListener('keyup',function(e){ var n=keyName(e.key); if(n){ keys[n]=false; btnState(); } });
+  window.addEventListener('blur', pause);
+  document.addEventListener('visibilitychange', function(){ if(document.hidden) pause(); });
+
+  /* ---- page + theme hooks ---- */
+  window.addEventListener('nn:page', function(e){ if(e.detail==='game-pressure'){ layout(); startLoop(); } else { pause(); stopLoop(); } });
+  if(window.ResizeObserver) new ResizeObserver(function(){ if(!page.hidden) layout(); }).observe(stage);
+  else window.addEventListener('resize', function(){ if(!page.hidden) layout(); });
+  if(window.matchMedia){ var mq=matchMedia('(prefers-color-scheme: dark)'); var rc=function(){ readColors(); draw(); }; if(mq.addEventListener) mq.addEventListener('change',rc); else if(mq.addListener) mq.addListener(rc); }
+  if(window.MutationObserver) new MutationObserver(function(){ readColors(); draw(); }).observe(document.documentElement,{ attributes:true, attributeFilter:['data-theme'] });
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ draw(); });
+  hud();
+  if(!page.hidden){ layout(); startLoop(); }
+})();
+</script>
+
+<script>
+/* Flea Hop: hop a flea between hair follicles and combs. */
+(function(){
+  var page=document.getElementById('game-flea'); if(!page) return;
+  function $(id){ return document.getElementById(id); }
+  var game=page.querySelector('.fgame'), stage=page.querySelector('.gstage'), cv=$('fc'), cx=cv.getContext('2d');
+  var elScore=$('fScore'), elBest=$('fBest');
+  var over=$('fOver'), oTitle=$('fTitle'), oMsg=$('fMsg'), oBtn=$('fStart'), bHop=$('fHop');
+  /* World units: the scene is H0 tall and scales to the canvas. */
+  var H0=400, SKIN=26, GRAV=1500, HOP=430, VMAX=720, FR=10, SPACING=250, KEY='nn-flea-hop-best';
+  var DISP='"Archivo", "Arial Narrow", Arial, sans-serif', MONO='"IBM Plex Mono", ui-monospace, Consolas, monospace';
+  var best=0; try { best=+localStorage.getItem(KEY)||0; } catch(e) {}
+  elBest.textContent=best;
+
+  var S={ mode:'idle', paused:false, score:0, y:H0/2, vy:0, fx:100, t:0, ext:0, dist:0, spin:0, deadT:0, why:'', obs:[], parts:[] };
+
+  var C={};
+  function readColors(){ var s=getComputedStyle(game); ['paper','ink','muted','line','accent','bg','field','skin','skin2','hair','bulb','comb','comb2','flea'].forEach(function(k){ C[k]=s.getPropertyValue('--'+k).trim(); }); }
+  function font(w,px,fam){ return w+' '+Math.round(px)+'px '+fam; }
+  function lerp(a,b,k){ return a+(b-a)*k; }
+
+  var W=0, H=0, W0=600, sc=1, dpr=1;
+  function layout(){
+    var w=stage.clientWidth; if(!w) return;
+    var h=Math.round(Math.max(320, Math.min(460, w*.6)));
+    dpr=Math.min(2, window.devicePixelRatio||1);
+    cv.width=Math.round(w*dpr); cv.height=Math.round(h*dpr); cv.style.height=h+'px';
+    W=w; H=h; sc=h/H0; W0=w/sc; S.fx=Math.max(90, W0*.22);
+    readColors(); draw();
+  }
+
+  /* ---- game flow ---- */
+  function hud(){ elScore.textContent=S.score; elBest.textContent=best; }
+  function showOver(title,msg,btn){ oTitle.textContent=title; oMsg.textContent=msg; oBtn.textContent=btn; over.hidden=false; }
+  function start(){
+    S.score=0; S.y=H0/2; S.vy=0; S.ext=0; S.t=0; S.dist=0; S.spin=0; S.obs=[]; S.parts=[]; S.paused=false; S.mode='ready';
+    over.hidden=true; hud();
+  }
+  function spawn(){
+    var gap=Math.max(118, 160-S.score*2), lo=SKIN+22, hi=H0-SKIN-22-gap;
+    var last=S.obs[S.obs.length-1], prev=last ? last.gy : (lo+hi)/2;
+    var a=Math.max(lo, prev-120), b=Math.min(hi, prev+120);
+    var type=(!last && S.score<1) ? 'hair' : (Math.random()<.5 ? 'hair' : 'comb');
+    S.obs.push({ x:W0+30, gy:a+Math.random()*(b-a), gap:gap, type:type, hw:type==='hair' ? 19 : 28, ph:Math.random()*6.28, lean:(Math.random()-.5)*8, passed:false });
+  }
+  function hop(){
+    if(S.mode==='ready') S.mode='run';
+    if(S.mode!=='run') return;
+    S.vy=-HOP; S.ext=1;
+    for(var i=0;i<5;i++) S.parts.push({ x:S.fx-8, y:S.y+8, vx:-60-Math.random()*80, vy:20+Math.random()*60, l:.4 });
+  }
+  function die(why){ S.mode='dead'; S.why=why; S.deadT=0; S.vy=-180; if(S.score>best){ best=S.score; try { localStorage.setItem(KEY,best); } catch(e) {} S.newBest=true; } else S.newBest=false; hud(); }
+  function gameOver(){
+    S.mode='over';
+    var head={ hair:'Tangled', comb:'Combed out', skin:'Bonked the scalp' }[S.why]||'Game over';
+    var why={ hair:'You got caught in a hair follicle.', comb:'You got caught in the teeth of a comb.', skin:'The skin is not as soft as it looks.' }[S.why]||'';
+    showOver(S.newBest && S.score ? 'New best' : head, why+' '+S.score+' gap'+(S.score===1?'':'s')+' cleared.', 'Hop again');
+  }
+  function pause(){
+    if((S.mode==='run' || S.mode==='ready' || S.mode==='dead') && !S.paused){ S.paused=true; showOver('Paused','Flea on hold. Nothing moves until you resume.','Resume'); }
+  }
+  oBtn.addEventListener('click', function(){ if(S.paused){ S.paused=false; over.hidden=true; } else start(); });
+
+  function hitRect(rx,ry,rw,rh){
+    var nx=Math.max(rx,Math.min(S.fx,rx+rw)), ny=Math.max(ry,Math.min(S.y,ry+rh)), dx=S.fx-nx, dy=S.y-ny;
+    return dx*dx+dy*dy < FR*FR;
+  }
+  function update(dt){
+    S.t+=dt;
+    S.parts.forEach(function(p){ p.x+=p.vx*dt; p.y+=p.vy*dt; p.l-=dt; });
+    S.parts=S.parts.filter(function(p){ return p.l>0; });
+    if(S.mode==='ready'){ S.y=H0/2+Math.sin(S.t*4)*6; S.dist+=dt*80; return; }
+    if(S.mode==='dead'){
+      S.deadT+=dt; S.spin+=dt*9; S.vy=Math.min(VMAX, S.vy+GRAV*dt);
+      S.y=Math.min(H0-SKIN-FR+2, S.y+S.vy*dt);
+      if(S.deadT>.9) gameOver();
+      return;
+    }
+    if(S.mode!=='run') return;
+    var sp=170+Math.min(100, S.score*4);
+    S.dist+=sp*dt;
+    S.vy=Math.min(VMAX, S.vy+GRAV*dt); S.y+=S.vy*dt; S.ext=Math.max(0, S.ext-dt*3.2);
+    if(!S.obs.length || S.obs[S.obs.length-1].x < W0-SPACING) spawn();
+    for(var i=0;i<S.obs.length;i++){
+      var o=S.obs[i]; o.x-=sp*dt;
+      if(!o.passed && o.x+o.hw < S.fx-FR){ o.passed=true; S.score++; hud(); }
+      if(Math.abs(o.x-S.fx) < o.hw+FR){
+        if(hitRect(o.x-o.hw, SKIN, o.hw*2, o.gy-SKIN) || hitRect(o.x-o.hw, o.gy+o.gap, o.hw*2, H0-SKIN-o.gy-o.gap)){ die(o.type); return; }
+      }
+    }
+    S.obs=S.obs.filter(function(o){ return o.x>-80; });
+    if(S.y-FR<SKIN || S.y+FR>H0-SKIN) die('skin');
+  }
+
+  /* ---- drawing ---- */
+  function drawBackdrop(){
+    cx.fillStyle=C.field; cx.fillRect(0,0,W0,H0);
+    // far-off hairs drifting slowly
+    cx.save(); cx.globalAlpha=.14; cx.strokeStyle=C.hair; cx.lineCap='round'; cx.lineWidth=3;
+    for(var i=0;i<12;i++){
+      var span=W0+80, x=(((i*97.3-S.dist*.22)%span)+span)%span-40, len=50+(i*37)%70, top=i%2===0, e=top ? SKIN : H0-SKIN, d=top ? 1 : -1, bend=((i*13)%5-2)*5;
+      cx.beginPath(); cx.moveTo(x,e); cx.quadraticCurveTo(x+bend, e+d*len*.5, x+bend*1.6, e+d*len); cx.stroke();
+    }
+    cx.restore();
+  }
+  function drawSkin(){
+    var k, x0=-(S.dist%38);
+    cx.fillStyle=C.skin; cx.fillRect(0,0,W0,SKIN); cx.fillRect(0,H0-SKIN,W0,SKIN);
+    cx.fillStyle=C.skin2; cx.fillRect(0,SKIN-2,W0,2); cx.fillRect(0,H0-SKIN,W0,2);
+    for(k=0;k<W0/38+2;k++){
+      var px=x0+k*38;
+      cx.beginPath(); cx.arc(px+(k%2)*11, 9+(k%3)*4, 2.2, 0, Math.PI*2); cx.fill();
+      cx.beginPath(); cx.arc(px+19-(k%2)*9, H0-9-(k%3)*4, 2.2, 0, Math.PI*2); cx.fill();
+    }
+  }
+  function strand(bx,by,ty,w,lean,sway){
+    cx.beginPath(); cx.moveTo(bx,by); cx.quadraticCurveTo(bx+lean*.2, (by+ty)/2, bx+lean*.5+sway, ty);
+    cx.lineWidth=w; cx.lineCap='round'; cx.strokeStyle=C.hair; cx.stroke();
+  }
+  function bulb(bx,cy,r){
+    cx.beginPath(); cx.arc(bx,cy,r,0,Math.PI*2); cx.fillStyle=C.bulb; cx.fill(); cx.lineWidth=1.5; cx.strokeStyle=C.skin2; cx.stroke();
+  }
+  function drawHair(o,top){
+    var d=top ? 1 : -1, e=top ? SKIN : H0-SKIN, ty=top ? o.gy : o.gy+o.gap, by=e-d*8;
+    var off=[-13,0,13], wd=[9,12,9], ln=[1,-.6,.8], short=[8,0,8], i;
+    for(i=0;i<3;i++){
+      var sway=Math.sin(S.t*2.4+o.ph+i*1.7)*2.5;
+      bulb(o.x+off[i], by, i===1 ? 6.5 : 5.5);
+      strand(o.x+off[i], by, ty-d*short[i], wd[i], o.lean*ln[i], sway);
+    }
+  }
+  function drawComb(o,top){
+    var d=top ? 1 : -1, e=top ? SKIN : H0-SKIN, ty=top ? o.gy : o.gap+o.gy, left=o.x-30, i;
+    cx.lineCap='round'; cx.strokeStyle=C.comb; cx.lineWidth=6;
+    for(i=0;i<6;i++){ var xc=left+3+i*10.8; cx.beginPath(); cx.moveTo(xc,e+d*6); cx.lineTo(xc,ty-d*3); cx.stroke(); }
+    cx.strokeStyle=C.comb2; cx.lineWidth=16; cx.beginPath(); cx.moveTo(left+8,e); cx.lineTo(left+52,e); cx.stroke();
+    cx.strokeStyle=C.comb; cx.lineWidth=3; cx.beginPath(); cx.moveTo(left+10,e-d*2); cx.lineTo(left+50,e-d*2); cx.stroke();
+  }
+  function drawFlea(){
+    var rot=S.mode==='dead' || S.mode==='over' ? S.spin : Math.max(-.5, Math.min(.9, S.vy/700)), e=S.ext;
+    cx.save(); cx.translate(S.fx,S.y); cx.rotate(rot); cx.lineCap='round'; cx.lineJoin='round';
+    // legs: the big hind leg folds up when falling and kicks out on a hop
+    cx.strokeStyle=C.flea;
+    cx.lineWidth=3.2; cx.beginPath(); cx.moveTo(-5,5); cx.lineTo(lerp(-9,-16,e), lerp(-3,9,e)); cx.stroke();
+    cx.lineWidth=2.2; cx.beginPath(); cx.moveTo(lerp(-9,-16,e), lerp(-3,9,e)); cx.lineTo(lerp(-1,-26,e), lerp(13,15,e)); cx.stroke();
+    cx.lineWidth=2; cx.beginPath(); cx.moveTo(5,6); cx.lineTo(9,13); cx.moveTo(1,7); cx.lineTo(3,14); cx.stroke();
+    // body
+    cx.beginPath(); cx.ellipse(0,0,13,9,0,0,Math.PI*2); cx.fillStyle=C.flea; cx.fill(); cx.lineWidth=1.2; cx.strokeStyle=C.ink; cx.stroke();
+    cx.save(); cx.beginPath(); cx.ellipse(0,0,13,9,0,0,Math.PI*2); cx.clip();
+    cx.strokeStyle=C.ink; cx.globalAlpha=.3; cx.lineWidth=1;
+    [-8,-4,0,4].forEach(function(x){ cx.beginPath(); cx.moveTo(x,-10); cx.quadraticCurveTo(x+2,0,x,10); cx.stroke(); });
+    cx.restore();
+    cx.beginPath(); cx.ellipse(-3,-4,5,2,-.2,0,Math.PI*2); cx.fillStyle='#fff'; cx.globalAlpha=.22; cx.fill(); cx.globalAlpha=1;
+    // head
+    cx.beginPath(); cx.ellipse(12,-1,6.5,5.5,0,0,Math.PI*2); cx.fillStyle=C.flea; cx.fill(); cx.lineWidth=1.2; cx.strokeStyle=C.ink; cx.stroke();
+    cx.beginPath(); cx.arc(14,-2.5,2,0,Math.PI*2); cx.fillStyle='#fff'; cx.fill();
+    cx.beginPath(); cx.arc(14.6,-2.5,1,0,Math.PI*2); cx.fillStyle='#111'; cx.fill();
+    cx.strokeStyle=C.ink; cx.lineWidth=1.3; cx.beginPath(); cx.moveTo(15,-5.5); cx.lineTo(19,-9); cx.moveTo(17,2); cx.lineTo(23,5); cx.stroke();
+    cx.restore();
+  }
+  function draw(){
+    if(!W) return;
+    cx.setTransform(dpr*sc,0,0,dpr*sc,0,0);
+    drawBackdrop(); drawSkin();
+    S.obs.forEach(function(o){
+      if(o.type==='hair'){ drawHair(o,true); drawHair(o,false); } else { drawComb(o,true); drawComb(o,false); }
+    });
+    cx.fillStyle=C.muted;
+    S.parts.forEach(function(p){ cx.globalAlpha=Math.max(0,p.l/.4)*.7; cx.beginPath(); cx.arc(p.x,p.y,2.5,0,Math.PI*2); cx.fill(); });
+    cx.globalAlpha=1;
+    drawFlea();
+    if(S.mode==='run' || S.mode==='dead'){
+      cx.globalAlpha=.2; cx.fillStyle=C.ink; cx.font=font(800,48,DISP); cx.textAlign='center'; cx.textBaseline='middle'; cx.fillText(S.score, W0/2, H0/2-6); cx.globalAlpha=1;
+    }
+    if(S.mode==='ready'){
+      cx.fillStyle=C.ink; cx.font=font(700,22,DISP); cx.textAlign='center'; cx.textBaseline='alphabetic'; cx.fillText('Tap, click or press Space to hop', W0/2, H0*.27);
+      cx.fillStyle=C.muted; cx.font=font(500,12,MONO); cx.fillText('Mind the hairs. Mind the combs.', W0/2, H0*.27+22);
+    }
+  }
+
+  /* ---- loop ---- */
+  var last=0, raf=0;
+  function frame(ts){ raf=requestAnimationFrame(frame); var dt=last ? Math.min(.05,(ts-last)/1000) : 0; last=ts; if(!S.paused) update(dt); draw(); }
+  function startLoop(){ if(!raf){ last=0; raf=requestAnimationFrame(frame); } }
+  function stopLoop(){ if(raf) cancelAnimationFrame(raf); raf=0; }
+
+  /* ---- input ---- */
+  function press(el){
+    el.addEventListener('pointerdown', function(e){ if(e.button>0) return; e.preventDefault(); if(over.hidden && !S.paused) hop(); });
+    el.addEventListener('contextmenu', function(e){ e.preventDefault(); });
+  }
+  press(cv); press(bHop);
+  document.addEventListener('keydown', function(e){
+    if(page.hidden || e.ctrlKey || e.metaKey || e.altKey) return;
+    var isHop=(e.key===' ' || e.key==='ArrowUp' || e.key==='w' || e.key==='W');
+    if(!over.hidden){ if(e.key===' '){ e.preventDefault(); if(!e.repeat) oBtn.click(); } return; }
+    if((e.key==='p' || e.key==='P' || e.key==='Escape') && S.mode!=='idle' && S.mode!=='over'){ e.preventDefault(); pause(); return; }
+    if(isHop){ e.preventDefault(); if(!e.repeat) hop(); }
+  });
+  window.addEventListener('blur', pause);
+  document.addEventListener('visibilitychange', function(){ if(document.hidden) pause(); });
+
+  /* ---- page + theme hooks ---- */
+  window.addEventListener('nn:page', function(e){ if(e.detail==='game-flea'){ layout(); startLoop(); } else { pause(); stopLoop(); } });
+  if(window.ResizeObserver) new ResizeObserver(function(){ if(!page.hidden) layout(); }).observe(stage);
+  else window.addEventListener('resize', function(){ if(!page.hidden) layout(); });
+  if(window.matchMedia){ var mq=matchMedia('(prefers-color-scheme: dark)'); var rc=function(){ readColors(); draw(); }; if(mq.addEventListener) mq.addEventListener('change',rc); else if(mq.addListener) mq.addListener(rc); }
+  if(window.MutationObserver) new MutationObserver(function(){ readColors(); draw(); }).observe(document.documentElement,{ attributes:true, attributeFilter:['data-theme'] });
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ draw(); });
+  hud();
+  if(!page.hidden){ layout(); startLoop(); }
+})();
+</script>
+<script>
+/* Games hub: show each game's best score on its card. */
+(function(){
+  var books=[['gbPressure','nn-pressure-hold-best'],['gbFlea','nn-flea-hop-best']];
+  function upd(){ books.forEach(function(b){ var v=0; try { v=+localStorage.getItem(b[1])||0; } catch(e) {} var el=document.getElementById(b[0]); if(el) el.textContent=v; }); }
+  window.addEventListener('nn:page', function(e){ if(e.detail==='games') upd(); });
+  upd();
 })();
 </script>
 
