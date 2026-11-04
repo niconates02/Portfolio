@@ -516,6 +516,29 @@ h1.wave .ch.sp { width:.28em }
 .dshot { min-height:150px }
 #devGrid > [hidden] { display:none }
 @media (max-width:760px) { .dhero { grid-template-columns:minmax(0,1fr) } .dfacts { border-left:0; padding-left:0; border-top:1px solid var(--line); padding-top:16px } }
+/* ---- Dev tab v2: selection bar, logo thumbnails, brand panel, galleries ---- */
+.devbar { display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; border-bottom:1px solid var(--line); margin:0 0 24px; padding-top:8px }
+.devbar::-webkit-scrollbar { display:none }
+.devbar a { display:inline-flex; align-items:center; gap:9px; padding:10px 14px 12px; color:var(--muted); text-decoration:none; font:500 14px var(--f-body); white-space:nowrap; border-bottom:2px solid transparent; margin-bottom:-1px }
+.devbar a:hover { color:var(--ink) }
+.devbar a[aria-current="page"] { color:var(--ink); font-weight:600; border-bottom-color:var(--accent) }
+.devbar img { width:24px; height:24px; object-fit:contain; border-radius:5px; display:block }
+.dthumb { position:relative; display:grid; place-items:center; background:#16110f !important; overflow:hidden }
+.dthumb::before { content:""; position:absolute; inset:0; background:var(--bgimg, none) center/cover; filter:brightness(.42) saturate(.8) }
+.dthumb img { position:absolute; inset:0; margin:auto; display:block; object-fit:contain; max-width:100%; max-height:100% }
+.dthumb.cream { background:#f5f3ef !important }
+.dthumb.cream img { width:auto; height:100% }
+.dthumb.bs img { width:auto; height:78% }
+.dthumb.sc img { height:74%; width:auto; filter:drop-shadow(0 6px 14px rgba(0,0,0,.5)) }
+.dbrand { display:flex; align-items:center; justify-content:center; gap:16px; min-height:118px; padding:16px 20px; margin:0 0 16px; border-radius:6px; background:#16110f; border:1px solid var(--line); overflow:hidden; position:relative }
+.dbrand::before { content:""; position:absolute; inset:0; background:var(--bgimg, none) center/cover; filter:brightness(.38) saturate(.8) }
+.dbrand img { position:relative; display:block; height:92px; width:auto; max-width:100% }
+.dbrand b { position:relative; font:700 34px var(--f-display); font-stretch:82%; color:#F0E8E8; letter-spacing:.01em }
+.dgal { display:grid; gap:12px; align-content:start }
+.dgal figure { margin:0; border:1px solid var(--line); background:var(--paper); overflow:hidden; border-radius:4px }
+.dgal img { display:block; width:100%; height:auto }
+.dgal figcaption { padding:7px 12px; font:500 11.5px var(--f-mono); letter-spacing:.06em; text-transform:uppercase; color:var(--muted) }
+.dgal .cream img { background:#f5f3ef; max-height:340px; width:auto; margin:0 auto }
 </style>
 </head>
 <body>
@@ -960,19 +983,13 @@ h1.wave .ch.sp { width:.28em }
     <div class="pnav"><a class="prev" href="#demos" data-go="demos"><b class="ar">&larr;</b> Demo videos <span>Back</span></a><a class="next" href="#dev" data-go="dev"><span>Next</span> Dev work <b class="ar">&rarr;</b></a></div>
   </section>
 
-  <section class="page" id="dev" hidden>
+    <section class="page" id="dev" hidden>
+    <nav class="devbar rv" aria-label="Dev projects"><a href="#dev" data-go="dev" aria-current="page">All work</a><a href="#dev-beast-slayers" data-go="dev-beast-slayers"><img src="images/dev/bs-icon.png" alt="" width="24" height="24">Beast Slayers</a><a href="#dev-understory" data-go="dev-understory"><img src="images/dev/us-icon.png" alt="" width="24" height="24">Understory</a><a href="#dev-scamper" data-go="dev-scamper"><img src="images/dev/sc-icon.png" alt="" width="24" height="24">Scamper</a></nav>
     <div class="sechead"><h2>Developer work</h2><p>Games, tools, mods and plugins I build on my own time</p></div>
     <p class="lede dintro rv">A running log of what I make outside work. Every project has its own page with a status, links and a devlog. Nothing is available to download yet; builds and links will be added once each project is ready to share.</p>
-    <div class="chipbar dfilter rv" style="--i:1" role="group" aria-label="Filter projects">
-      <button type="button" data-f="all" aria-pressed="true">All</button>
-      <button type="button" data-f="game" aria-pressed="false">Games</button>
-      <button type="button" data-f="tool" aria-pressed="false">Tools</button>
-      <button type="button" data-f="mod" aria-pressed="false">Mods</button>
-      <button type="button" data-f="plugin" aria-pressed="false">Plugins</button>
-    </div>
     <div class="pgrid" id="devGrid">
-      <a class="gcard dcard card rv" style="--i:2" href="#dev-beast-slayers" data-go="dev-beast-slayers" data-kind="game">
-        <div class="gthumb" aria-hidden="true"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" focusable="false"><path d="M33.9 37.5L14.0 49.0L-5.9 37.5L-5.9 14.5L14.0 3.0L33.9 14.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M75.5 37.5L55.6 49.0L35.7 37.5L35.7 14.5L55.6 3.0L75.5 14.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M117.1 37.5L97.1 49.0L77.2 37.5L77.2 14.5L97.1 3.0L117.1 14.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M158.6 37.5L138.7 49.0L118.8 37.5L118.8 14.5L138.7 3.0L158.6 14.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M200.2 37.5L180.3 49.0L160.4 37.5L160.4 14.5L180.3 3.0L200.2 14.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M241.8 37.5L221.8 49.0L201.9 37.5L201.9 14.5L221.8 3.0L241.8 14.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M283.3 37.5L263.4 49.0L243.5 37.5L243.5 14.5L263.4 3.0L283.3 14.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M324.9 37.5L305.0 49.0L285.1 37.5L285.1 14.5L305.0 3.0L324.9 14.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M54.7 73.5L34.8 85.0L14.9 73.5L14.9 50.5L34.8 39.0L54.7 50.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M96.3 73.5L76.4 85.0L56.4 73.5L56.4 50.5L76.4 39.0L96.3 50.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M137.8 73.5L117.9 85.0L98.0 73.5L98.0 50.5L117.9 39.0L137.8 50.5Z" style="fill:var(--accent-soft);stroke:var(--accent)" stroke-width="1.4"/><path d="M179.4 73.5L159.5 85.0L139.6 73.5L139.6 50.5L159.5 39.0L179.4 50.5Z" style="fill:var(--accent-soft);stroke:var(--accent)" stroke-width="1.4"/><path d="M221.0 73.5L201.1 85.0L181.1 73.5L181.1 50.5L201.1 39.0L221.0 50.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M262.5 73.5L242.6 85.0L222.7 73.5L222.7 50.5L242.6 39.0L262.5 50.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M304.1 73.5L284.2 85.0L264.3 73.5L264.3 50.5L284.2 39.0L304.1 50.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M345.7 73.5L325.8 85.0L305.9 73.5L305.9 50.5L325.8 39.0L345.7 50.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M33.9 109.5L14.0 121.0L-5.9 109.5L-5.9 86.5L14.0 75.0L33.9 86.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M75.5 109.5L55.6 121.0L35.7 109.5L35.7 86.5L55.6 75.0L75.5 86.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M117.1 109.5L97.1 121.0L77.2 109.5L77.2 86.5L97.1 75.0L117.1 86.5Z" style="fill:var(--accent-soft);stroke:var(--accent)" stroke-width="1.4"/><path d="M158.6 109.5L138.7 121.0L118.8 109.5L118.8 86.5L138.7 75.0L158.6 86.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M200.2 109.5L180.3 121.0L160.4 109.5L160.4 86.5L180.3 75.0L200.2 86.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M241.8 109.5L221.8 121.0L201.9 109.5L201.9 86.5L221.8 75.0L241.8 86.5Z" style="fill:var(--accent);stroke:var(--accent)" stroke-width="1.4"/><path d="M283.3 109.5L263.4 121.0L243.5 109.5L243.5 86.5L263.4 75.0L283.3 86.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M324.9 109.5L305.0 121.0L285.1 109.5L285.1 86.5L305.0 75.0L324.9 86.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M54.7 145.5L34.8 157.0L14.9 145.5L14.9 122.5L34.8 111.0L54.7 122.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M96.3 145.5L76.4 157.0L56.4 145.5L56.4 122.5L76.4 111.0L96.3 122.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M137.8 145.5L117.9 157.0L98.0 145.5L98.0 122.5L117.9 111.0L137.8 122.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M179.4 145.5L159.5 157.0L139.6 145.5L139.6 122.5L159.5 111.0L179.4 122.5Z" style="fill:var(--accent);stroke:var(--accent)" stroke-width="1.4"/><path d="M221.0 145.5L201.1 157.0L181.1 145.5L181.1 122.5L201.1 111.0L221.0 122.5Z" style="fill:var(--accent-soft);stroke:var(--accent)" stroke-width="1.4"/><path d="M262.5 145.5L242.6 157.0L222.7 145.5L222.7 122.5L242.6 111.0L262.5 122.5Z" style="fill:var(--accent-soft);stroke:var(--accent)" stroke-width="1.4"/><path d="M304.1 145.5L284.2 157.0L264.3 145.5L264.3 122.5L284.2 111.0L304.1 122.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M345.7 145.5L325.8 157.0L305.9 145.5L305.9 122.5L325.8 111.0L345.7 122.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M33.9 181.5L14.0 193.0L-5.9 181.5L-5.9 158.5L14.0 147.0L33.9 158.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M75.5 181.5L55.6 193.0L35.7 181.5L35.7 158.5L55.6 147.0L75.5 158.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M117.1 181.5L97.1 193.0L77.2 181.5L77.2 158.5L97.1 147.0L117.1 158.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M158.6 181.5L138.7 193.0L118.8 181.5L118.8 158.5L138.7 147.0L158.6 158.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M200.2 181.5L180.3 193.0L160.4 181.5L160.4 158.5L180.3 147.0L200.2 158.5Z" style="fill:var(--accent-soft);stroke:var(--accent)" stroke-width="1.4"/><path d="M241.8 181.5L221.8 193.0L201.9 181.5L201.9 158.5L221.8 147.0L241.8 158.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M283.3 181.5L263.4 193.0L243.5 181.5L243.5 158.5L263.4 147.0L283.3 158.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M324.9 181.5L305.0 193.0L285.1 181.5L285.1 158.5L305.0 147.0L324.9 158.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M54.7 217.5L34.8 229.0L14.9 217.5L14.9 194.5L34.8 183.0L54.7 194.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M96.3 217.5L76.4 229.0L56.4 217.5L56.4 194.5L76.4 183.0L96.3 194.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M137.8 217.5L117.9 229.0L98.0 217.5L98.0 194.5L117.9 183.0L137.8 194.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M179.4 217.5L159.5 229.0L139.6 217.5L139.6 194.5L159.5 183.0L179.4 194.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M221.0 217.5L201.1 229.0L181.1 217.5L181.1 194.5L201.1 183.0L221.0 194.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M262.5 217.5L242.6 229.0L222.7 217.5L222.7 194.5L242.6 183.0L262.5 194.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M304.1 217.5L284.2 229.0L264.3 217.5L264.3 194.5L284.2 183.0L304.1 194.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M345.7 217.5L325.8 229.0L305.9 217.5L305.9 194.5L325.8 183.0L345.7 194.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><circle cx="97.1" cy="98.0" r="8" style="fill:var(--ink)"/><circle cx="97.1" cy="98.0" r="3" style="fill:var(--paper)"/><circle cx="201.1" cy="134.0" r="8" style="fill:var(--ink)"/><circle cx="201.1" cy="134.0" r="3" style="fill:var(--paper)"/><circle cx="180.3" cy="170.0" r="8" style="fill:var(--ink)"/><circle cx="180.3" cy="170.0" r="3" style="fill:var(--paper)"/><path d="M221.8 87.0 l-9 12 h18 z" style="fill:var(--paper)"/></svg></div>
+      <a class="gcard dcard card rv" style="--i:1" href="#dev-beast-slayers" data-go="dev-beast-slayers" data-kind="game">
+        <div class="gthumb dthumb bs" style="--bgimg:url(images/dev/bs-map.jpg)" aria-hidden="true"><img src="images/dev/bs-logo.png" alt="Beast Slayers logo" loading="lazy"></div>
         <div class="gbody">
           <div class="tb"><span>GAME</span><b>BS</b><span>HEX TACTICS</span></div>
           <h3><span class="sweep">Beast Slayers</span></h3>
@@ -981,42 +998,18 @@ h1.wave .ch.sp { width:.28em }
           <div class="gmeta"><span>Unity</span><span class="go">Open &rarr;</span></div>
         </div>
       </a>
-      <a class="gcard dcard card rv" style="--i:3" href="#dev-understory" data-go="dev-understory" data-kind="game">
-        <div class="gthumb" aria-hidden="true"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" focusable="false">
-  <circle cx="238" cy="52" r="26" style="fill:var(--paper)"/><circle cx="248" cy="46" r="22" style="fill:var(--accent-soft)"/>
-  <path d="M0 132H320V180H0Z" style="fill:var(--ink)" opacity=".92"/>
-  <g fill="none" stroke-linecap="round" style="stroke:var(--ink)" stroke-width="3">
-    <path d="M30 140Q28 100 40 70"/><path d="M44 140Q50 108 62 92"/><path d="M60 140Q58 112 52 84"/>
-    <path d="M250 140Q244 104 256 76"/><path d="M268 140Q276 110 292 100"/><path d="M286 140Q284 112 276 90"/>
-    <path d="M110 140Q106 112 116 96"/><path d="M122 140Q130 120 146 114"/>
-  </g>
-  <g style="fill:var(--paper)" stroke-linecap="round" stroke-linejoin="round">
-    <ellipse cx="190" cy="124" rx="19" ry="11"/><ellipse cx="208" cy="120" rx="9" ry="7.5"/>
-    <circle cx="205" cy="113" r="4.5"/><circle cx="215" cy="113" r="4.5"/>
-    <circle cx="213" cy="120" r="1.4" style="fill:var(--ink)"/>
-    <path d="M171 126Q150 130 144 116Q140 108 148 104" fill="none" style="stroke:var(--paper)" stroke-width="2.4"/>
-  </g>
-</svg></div>
+      <a class="gcard dcard card rv" style="--i:2" href="#dev-understory" data-go="dev-understory" data-kind="game">
+        <div class="gthumb dthumb cream" aria-hidden="true"><img src="images/dev/us-emblem.jpg" alt="Understory emblem: a mouse in armour with a sword" loading="lazy"></div>
         <div class="gbody">
-          <div class="tb"><span>GAME</span><b>US</b><span>GROUND LEVEL</span></div>
+          <div class="tb"><span>GAME</span><b>US</b><span>SURVIVAL</span></div>
           <h3><span class="sweep">Understory</span></h3>
-          <p>A 3D game at ground level among the reeds and roots, played as small animals, starting with a mouse.</p>
+          <p>A generational survival game in the leaf litter, played as small animals, starting with a mouse.</p>
           <span class="dstat live">In development</span>
           <div class="gmeta"><span>Unity</span><span class="go">Open &rarr;</span></div>
         </div>
       </a>
-      <a class="gcard dcard card rv" style="--i:4" href="#dev-scamper" data-go="dev-scamper" data-kind="tool">
-        <div class="gthumb" aria-hidden="true"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" focusable="false">
-  <g fill="none" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--ink)" stroke-width="3.2">
-    <path d="M130 56L120 94M120 94L96 124M120 94L142 126M130 56L156 76L176 90M130 56L108 78L92 70"/>
-    <circle cx="136" cy="40" r="11"/>
-  </g>
-  <g style="fill:var(--accent)"><circle cx="130" cy="56" r="5"/><circle cx="120" cy="94" r="5"/><circle cx="96" cy="124" r="5"/><circle cx="142" cy="126" r="5"/><circle cx="156" cy="76" r="5"/><circle cx="176" cy="90" r="5"/><circle cx="108" cy="78" r="5"/><circle cx="92" cy="70" r="5"/></g>
-  <path d="M30 152H290" style="stroke:var(--line)" stroke-width="2"/>
-  <g style="fill:var(--paper);stroke:var(--ink)" stroke-width="1.6"><rect x="48" y="146" width="12" height="12" transform="rotate(45 54 152)"/><rect x="110" y="146" width="12" height="12" transform="rotate(45 116 152)"/><rect x="176" y="146" width="12" height="12" transform="rotate(45 182 152)"/><rect x="238" y="146" width="12" height="12" transform="rotate(45 244 152)"/></g>
-  <rect x="48" y="26" width="2" height="0" />
-  <g fill="none" style="stroke:var(--muted)" stroke-width="2" stroke-linecap="round"><path d="M226 56H286M226 76H270M226 96H282"/></g>
-</svg></div>
+      <a class="gcard dcard card rv" style="--i:3" href="#dev-scamper" data-go="dev-scamper" data-kind="tool">
+        <div class="gthumb dthumb sc" aria-hidden="true"><img src="images/dev/sc-logo.png" alt="Scamper logo" loading="lazy"></div>
         <div class="gbody">
           <div class="tb"><span>TOOL</span><b>SC</b><span>RIG &amp; CLIPS</span></div>
           <h3><span class="sweep">Scamper</span></h3>
@@ -1025,7 +1018,7 @@ h1.wave .ch.sp { width:.28em }
           <div class="gmeta"><span>Windows app</span><span class="go">Open &rarr;</span></div>
         </div>
       </a>
-      <div class="gsoon" data-kind="mod plugin" role="img" aria-label="Mods and plugins coming soon"><b>Mods &amp; plugins</b><span>Coming soon</span></div>
+      <div class="gsoon" role="img" aria-label="Mods and plugins coming soon"><b>Mods &amp; plugins</b><span>Coming soon</span></div>
     </div>
     <h3 class="dsub">Latest devlog</h3>
     <div class="dlogs">
@@ -1052,18 +1045,20 @@ h1.wave .ch.sp { width:.28em }
     </div>
     <!--
       HOW TO ADD A PROJECT
-      1. Copy one <a class="gcard dcard card"> block above and change href, data-kind (game, tool, mod or plugin), title, text and status.
-      2. Copy one <section class="page" id="dev-..."> block below and give it the same id as the card's href (it must start with dev-).
-      3. Add devlog entries as <article class="dlog"> blocks, newest first, on the project page and (optionally) in the Latest devlog list above.
+      1. Copy one <a class="gcard dcard card"> block above; change href, title, text, status and the thumbnail image (put the logo in images/dev/).
+      2. Add a matching link to the .devbar at the top of every Dev page.
+      3. Copy one <section class="page" id="dev-..."> block below and give it the same id as the card's href (it must start with dev-).
+      4. Add devlog entries as <article class="dlog"> blocks, newest first.
     -->
     <div class="pnav"><a class="prev" href="#games" data-go="games"><b class="ar">&larr;</b> Games <span>Back</span></a><a class="next" href="#home" data-go="home"><span>Back to</span> Home <b class="ar">&uarr;</b></a></div>
   </section>
 
   <section class="page" id="dev-beast-slayers" hidden>
-    <a class="gback" href="#dev" data-go="dev">&larr; All dev work</a>
+    <nav class="devbar rv" aria-label="Dev projects"><a href="#dev" data-go="dev">All work</a><a href="#dev-beast-slayers" data-go="dev-beast-slayers" aria-current="page"><img src="images/dev/bs-icon.png" alt="" width="24" height="24">Beast Slayers</a><a href="#dev-understory" data-go="dev-understory"><img src="images/dev/us-icon.png" alt="" width="24" height="24">Understory</a><a href="#dev-scamper" data-go="dev-scamper"><img src="images/dev/sc-icon.png" alt="" width="24" height="24">Scamper</a></nav>
     <div class="sechead"><h2>Beast Slayers</h2><p>A hex tactics game with an overworld to roam</p></div>
     <div class="dhero rv">
       <div>
+        <div class="dbrand" style="--bgimg:url(images/dev/bs-map.jpg)"><img src="images/dev/bs-logo.png" alt="Beast Slayers logo"></div>
         <div class="tb"><span>GAME</span><b>BS</b><span>HEX TACTICS</span></div>
         <p class="lede">Lead a company of three monster slayers across a dark-fantasy overworld, then fight what you find on a hex battlefield.</p>
         <p>The overworld borrows the feel of Battle Brothers: you travel between sites, manage a small company and take on contracts. The monsters lean toward the grim creatures of Fear &amp; Hunger. Battles play out on a hex grid.</p><p>The interface follows a low-saturation dark-fantasy look: bone, faded cyan and dull red, with no glow.</p>
@@ -1073,7 +1068,7 @@ h1.wave .ch.sp { width:.28em }
     </div>
     <div class="dcols rv" style="--i:1">
       <div class="dbox"><h3>Progress</h3><ul class="dcheck"><li class="done"><span>Overworld with blended terrain, map sites, fog of war and drifting clouds</span></li><li class="done"><span>Company screen, night events and a journal</span></li><li class="done"><span>Menu and battle music</span></li><li class="done"><span>Spear weapon menu and battle art pass</span></li><li class="doing"><span>Interface update in the dark-fantasy style</span></li><li class="doing"><span>Boot and title screens</span></li><li class="plan"><span>Isometric battle view</span></li><li class="plan"><span>Seamless blends between hex types</span></li><li class="plan"><span>2D dynamic lighting</span></li></ul><div class="dkey"><span>&#10003; done</span><span>&#9680; in progress</span><span>&#9675; planned</span></div></div>
-      <div class="gsoon dshot" role="img" aria-label="Screenshots"><b>Screenshots</b><span>Coming soon</span></div>
+      <div class="dgal"><figure class=""><img src="images/dev/bs-map.jpg" alt="Beast Slayers overworld: a company approaches a stone tower through fog of war" loading="lazy"><figcaption>Overworld</figcaption></figure><figure class=""><img src="images/dev/bs-battle.jpg" alt="Beast Slayers battle: six hunters face four bandits on a hex field among gravestones" loading="lazy"><figcaption>Battle</figcaption></figure></div>
     </div>
     <h3 class="dsub">Devlog</h3>
     <div class="dlogs rv" style="--i:2">
@@ -1092,20 +1087,21 @@ h1.wave .ch.sp { width:.28em }
   </section>
 
   <section class="page" id="dev-understory" hidden>
-    <a class="gback" href="#dev" data-go="dev">&larr; All dev work</a>
-    <div class="sechead"><h2>Understory</h2><p>A 3D game at ground level</p></div>
+    <nav class="devbar rv" aria-label="Dev projects"><a href="#dev" data-go="dev">All work</a><a href="#dev-beast-slayers" data-go="dev-beast-slayers"><img src="images/dev/bs-icon.png" alt="" width="24" height="24">Beast Slayers</a><a href="#dev-understory" data-go="dev-understory" aria-current="page"><img src="images/dev/us-icon.png" alt="" width="24" height="24">Understory</a><a href="#dev-scamper" data-go="dev-scamper"><img src="images/dev/sc-icon.png" alt="" width="24" height="24">Scamper</a></nav>
+    <div class="sechead"><h2>Understory</h2><p>A generational survival game</p></div>
     <div class="dhero rv">
       <div>
-        <div class="tb"><span>GAME</span><b>US</b><span>GROUND LEVEL</span></div>
-        <p class="lede">Scurry through a forest seen from the ground up, as a mouse among creatures many times your size.</p>
+        <div class="dbrand"><img src="images/dev/us-wordmark.png" alt="Understory logo"></div>
+        <div class="tb"><span>GAME</span><b>US</b><span>SURVIVAL</span></div>
+        <p class="lede">Survive in the leaf litter as a mouse, among creatures many times your size, and pass what you learn on to the next generation.</p>
         <p>Understory is in early development. The work so far is movement and animation, the first creatures, forest art and the music.</p><p>The mouse already walks, trots, runs and leaps, with hull-based hitboxes for the body, tail and ears. The takahe and cricket have their own animation sets.</p>
         <div class="dlinks"><span class="dlink off" aria-disabled="true">Builds <small>not public yet</small></span><span class="dlink off" aria-disabled="true">Source <small>private</small></span></div>
       </div>
-      <dl class="dfacts"><dt>Status</dt><dd>In development</dd><dt>Genre</dt><dd>3D game</dd><dt>Engine</dt><dd>Unity</dd><dt>Platform</dt><dd>Windows</dd><dt>Latest build</dt><dd>V0.52.5 (Oct 2026)</dd><dt>Source</dt><dd>Private for now</dd></dl>
+      <dl class="dfacts"><dt>Status</dt><dd>In development</dd><dt>Genre</dt><dd>Generational survival</dd><dt>Engine</dt><dd>Unity</dd><dt>Platform</dt><dd>Windows</dd><dt>Latest build</dt><dd>V0.52.5 (Oct 2026)</dd><dt>Source</dt><dd>Private for now</dd></dl>
     </div>
     <div class="dcols rv" style="--i:1">
       <div class="dbox"><h3>Progress</h3><ul class="dcheck"><li class="done"><span>Mouse walk, trot, run, leap and dive</span></li><li class="done"><span>Hull-based hitboxes for tail and ears</span></li><li class="done"><span>Takahe and cricket with animation sets</span></li><li class="done"><span>Forest trees with far-distance meshes</span></li><li class="done"><span>Swamp night soundtrack</span></li><li class="doing"><span>Gait polish: bound, leap and walk speed</span></li><li class="doing"><span>A leaner rat to replace the first one</span></li><li class="plan"><span>Root-ridge replacement models</span></li><li class="plan"><span>Health model</span></li></ul><div class="dkey"><span>&#10003; done</span><span>&#9680; in progress</span><span>&#9675; planned</span></div></div>
-      <div class="gsoon dshot" role="img" aria-label="Screenshots"><b>Screenshots</b><span>Coming soon</span></div>
+      <div class="dgal"><figure class="cream"><img src="images/dev/us-emblem.jpg" alt="Understory emblem: a mouse in leather armour holding a sword, framed by oak leaves and acorns" loading="lazy"><figcaption>Emblem</figcaption></figure></div>
     </div>
     <h3 class="dsub">Devlog</h3>
     <div class="dlogs rv" style="--i:2">
@@ -1129,10 +1125,11 @@ h1.wave .ch.sp { width:.28em }
   </section>
 
   <section class="page" id="dev-scamper" hidden>
-    <a class="gback" href="#dev" data-go="dev">&larr; All dev work</a>
+    <nav class="devbar rv" aria-label="Dev projects"><a href="#dev" data-go="dev">All work</a><a href="#dev-beast-slayers" data-go="dev-beast-slayers"><img src="images/dev/bs-icon.png" alt="" width="24" height="24">Beast Slayers</a><a href="#dev-understory" data-go="dev-understory"><img src="images/dev/us-icon.png" alt="" width="24" height="24">Understory</a><a href="#dev-scamper" data-go="dev-scamper" aria-current="page"><img src="images/dev/sc-icon.png" alt="" width="24" height="24">Scamper</a></nav>
     <div class="sechead"><h2>Scamper</h2><p>A rig and clip tool for FBX characters</p></div>
     <div class="dhero rv">
       <div>
+        <div class="dbrand"><img src="images/dev/sc-logo.png" alt="Scamper logo"><b>Scamper</b></div>
         <div class="tb"><span>TOOL</span><b>SC</b><span>RIG &amp; CLIPS</span></div>
         <p class="lede">Take a character mesh, rig it, and turn out the animation clips and collision shapes a game needs.</p>
         <p>Scamper started as a helper for Understory and grew into its own program. It reads FBX characters, builds a rig, and generates clip sets such as walk, trot, run and leap.</p><p>It also builds hull shapes for static props, so the game can collide with them.</p>
@@ -1142,7 +1139,7 @@ h1.wave .ch.sp { width:.28em }
     </div>
     <div class="dcols rv" style="--i:1">
       <div class="dbox"><h3>Progress</h3><ul class="dcheck"><li class="done"><span>Rig FBX characters</span></li><li class="done"><span>Generate walk, trot, run and leap clips</span></li><li class="done"><span>Static-prop collision hulls</span></li><li class="done"><span>Windows executable build</span></li><li class="doing"><span>Building the full Understory animal set</span></li></ul><div class="dkey"><span>&#10003; done</span><span>&#9680; in progress</span><span>&#9675; planned</span></div></div>
-      <div class="gsoon dshot" role="img" aria-label="Screenshots"><b>Screenshots</b><span>Coming soon</span></div>
+      <div class="gsoon dshot" role="img" aria-label="Screenshots coming soon"><b>Screenshots</b><span>Coming soon</span></div>
     </div>
     <h3 class="dsub">Devlog</h3>
     <div class="dlogs rv" style="--i:2">
@@ -3695,19 +3692,6 @@ h1.wave .ch.sp { width:.28em }
     }
     if('IntersectionObserver' in window){ var io=new IntersectionObserver(function(en){ if(en[0].isIntersecting){ io.disconnect(); load(); } },{ rootMargin:'300px' }); io.observe(host); } else load();
   });
-})();
-</script>
-
-<script>
-/* Dev tab: filter the project cards by kind */
-(function(){
-  var bar=document.querySelector('.dfilter'), grid=document.getElementById('devGrid'); if(!bar||!grid) return;
-  var btns=[].slice.call(bar.querySelectorAll('button')), cards=[].slice.call(grid.children);
-  btns.forEach(function(b){ b.addEventListener('click',function(){
-    var f=b.getAttribute('data-f');
-    btns.forEach(function(x){ x.setAttribute('aria-pressed', x===b ? 'true' : 'false'); });
-    cards.forEach(function(c){ var k=(c.getAttribute('data-kind')||'').split(' '); c.hidden = !(f==='all' || k.indexOf(f)>=0); });
-  }); });
 })();
 </script>
 
