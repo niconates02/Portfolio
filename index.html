@@ -468,6 +468,7 @@ h1.wave .ch.sp { width:.28em }
 .m3d-bar button[aria-pressed="true"] { border-color:var(--accent); color:var(--accent) }
 .m3d-bar span { margin-left:auto; font:500 10.5px var(--f-mono); letter-spacing:.04em; color:var(--muted); background:color-mix(in srgb, var(--paper) 80%, transparent); padding:3px 7px; border-radius:3px }
 .m3d:fullscreen { aspect-ratio:auto }
+.m3d:-webkit-full-screen { aspect-ratio:auto }
 @media (max-width:560px) { .m3d-bar span { display:none } }
 /* ---------- resume button ---------- */
 .cta { display:flex; flex-wrap:wrap; gap:10px 14px; align-items:center }
@@ -526,8 +527,7 @@ h1.wave .ch.sp { width:.28em }
 .dthumb { position:relative; display:grid; place-items:center; background:#16110f !important; overflow:hidden }
 .dthumb::before { content:""; position:absolute; inset:0; background:var(--bgimg, none) center/cover; filter:brightness(.42) saturate(.8) }
 .dthumb img { position:absolute; inset:0; margin:auto; display:block; object-fit:contain; max-width:100%; max-height:100% }
-.dthumb.cream { background:#f5f3ef !important }
-.dthumb.cream img { width:auto; height:100% }
+.dthumb.us img { width:auto; height:92% }
 .dthumb.bs img { width:auto; height:78% }
 .dthumb.sc img { height:74%; width:auto; filter:drop-shadow(0 6px 14px rgba(0,0,0,.5)) }
 .dbrand { display:flex; align-items:center; justify-content:center; gap:16px; min-height:118px; padding:16px 20px; margin:0 0 16px; border-radius:6px; background:#16110f; border:1px solid var(--line); overflow:hidden; position:relative }
@@ -538,7 +538,8 @@ h1.wave .ch.sp { width:.28em }
 .dgal figure { margin:0; border:1px solid var(--line); background:var(--paper); overflow:hidden; border-radius:4px }
 .dgal img { display:block; width:100%; height:auto }
 .dgal figcaption { padding:7px 12px; font:500 11.5px var(--f-mono); letter-spacing:.06em; text-transform:uppercase; color:var(--muted) }
-.dgal .cream img { background:#f5f3ef; max-height:340px; width:auto; margin:0 auto }
+.dgal .dark { background:#16110f }
+.dgal .dark img { max-height:340px; max-width:100%; width:auto; height:auto; margin:0 auto; padding:10px 0 }
 /* ---- Hardware tab ---- */
 .dthumb.hw img { width:100%; height:100%; object-fit:cover }
 .dthumb.hw::before { display:none }
@@ -561,6 +562,20 @@ h1.wave .ch.sp { width:.28em }
 .hwlist li::marker { color:var(--accent) }
 .hwpad { padding:6px 0 0 }
 @media (max-width:760px) { .hwzoom.on img { width:360% } }
+/* ---- Dev tab: RoboSuite and DVTS ---- */
+.devbar .dbi-text { width:24px; height:24px; display:grid; place-items:center; border-radius:5px; background:#16110f; color:#F0E8E8; font:700 10px var(--f-mono); letter-spacing:.02em }
+.dthumb.rs { background:linear-gradient(135deg,#1c2744,#0f1320) !important }
+.dthumb.rs::before { display:none }
+.dthumb.rs img { height:66%; width:auto }
+.dthumb.dv { background:#16110f !important }
+.dthumb.dv::before { display:block; background:repeating-linear-gradient(0deg,transparent 0 27px,rgba(255,255,255,.04) 27px 28px),repeating-linear-gradient(90deg,transparent 0 27px,rgba(255,255,255,.04) 27px 28px); filter:none }
+.dvmark { position:relative; font:700 clamp(40px,7vw,68px) var(--f-display); font-stretch:82%; letter-spacing:.14em; color:#F0E8E8; padding-left:.14em }
+.dnote { display:flex; gap:12px; align-items:flex-start; background:var(--accent-soft); border:1px solid var(--line); border-left:3px solid var(--accent); padding:14px 18px; margin:0 0 22px; font-size:14.5px }
+.dnote b { color:var(--accent) }
+.dcols .vgrid { display:block; margin:0 }
+.dshots { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin-bottom:22px }
+.dshots figure:first-child { grid-column:1/-1 }
+@media (max-width:760px) { .dshots { grid-template-columns:minmax(0,1fr) } }
 </style>
 </head>
 <body>
@@ -571,22 +586,22 @@ h1.wave .ch.sp { width:.28em }
     <a class="brand" href="#home" data-go="home">Nicolas <b>Nates</b></a>
     <nav class="tabs" aria-label="Pages">
       <a class="tab" href="#home" data-go="home" data-group="home">Home</a>
-      <a class="tab tab-projects" href="#projects" data-go="projects" data-group="projects" aria-haspopup="true">Projects <span class="car" aria-hidden="true">&#9662;</span></a>
-      <a class="tab" href="#demos" data-go="demos" data-group="demos">Demos</a>
-      <a class="tab" href="#games" data-go="games" data-group="games">Games</a>
-      <a class="tab" href="#dev" data-go="dev" data-group="dev">Dev</a>
       <a class="tab" href="#hardware" data-go="hardware" data-group="hardware">Hardware</a>
+      <a class="tab" href="#robotics" data-go="robotics" data-group="robotics">Robotics</a>
+      <a class="tab" href="#professional" data-go="professional" data-group="test">Test Systems</a>
+      <a class="tab" href="#dev" data-go="dev" data-group="dev">Dev</a>
+      <a class="tab" href="#engineering" data-go="engineering" data-group="other">Other</a>
+      <a class="tab tab-projects tab-more" href="#demos" data-go="demos" data-group="more" aria-haspopup="true">More <span class="car" aria-hidden="true">&#9662;</span></a>
       <span class="ind" aria-hidden="true"></span>
     </nav>
   </div>
-  <div class="subbar" aria-label="Project categories">
+  <div class="subbar" aria-label="More pages">
     <div class="in2">
-      <span class="sublabel">Projects</span>
+      <span class="sublabel">More</span>
       <nav class="subtabs">
-        <a class="stab" href="#projects" data-go="projects">All</a>
-        <a class="stab" href="#professional" data-go="professional">Test systems</a>
-        <a class="stab" href="#robotics" data-go="robotics">Robotics</a>
-        <a class="stab" href="#engineering" data-go="engineering">Other</a>
+        <a class="stab" href="#demos" data-go="demos">Demos</a>
+        <a class="stab" href="#games" data-go="games">Games</a>
+        <a class="stab" href="#projects" data-go="projects">All projects</a>
         <span class="ind2" aria-hidden="true"></span>
       </nav>
     </div>
@@ -1010,7 +1025,7 @@ h1.wave .ch.sp { width:.28em }
   </section>
 
     <section class="page" id="dev" hidden>
-    <nav class="devbar rv" aria-label="Dev projects"><a href="#dev" data-go="dev" aria-current="page">All work</a><a href="#dev-beast-slayers" data-go="dev-beast-slayers"><img src="images/dev/bs-icon.png" alt="" width="24" height="24">Beast Slayers</a><a href="#dev-understory" data-go="dev-understory"><img src="images/dev/us-icon.png" alt="" width="24" height="24">Understory</a><a href="#dev-scamper" data-go="dev-scamper"><img src="images/dev/sc-icon.png" alt="" width="24" height="24">Scamper</a></nav>
+    <nav class="devbar rv" aria-label="Dev projects"><a href="#dev" data-go="dev" aria-current="page">All work</a><a href="#dev-beast-slayers" data-go="dev-beast-slayers"><img src="images/dev/bs-icon.png" alt="" width="24" height="24">Beast Slayers</a><a href="#dev-understory" data-go="dev-understory"><img src="images/dev/us-icon.png" alt="" width="24" height="24">Understory</a><a href="#dev-robosuite" data-go="dev-robosuite"><img src="images/dev/rs-icon.png" alt="" width="24" height="24">RoboSuite</a><a href="#dev-scamper" data-go="dev-scamper"><img src="images/dev/sc-icon.png" alt="" width="24" height="24">Scamper</a><a href="#dev-dvts" data-go="dev-dvts"><span class="dbi-text" aria-hidden="true">DV</span>DVTS</a></nav>
     <div class="sechead"><h2>Developer work</h2><p>Games, tools, mods and plugins I build on my own time</p></div>
     <p class="lede dintro rv">A running log of what I make outside work. Every project has its own page with a status, links and a devlog. Nothing is available to download yet; builds and links will be added once each project is ready to share.</p>
     <div class="pgrid" id="devGrid">
@@ -1025,13 +1040,23 @@ h1.wave .ch.sp { width:.28em }
         </div>
       </a>
       <a class="gcard dcard card rv" style="--i:2" href="#dev-understory" data-go="dev-understory" data-kind="game">
-        <div class="gthumb dthumb cream" aria-hidden="true"><img src="images/dev/us-emblem.jpg" alt="Understory emblem: a mouse in armour with a sword" loading="lazy"></div>
+        <div class="gthumb dthumb us" aria-hidden="true"><img src="images/dev/us-emblem.png" alt="Understory emblem: a mouse in armour with a sword" loading="lazy"></div>
         <div class="gbody">
           <div class="tb"><span>GAME</span><b>US</b><span>SURVIVAL</span></div>
           <h3><span class="sweep">Understory</span></h3>
           <p>A generational survival game in the leaf litter, played as small animals, starting with a mouse.</p>
           <span class="dstat live">In development</span>
           <div class="gmeta"><span>Unity</span><span class="go">Open &rarr;</span></div>
+        </div>
+      </a>
+      <a class="gcard dcard card rv" style="--i:3" href="#dev-robosuite" data-go="dev-robosuite" data-kind="tool">
+        <div class="gthumb dthumb rs" aria-hidden="true"><img src="images/dev/rs-logo.png" alt="RoboSuite logo" loading="lazy"></div>
+        <div class="gbody">
+          <div class="tb"><span>TOOL</span><b>RS</b><span>ROBOTICS SUITE</span></div>
+          <h3><span class="sweep">RoboSuite</span></h3>
+          <p>A desktop app for planning robot arms, simulating path following and working with sensor data.</p>
+          <span class="dstat">v1.0.0</span>
+          <div class="gmeta"><span>Windows app</span><span class="go">Open &rarr;</span></div>
         </div>
       </a>
       <a class="gcard dcard card rv" style="--i:3" href="#dev-scamper" data-go="dev-scamper" data-kind="tool">
@@ -1044,10 +1069,25 @@ h1.wave .ch.sp { width:.28em }
           <div class="gmeta"><span>Windows app</span><span class="go">Open &rarr;</span></div>
         </div>
       </a>
+      <a class="gcard dcard card rv" style="--i:6" href="#dev-dvts" data-go="dev-dvts" data-kind="tool">
+        <div class="gthumb dthumb dv" aria-hidden="true"><span class="dvmark">DVTS</span></div>
+        <div class="gbody">
+          <div class="tb"><span>TOOL</span><b>DV</b><span>INTERNAL</span></div>
+          <h3><span class="sweep">DVTS</span></h3>
+          <p>An internal app that brings engineering and project management into one workflow, built to make the team more efficient.</p>
+          <span class="dstat">Internal</span>
+          <div class="gmeta"><span>Internal tool</span><span class="go">Open &rarr;</span></div>
+        </div>
+      </a>
       <div class="gsoon" role="img" aria-label="Mods and plugins coming soon"><b>Mods &amp; plugins</b><span>Coming soon</span></div>
     </div>
     <h3 class="dsub">Latest devlog</h3>
     <div class="dlogs">
+      <article class="dlog">
+        <div class="dmeta"><time>Oct 12, 2026</time><a href="#dev-robosuite" data-go="dev-robosuite">RoboSuite</a></div>
+        <h3>RoboSuite 1.0.0 with a Windows installer</h3>
+        <p>The Arm Planner, the path-following simulator and the sensor-fusion lab ship together in one app, with an installer and sample projects.</p>
+      </article>
       <article class="dlog">
         <div class="dmeta"><time>Oct 21, 2026</time><a href="#dev-beast-slayers" data-go="dev-beast-slayers">Beast Slayers</a></div>
         <h3>v0.41.0: the world gets an overhaul</h3>
@@ -1080,7 +1120,7 @@ h1.wave .ch.sp { width:.28em }
   </section>
 
   <section class="page" id="dev-beast-slayers" hidden>
-    <nav class="devbar rv" aria-label="Dev projects"><a href="#dev" data-go="dev">All work</a><a href="#dev-beast-slayers" data-go="dev-beast-slayers" aria-current="page"><img src="images/dev/bs-icon.png" alt="" width="24" height="24">Beast Slayers</a><a href="#dev-understory" data-go="dev-understory"><img src="images/dev/us-icon.png" alt="" width="24" height="24">Understory</a><a href="#dev-scamper" data-go="dev-scamper"><img src="images/dev/sc-icon.png" alt="" width="24" height="24">Scamper</a></nav>
+    <nav class="devbar rv" aria-label="Dev projects"><a href="#dev" data-go="dev">All work</a><a href="#dev-beast-slayers" data-go="dev-beast-slayers" aria-current="page"><img src="images/dev/bs-icon.png" alt="" width="24" height="24">Beast Slayers</a><a href="#dev-understory" data-go="dev-understory"><img src="images/dev/us-icon.png" alt="" width="24" height="24">Understory</a><a href="#dev-robosuite" data-go="dev-robosuite"><img src="images/dev/rs-icon.png" alt="" width="24" height="24">RoboSuite</a><a href="#dev-scamper" data-go="dev-scamper"><img src="images/dev/sc-icon.png" alt="" width="24" height="24">Scamper</a><a href="#dev-dvts" data-go="dev-dvts"><span class="dbi-text" aria-hidden="true">DV</span>DVTS</a></nav>
     <div class="sechead"><h2>Beast Slayers</h2><p>A hex tactics game with an overworld to roam</p></div>
     <div class="dhero rv">
       <div>
@@ -1113,7 +1153,7 @@ h1.wave .ch.sp { width:.28em }
   </section>
 
   <section class="page" id="dev-understory" hidden>
-    <nav class="devbar rv" aria-label="Dev projects"><a href="#dev" data-go="dev">All work</a><a href="#dev-beast-slayers" data-go="dev-beast-slayers"><img src="images/dev/bs-icon.png" alt="" width="24" height="24">Beast Slayers</a><a href="#dev-understory" data-go="dev-understory" aria-current="page"><img src="images/dev/us-icon.png" alt="" width="24" height="24">Understory</a><a href="#dev-scamper" data-go="dev-scamper"><img src="images/dev/sc-icon.png" alt="" width="24" height="24">Scamper</a></nav>
+    <nav class="devbar rv" aria-label="Dev projects"><a href="#dev" data-go="dev">All work</a><a href="#dev-beast-slayers" data-go="dev-beast-slayers"><img src="images/dev/bs-icon.png" alt="" width="24" height="24">Beast Slayers</a><a href="#dev-understory" data-go="dev-understory" aria-current="page"><img src="images/dev/us-icon.png" alt="" width="24" height="24">Understory</a><a href="#dev-robosuite" data-go="dev-robosuite"><img src="images/dev/rs-icon.png" alt="" width="24" height="24">RoboSuite</a><a href="#dev-scamper" data-go="dev-scamper"><img src="images/dev/sc-icon.png" alt="" width="24" height="24">Scamper</a><a href="#dev-dvts" data-go="dev-dvts"><span class="dbi-text" aria-hidden="true">DV</span>DVTS</a></nav>
     <div class="sechead"><h2>Understory</h2><p>A generational survival game</p></div>
     <div class="dhero rv">
       <div>
@@ -1127,7 +1167,7 @@ h1.wave .ch.sp { width:.28em }
     </div>
     <div class="dcols rv" style="--i:1">
       <div class="dbox"><h3>Progress</h3><ul class="dcheck"><li class="done"><span>Mouse walk, trot, run, leap and dive</span></li><li class="done"><span>Hull-based hitboxes for tail and ears</span></li><li class="done"><span>Takahe and cricket with animation sets</span></li><li class="done"><span>Forest trees with far-distance meshes</span></li><li class="done"><span>Swamp night soundtrack</span></li><li class="doing"><span>Gait polish: bound, leap and walk speed</span></li><li class="doing"><span>A leaner rat to replace the first one</span></li><li class="plan"><span>Root-ridge replacement models</span></li><li class="plan"><span>Health model</span></li></ul><div class="dkey"><span>&#10003; done</span><span>&#9680; in progress</span><span>&#9675; planned</span></div></div>
-      <div class="dgal"><figure class="cream"><img src="images/dev/us-emblem.jpg" alt="Understory emblem: a mouse in leather armour holding a sword, framed by oak leaves and acorns" loading="lazy"><figcaption>Emblem</figcaption></figure></div>
+      <div class="dgal"><figure class="dark"><img src="images/dev/us-emblem.png" alt="Understory emblem: a mouse in leather armour holding a sword, framed by oak leaves and acorns" loading="lazy"><figcaption>Emblem</figcaption></figure></div>
     </div>
     <h3 class="dsub">Devlog</h3>
     <div class="dlogs rv" style="--i:2">
@@ -1147,11 +1187,43 @@ h1.wave .ch.sp { width:.28em }
         <p>The sprint dive was remade as a parabolic leap, 56 frames long, launched from the run.</p>
       </article>
     </div>
-    <div class="pnav"><a class="prev" href="#dev-beast-slayers" data-go="dev-beast-slayers"><b class="ar">&larr;</b> Beast Slayers <span>Back</span></a><a class="next" href="#dev-scamper" data-go="dev-scamper"><span>Next</span> Scamper <b class="ar">&rarr;</b></a></div>
+    <div class="pnav"><a class="prev" href="#dev-beast-slayers" data-go="dev-beast-slayers"><b class="ar">&larr;</b> Beast Slayers <span>Back</span></a><a class="next" href="#dev-robosuite" data-go="dev-robosuite"><span>Next</span> RoboSuite <b class="ar">&rarr;</b></a></div>
+  </section>
+
+  <section class="page" id="dev-robosuite" hidden>
+    <nav class="devbar rv" aria-label="Dev projects"><a href="#dev" data-go="dev">All work</a><a href="#dev-beast-slayers" data-go="dev-beast-slayers"><img src="images/dev/bs-icon.png" alt="" width="24" height="24">Beast Slayers</a><a href="#dev-understory" data-go="dev-understory"><img src="images/dev/us-icon.png" alt="" width="24" height="24">Understory</a><a href="#dev-robosuite" data-go="dev-robosuite" aria-current="page"><img src="images/dev/rs-icon.png" alt="" width="24" height="24">RoboSuite</a><a href="#dev-scamper" data-go="dev-scamper"><img src="images/dev/sc-icon.png" alt="" width="24" height="24">Scamper</a><a href="#dev-dvts" data-go="dev-dvts"><span class="dbi-text" aria-hidden="true">DV</span>DVTS</a></nav>
+    <div class="sechead"><h2>RoboSuite</h2><p>Plan robot arms, simulate path following, work with sensor data</p></div>
+    <div class="dhero rv">
+      <div>
+        <div class="dbrand" style="background:linear-gradient(135deg,#1c2744,#0f1320)"><img src="images/dev/rs-logo.png" alt="RoboSuite logo"><b>RoboSuite</b></div>
+        <div class="tb"><span>TOOL</span><b>RS</b><span>ROBOTICS SUITE</span></div>
+        <p class="lede">A Windows desktop app for planning robot arms, simulating how a robot follows a path, and making sense of sensor data.</p>
+        <p>It has four modules. <b>Arm Planner</b> builds an arm from a catalog or a URDF file, places obstacles and plans a pick-and-place program. <b>Drive Sim</b> compares path controllers (PID, pure pursuit, Stanley and MPC) on a map. <b>Fusion Lab</b> fuses sensor data with complementary and Kalman filters. <b>IMU Live</b> reads a custom IMU board over serial, or a built-in simulator.</p>
+        <p>Projects save to a file, programs export, and the app installs from a standard Windows installer with sample arms, maps and sensor data.</p>
+        <div class="dlinks"><span class="dlink off" aria-disabled="true">Download <small>not public yet</small></span><span class="dlink off" aria-disabled="true">Source <small>private</small></span></div>
+      </div>
+      <dl class="dfacts"><dt>Status</dt><dd>Version 1.0.0, some modules in development</dd><dt>Type</dt><dd>Desktop app</dd><dt>Platform</dt><dd>Windows</dd><dt>Built with</dt><dd>C# and .NET 8</dd><dt>Hardware</dt><dd>Custom IMU breakout board (KiCad)</dd><dt>Source</dt><dd>Private for now</dd></dl>
+    </div>
+    <div class="dcols rv" style="--i:1">
+      <div class="dbox"><h3>Progress</h3><ul class="dcheck"><li class="done"><span>Arm Planner with URDF import, obstacles and program export</span></li><li class="done"><span>Drive Sim with four path controllers</span></li><li class="done"><span>Fusion Lab with complementary and Kalman filters</span></li><li class="done"><span>Windows installer and sample projects</span></li><li class="done"><span>Automated test suite</span></li><li class="doing"><span>IMU Live and its breakout board (firmware not yet run on hardware)</span></li><li class="plan"><span>Hardware run of the IMU board</span></li></ul><div class="dkey"><span>&#10003; done</span><span>&#9680; in progress</span><span>&#9675; planned</span></div></div>
+      <div class="dgal"><div class="vgrid"><article class="vcard card" data-video="https://www.youtube.com/shorts/MRS3RSyCB6Q">
+  <div class="vframe"><div class="vph"><span class="play" aria-hidden="true"></span><b>Coming soon</b></div></div>
+  <div class="vbody"><h3><span class="sweep">RoboSuite Demo</span></h3><p class="subt">Demo video</p></div>
+</article></div></div>
+    </div>
+    <h3 class="dsub">Devlog</h3>
+    <div class="dlogs rv" style="--i:2">
+      <article class="dlog">
+        <div class="dmeta"><time>Oct 12, 2026</time></div>
+        <h3>RoboSuite 1.0.0 with a Windows installer</h3>
+        <p>The Arm Planner, the path-following simulator and the sensor-fusion lab ship together in one app, with an installer and sample projects. The IMU board designs are included.</p>
+      </article>
+    </div>
+    <div class="pnav"><a class="prev" href="#dev-understory" data-go="dev-understory"><b class="ar">&larr;</b> Understory <span>Back</span></a><a class="next" href="#dev-scamper" data-go="dev-scamper"><span>Next</span> Scamper <b class="ar">&rarr;</b></a></div>
   </section>
 
   <section class="page" id="dev-scamper" hidden>
-    <nav class="devbar rv" aria-label="Dev projects"><a href="#dev" data-go="dev">All work</a><a href="#dev-beast-slayers" data-go="dev-beast-slayers"><img src="images/dev/bs-icon.png" alt="" width="24" height="24">Beast Slayers</a><a href="#dev-understory" data-go="dev-understory"><img src="images/dev/us-icon.png" alt="" width="24" height="24">Understory</a><a href="#dev-scamper" data-go="dev-scamper" aria-current="page"><img src="images/dev/sc-icon.png" alt="" width="24" height="24">Scamper</a></nav>
+    <nav class="devbar rv" aria-label="Dev projects"><a href="#dev" data-go="dev">All work</a><a href="#dev-beast-slayers" data-go="dev-beast-slayers"><img src="images/dev/bs-icon.png" alt="" width="24" height="24">Beast Slayers</a><a href="#dev-understory" data-go="dev-understory"><img src="images/dev/us-icon.png" alt="" width="24" height="24">Understory</a><a href="#dev-robosuite" data-go="dev-robosuite"><img src="images/dev/rs-icon.png" alt="" width="24" height="24">RoboSuite</a><a href="#dev-scamper" data-go="dev-scamper" aria-current="page"><img src="images/dev/sc-icon.png" alt="" width="24" height="24">Scamper</a><a href="#dev-dvts" data-go="dev-dvts"><span class="dbi-text" aria-hidden="true">DV</span>DVTS</a></nav>
     <div class="sechead"><h2>Scamper</h2><p>A rig and clip tool for FBX characters</p></div>
     <div class="dhero rv">
       <div>
@@ -1164,18 +1236,42 @@ h1.wave .ch.sp { width:.28em }
       <dl class="dfacts"><dt>Status</dt><dd>Active</dd><dt>Type</dt><dd>Desktop tool</dd><dt>Platform</dt><dd>Windows</dd><dt>Format</dt><dd>FBX</dd><dt>Latest version</dt><dd>v0.15.0 (Oct 18, 2026)</dd><dt>Source</dt><dd>Private for now</dd></dl>
     </div>
     <div class="dcols rv" style="--i:1">
-      <div class="dbox"><h3>Progress</h3><ul class="dcheck"><li class="done"><span>Rig FBX characters</span></li><li class="done"><span>Generate walk, trot, run and leap clips</span></li><li class="done"><span>Static-prop collision hulls</span></li><li class="done"><span>Windows executable build</span></li><li class="doing"><span>Building the full Understory animal set</span></li></ul><div class="dkey"><span>&#10003; done</span><span>&#9680; in progress</span><span>&#9675; planned</span></div></div>
-      <div class="gsoon dshot" role="img" aria-label="Screenshots coming soon"><b>Screenshots</b><span>Coming soon</span></div>
+      <div class="dbox"><h3>Progress</h3><ul class="dcheck"><li class="done"><span>Rig FBX characters</span></li><li class="done"><span>Generate walk, trot, run and leap clips</span></li><li class="done"><span>Static-prop collision hulls</span></li><li class="done"><span>Windows executable build</span></li><li class="done"><span>Takahe rigged, with walk, sprint, idle, alert and peck clips</span></li><li class="doing"><span>Building the full Understory animal set</span></li></ul><div class="dkey"><span>&#10003; done</span><span>&#9680; in progress</span><span>&#9675; planned</span></div></div>
+      <div class="dgal"><figure class="dark"><img src="images/dev/sc-takahe-walk.webp" alt="A rigged takahe walking, shown from the side and from three-quarters" loading="lazy"><figcaption>Takahe walk cycle &middot; rigged and animated in Scamper</figcaption></figure><figure class="dark"><img src="images/dev/sc-takahe-sprint.webp" alt="The same takahe sprinting" loading="lazy"><figcaption>Takahe sprint</figcaption></figure></div>
     </div>
     <h3 class="dsub">Devlog</h3>
     <div class="dlogs rv" style="--i:2">
+      <article class="dlog">
+        <div class="dmeta"><time>Oct 19, 2026</time></div>
+        <h3>Rigging a takahe</h3>
+        <p>Scamper rigged the takahe and generated its walk, sprint, idle, alert and peck clips for Understory, previewed side by side from the side and from three-quarters.</p>
+      </article>
       <article class="dlog">
         <div class="dmeta"><time>Oct 18, 2026</time></div>
         <h3>Scamper v0.15.0 is out</h3>
         <p>Version 0.15.0 is published as a release with a rebuilt Windows executable, and adds static-prop hulls for collision shapes.</p>
       </article>
     </div>
-    <div class="pnav"><a class="prev" href="#dev-understory" data-go="dev-understory"><b class="ar">&larr;</b> Understory <span>Back</span></a><a class="next" href="#dev" data-go="dev"><span>Next</span> All dev work <b class="ar">&rarr;</b></a></div>
+    <div class="pnav"><a class="prev" href="#dev-robosuite" data-go="dev-robosuite"><b class="ar">&larr;</b> RoboSuite <span>Back</span></a><a class="next" href="#dev-dvts" data-go="dev-dvts"><span>Next</span> DVTS <b class="ar">&rarr;</b></a></div>
+  </section>
+
+  <section class="page" id="dev-dvts" hidden>
+    <nav class="devbar rv" aria-label="Dev projects"><a href="#dev" data-go="dev">All work</a><a href="#dev-beast-slayers" data-go="dev-beast-slayers"><img src="images/dev/bs-icon.png" alt="" width="24" height="24">Beast Slayers</a><a href="#dev-understory" data-go="dev-understory"><img src="images/dev/us-icon.png" alt="" width="24" height="24">Understory</a><a href="#dev-robosuite" data-go="dev-robosuite"><img src="images/dev/rs-icon.png" alt="" width="24" height="24">RoboSuite</a><a href="#dev-scamper" data-go="dev-scamper"><img src="images/dev/sc-icon.png" alt="" width="24" height="24">Scamper</a><a href="#dev-dvts" data-go="dev-dvts" aria-current="page"><span class="dbi-text" aria-hidden="true">DV</span>DVTS</a></nav>
+    <div class="sechead"><h2>DVTS</h2><p>An internal workflow app I wrote</p></div>
+    <div class="dhero rv">
+      <div>
+        <div class="dbrand"><b style="font-size:44px;letter-spacing:.14em">DVTS</b></div>
+        <div class="tb"><span>TOOL</span><b>DV</b><span>INTERNAL</span></div>
+        <p class="lede">An app that brings engineering and project management into one workflow, built to make the whole team more efficient.</p>
+        <p>I am its author and developer. It runs as a single Windows desktop app and is used inside the company, so this page describes what it does and shows none of the company&#x27;s data.</p>
+      </div>
+      <dl class="dfacts"><dt>Role</dt><dd>Author and developer</dd><dt>Type</dt><dd>Internal tool</dd><dt>Owner</dt><dd>DVT Technologies</dd><dt>Platform</dt><dd>Windows desktop app</dd><dt>Availability</dt><dd>Not public</dd></dl>
+    </div>
+    <div class="dcols rv" id="dvts-features"><div class="dbox"><h3>What it does</h3><ul class="hwlist"><li>Shows every live machine&#x27;s standing in one place: next scheduled work, work under way, ship date, overdue tasks, drawing progress and which project gates are closed.</li><li>Opens any machine as an interactive 3D model, with each part coloured by its purchasing status.</li><li>Lets the team track and plan procurement from the bill of materials, so engineering and project management work from the same picture.</li><li>Walks through a machine&#x27;s test sequence with its schematics, to review the automation before it is built.</li></ul></div><div class="dbox"><h3>Features built in</h3><ul class="hwlist"><li><b>Machines overview</b> and a <b>master schedule</b> across all jobs.</li><li><b>3D viewer</b> with camera presets, outlines, ghost, isolate and hide, and colouring by order status, make or buy.</li><li><b>Project management</b> view: filter and group the bill of materials by supplier, category or status, with progress bars, to-order lists by supplier that copy straight into a request email, and CSV export.</li><li><b>Design review</b> and <b>documents</b>: drawings opened by review step.</li><li><b>Gates</b>: stage-gate status for each machine.</li><li><b>Simulation</b>: the test sequence run step by step with live fluid and electrical schematics and a simulated operator panel.</li><li><b>PLC simulator</b> (in development): runs a controller&#x27;s compiled program for automation review.</li><li><b>Ask</b>: a built-in assistant that answers questions about what is on screen.</li><li>Read-only by design: it shows the company records and never changes them.</li></ul></div></div>
+    <h3 class="dsub">Screenshots</h3>
+    <div class="dshots rv"><figure class="hwframe"><img src="images/dev/dvts-purchasing.jpg" alt="DVTS purchasing view: a machine&#x27;s 3D model coloured by order status, with the bill of materials and supplier lists blurred" loading="lazy"><figcaption>Purchasing &middot; the 3D model coloured by order status</figcaption></figure><figure class="hwframe"><img src="images/dev/dvts-simulation.jpg" alt="DVTS simulation view: the test sequence on the left, the machine in 3D and a simulated operator panel on the right" loading="lazy"><figcaption>Simulation &middot; a machine&#x27;s test sequence with a simulated operator panel</figcaption></figure><figure class="hwframe"><img src="images/dev/dvts-design-review.jpg" alt="DVTS design review view: drawings arranged in columns by review step, with sheet numbers blurred" loading="lazy"><figcaption>Design review &middot; drawings by review step</figcaption></figure></div>
+    <div class="dnote rv"><span><b>Proprietary.</b> DVTS belongs to DVT Technologies. The screenshots show a sample machine with project details blurred. Code, company data and process details are not shown.</span></div>
+    <div class="pnav"><a class="prev" href="#dev-scamper" data-go="dev-scamper"><b class="ar">&larr;</b> Scamper <span>Back</span></a><a class="next" href="#dev" data-go="dev"><span>Next</span> All dev work <b class="ar">&rarr;</b></a></div>
   </section>
 
   <section class="page" id="hardware" hidden>
@@ -1535,7 +1631,7 @@ h1.wave .ch.sp { width:.28em }
   var ind=document.querySelector('.ind'), ind2=document.querySelector('.ind2');
   var stabs=[].slice.call(document.querySelectorAll('.stab'));
   var bar=document.querySelector('.topbar'), ptab=document.querySelector('.tab-projects');
-  var PROJ=['projects','professional','robotics','engineering'], onProj=false;
+  var PROJ=['projects','demos','games'], onProj=false;
   function openSub(v){ bar.classList.toggle('sub-open', v || onProj); setTimeout(moveInd2, 20); }
   ptab.addEventListener('mouseenter',function(){ openSub(true); });
   ptab.addEventListener('focus',function(){ openSub(true); });
@@ -1553,6 +1649,7 @@ h1.wave .ch.sp { width:.28em }
   });
   function moveInd(){
     var a=document.querySelector('.tab[aria-current="page"]'); if(!a) return;
+    var sc=a.parentNode; if(sc.scrollWidth>sc.clientWidth+2){ sc.scrollLeft=Math.max(0,a.offsetLeft-(sc.clientWidth-a.offsetWidth)/2); }
     ind.style.left=(a.offsetLeft+10)+'px'; ind.style.width=(a.offsetWidth-20)+'px';
   }
   function countUp(){
@@ -1573,10 +1670,11 @@ h1.wave .ch.sp { width:.28em }
     if(!pg) pg=pages[0];
     pages.forEach(function(p){ p.hidden=(p!==pg); p.classList.remove('enter'); });
     void pg.offsetWidth; pg.classList.add('enter');
-    onProj = PROJ.indexOf(pg.id) >= 0;
-    var grp = onProj ? 'projects' : (pg.id==='demos' ? 'demos' : (pg.id==='games' || pg.id.indexOf('game-')===0) ? 'games' : (pg.id==='dev' || pg.id.indexOf('dev-')===0) ? 'dev' : (pg.id==='hardware' || pg.id.indexOf('hw-')===0) ? 'hardware' : 'home');
+    onProj = PROJ.indexOf(pg.id) >= 0 || pg.id.indexOf('game-')===0;
+    var grp = (pg.id==='hardware' || pg.id.indexOf('hw-')===0) ? 'hardware' : pg.id==='robotics' ? 'robotics' : pg.id==='professional' ? 'test' : (pg.id==='dev' || pg.id.indexOf('dev-')===0) ? 'dev' : pg.id==='engineering' ? 'other' : onProj ? 'more' : 'home';
     tabs.forEach(function(t){ if(t.getAttribute('data-group')===grp) t.setAttribute('aria-current','page'); else t.removeAttribute('aria-current'); });
-    stabs.forEach(function(t){ if(t.getAttribute('data-go')===pg.id) t.setAttribute('aria-current','page'); else t.removeAttribute('aria-current'); });
+    var sid = pg.id.indexOf('game-')===0 ? 'games' : pg.id;
+    stabs.forEach(function(t){ if(t.getAttribute('data-go')===sid) t.setAttribute('aria-current','page'); else t.removeAttribute('aria-current'); });
     openSub(false); moveInd(); moveInd2();
     if(pg.id==='home') countUp();
     try { window.dispatchEvent(new CustomEvent('nn:page',{detail:pg.id})); } catch(e) {}
@@ -3762,8 +3860,8 @@ h1.wave .ch.sp { width:.28em }
     if(bAuto) bAuto.addEventListener('click',function(){ st.auto=!st.auto; syncAuto(); });
     if(bEdges) bEdges.addEventListener('click',function(){ st.edges=!st.edges; bEdges.setAttribute('aria-pressed',st.edges ? 'true' : 'false'); st.dirty=true; });
     if(bReset) bReset.addEventListener('click',function(){ st.yaw=Y0; st.pitch=P0; st.dist=D0; st.t=[0,0,0]; st.dirty=true; });
-    if(bFull){ if(host.requestFullscreen) bFull.addEventListener('click',function(){ if(document.fullscreenElement) document.exitFullscreen(); else host.requestFullscreen(); }); else bFull.hidden=true; }
-    document.addEventListener('fullscreenchange',function(){ st.dirty=true; });
+    if(bFull){ var rqf=host.requestFullscreen||host.webkitRequestFullscreen; if(rqf) bFull.addEventListener('click',function(){ if(document.fullscreenElement||document.webkitFullscreenElement){ (document.exitFullscreen||document.webkitExitFullscreen).call(document); } else { rqf.call(host); } }); else bFull.hidden=true; }
+    document.addEventListener('fullscreenchange',function(){ st.dirty=true; }); document.addEventListener('webkitfullscreenchange',function(){ st.dirty=true; });
     if(window.matchMedia){ var mq=matchMedia('(prefers-color-scheme: dark)'); if(mq.addEventListener) mq.addEventListener('change',function(){ st.dirty=true; }); if(matchMedia('(prefers-reduced-motion: reduce)').matches) st.auto=false; }
     if(window.MutationObserver) new MutationObserver(function(){ st.dirty=true; }).observe(document.documentElement,{ attributes:true, attributeFilter:['data-theme'] });
     window.addEventListener('resize',function(){ st.dirty=true; });
