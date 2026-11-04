@@ -539,6 +539,28 @@ h1.wave .ch.sp { width:.28em }
 .dgal img { display:block; width:100%; height:auto }
 .dgal figcaption { padding:7px 12px; font:500 11.5px var(--f-mono); letter-spacing:.06em; text-transform:uppercase; color:var(--muted) }
 .dgal .cream img { background:#f5f3ef; max-height:340px; width:auto; margin:0 auto }
+/* ---- Hardware tab ---- */
+.dthumb.hw img { width:100%; height:100%; object-fit:cover }
+.dthumb.hw::before { display:none }
+.m3d.wide { aspect-ratio:16/10; margin-bottom:8px }
+.hwnote { margin:0 0 22px; font:500 12px var(--f-mono); letter-spacing:.05em; color:var(--muted) }
+.hwtabs { display:flex; flex-wrap:wrap; gap:6px; margin:0 0 12px }
+.hwtabs button { font:500 13px var(--f-body); padding:6px 12px; border:1px solid var(--line); border-radius:999px; background:var(--bg); color:var(--ink); cursor:pointer }
+.hwtabs button[aria-pressed="true"] { background:var(--accent-soft); border-color:var(--accent); color:var(--accent); font-weight:600 }
+.hwview[hidden] { display:none }
+.hwframe { margin:0; border:1px solid var(--line); background:var(--paper); border-radius:4px; overflow:hidden }
+.hwframe.dark { background:#0c1018 }
+.hwframe.paper { background:#f5f4ef }
+.hwframe img { display:block; width:100%; height:auto }
+.hwframe figcaption { padding:8px 14px; font:500 11.5px var(--f-mono); letter-spacing:.06em; text-transform:uppercase; color:var(--muted); background:var(--paper); border-top:1px solid var(--line) }
+.hwzoom { max-height:78vh; overflow:auto; cursor:zoom-in }
+.hwzoom img { width:100%; max-width:none }
+.hwzoom.on { cursor:zoom-out }
+.hwzoom.on img { width:240% }
+.hwlist { margin:0; padding-left:18px; display:grid; gap:7px; font-size:14.5px }
+.hwlist li::marker { color:var(--accent) }
+.hwpad { padding:6px 0 0 }
+@media (max-width:760px) { .hwzoom.on img { width:360% } }
 </style>
 </head>
 <body>
@@ -553,6 +575,7 @@ h1.wave .ch.sp { width:.28em }
       <a class="tab" href="#demos" data-go="demos" data-group="demos">Demos</a>
       <a class="tab" href="#games" data-go="games" data-group="games">Games</a>
       <a class="tab" href="#dev" data-go="dev" data-group="dev">Dev</a>
+      <a class="tab" href="#hardware" data-go="hardware" data-group="hardware">Hardware</a>
       <span class="ind" aria-hidden="true"></span>
     </nav>
   </div>
@@ -1050,7 +1073,7 @@ h1.wave .ch.sp { width:.28em }
       3. Copy one <section class="page" id="dev-..."> block below and give it the same id as the card's href (it must start with dev-).
       4. Add devlog entries as <article class="dlog"> blocks, newest first.
     -->
-    <div class="pnav"><a class="prev" href="#games" data-go="games"><b class="ar">&larr;</b> Games <span>Back</span></a><a class="next" href="#home" data-go="home"><span>Back to</span> Home <b class="ar">&uarr;</b></a></div>
+    <div class="pnav"><a class="prev" href="#games" data-go="games"><b class="ar">&larr;</b> Games <span>Back</span></a><a class="next" href="#hardware" data-go="hardware"><span>Next</span> Hardware <b class="ar">&rarr;</b></a></div>
   </section>
 
   <section class="page" id="dev-beast-slayers" hidden>
@@ -1150,6 +1173,82 @@ h1.wave .ch.sp { width:.28em }
       </article>
     </div>
     <div class="pnav"><a class="prev" href="#dev-understory" data-go="dev-understory"><b class="ar">&larr;</b> Understory <span>Back</span></a><a class="next" href="#dev" data-go="dev"><span>Next</span> All dev work <b class="ar">&rarr;</b></a></div>
+  </section>
+
+  <section class="page" id="hardware" hidden>
+    <nav class="devbar rv" aria-label="Hardware projects"><a href="#hardware" data-go="hardware" aria-current="page">All boards</a><a href="#hw-motor-controller" data-go="hw-motor-controller"><img src="images/hw/mc-icon.jpg" alt="" width="24" height="24">Motor Controller</a></nav>
+    <div class="sechead"><h2>Hardware design</h2><p>Circuit boards and schematics I have designed</p></div>
+    <p class="lede dintro rv">Boards I have designed from the schematic through layout and 3D model. Each page shows the schematic, the PCB layout and an interactive 3D view.</p>
+    <div class="pgrid">
+      <a class="gcard dcard card rv" style="--i:1" href="#hw-motor-controller" data-go="hw-motor-controller">
+        <div class="gthumb dthumb hw" aria-hidden="true"><img src="images/hw/mc-render-iso.jpg" alt="3D render of the motor controller board" loading="lazy"></div>
+        <div class="gbody">
+          <div class="tb"><span>PCB</span><b>MC</b><span>MOTOR DRIVE</span></div>
+          <h3><span class="sweep">Brushed DC Motor Controller</span></h3>
+          <p>A 12 to 24 V, 10 A H-bridge board with an onboard STM32, USB-C and current limiting, drawn and routed in KiCad.</p>
+          <span class="dstat live">Rev A</span>
+          <div class="gmeta"><span>KiCad 10 &middot; 4 layers</span><span class="go">Open &rarr;</span></div>
+        </div>
+      </a>
+      <div class="gsoon" role="img" aria-label="More boards coming soon"><b>More boards</b><span>Coming soon</span></div>
+    </div>
+    <div class="pnav"><a class="prev" href="#dev" data-go="dev"><b class="ar">&larr;</b> Dev work <span>Back</span></a><a class="next" href="#home" data-go="home"><span>Back to</span> Home <b class="ar">&uarr;</b></a></div>
+  </section>
+
+  <section class="page" id="hw-motor-controller" hidden>
+    <nav class="devbar rv" aria-label="Hardware projects"><a href="#hardware" data-go="hardware">All boards</a><a href="#hw-motor-controller" data-go="hw-motor-controller" aria-current="page"><img src="images/hw/mc-icon.jpg" alt="" width="24" height="24">Motor Controller</a></nav>
+    <div class="sechead"><h2>Brushed DC Motor Controller</h2><p>12 to 24 V, 10 A H-bridge with an onboard STM32</p></div>
+    <div class="dhero rv">
+      <div>
+        <div class="tb"><span>PCB</span><b>MC</b><span>REV A</span></div>
+        <p class="lede">A single-channel controller for a brushed DC motor: gate driver, four power MOSFETs, current sensing, USB-C and a microcontroller on one 96 &times; 65 mm board.</p>
+        <p>The firmware sets the current limit through a DAC, reads motor current, supply voltage and FET temperature, and drives the bridge with PWM. An encoder port and an AUX port (serial and RC pulse input) are on the board.</p>
+        <p>I drew the schematic, placed and routed the board, and checked it with KiCad&#x27;s rule checks. It has not been built or tested yet.</p>
+      </div>
+      <dl class="dfacts">
+        <dt>Status</dt><dd>Rev A, design checks clean, not built yet</dd>
+        <dt>Supply</dt><dd>12 to 24 V (28 V max)</dd>
+        <dt>Current</dt><dd>10 A continuous (calculated)</dd>
+        <dt>Board</dt><dd>96 &times; 65 mm, 4 layers, 85 parts</dd>
+        <dt>Gate driver</dt><dd>TI DRV8701P</dd>
+        <dt>Power stage</dt><dd>4 &times; BSC028N06LS3 (60 V, 2.8 m&Omega;)</dd>
+        <dt>MCU</dt><dd>STM32G431CBT6, USB-C</dd>
+        <dt>Tool</dt><dd>KiCad 10</dd>
+      </dl>
+    </div>
+
+    <h3 class="dsub">3D view</h3>
+    <div class="m3d wide rv" data-model3d="motor-controller-pcb" data-up="z" data-yaw=".35" data-pitch=".95"><canvas tabindex="0" role="img" aria-label="Interactive 3D model of the motor controller board. Drag to rotate, scroll to zoom, right-drag to pan, or use the arrow keys."></canvas><div class="m3d-msg">Loading 3D model&hellip;</div><div class="m3d-bar"><button type="button" data-m3d="auto" aria-pressed="true">Auto-rotate</button><button type="button" data-m3d="edges" aria-pressed="true">Edges</button><button type="button" data-m3d="reset">Reset view</button><button type="button" data-m3d="full">Full screen</button><span>Drag to rotate &middot; scroll to zoom &middot; right-drag to pan</span></div></div>
+    <p class="hwnote">3D model exported from the KiCad board file (STEP).</p>
+
+    <h3 class="dsub">PCB layout</h3>
+    <div class="hwtabs" role="group" aria-label="Layout views">
+      <button type="button" data-hwview="top" aria-pressed="true">Top layer</button>
+      <button type="button" data-hwview="bottom" aria-pressed="false">Bottom layer</button>
+      <button type="button" data-hwview="rtop" aria-pressed="false">Render, top</button>
+      <button type="button" data-hwview="rbottom" aria-pressed="false">Render, bottom</button>
+    </div>
+    <figure class="hwframe dark hwview" data-view="top"><img src="images/hw/mc-layout-top.svg" alt="Top copper layer, silkscreen and board outline of the motor controller" loading="lazy"><figcaption>Top copper, silkscreen and outline &middot; exported from KiCad</figcaption></figure><figure class="hwframe dark hwview" data-view="bottom" hidden><img src="images/hw/mc-layout-bottom.svg" alt="Bottom copper layer of the motor controller, mirrored" loading="lazy"><figcaption>Bottom copper and silkscreen, seen from below &middot; exported from KiCad</figcaption></figure><figure class="hwframe  hwview" data-view="rtop" hidden><img src="images/hw/mc-render-top.jpg" alt="Rendered top side of the motor controller board" loading="lazy"><figcaption>Rendered top side</figcaption></figure><figure class="hwframe  hwview" data-view="rbottom" hidden><img src="images/hw/mc-render-bottom.jpg" alt="Rendered bottom side of the motor controller board" loading="lazy"><figcaption>Rendered bottom side</figcaption></figure>
+    <p class="hwnote">Power copper is on the top layer, with a solid ground plane directly under it. The gate drives and current-sense lines are routed by hand.</p>
+
+    <h3 class="dsub">Schematic</h3>
+    <figure class="hwframe paper"><div class="hwzoom" title="Click to zoom"><img src="images/hw/mc-schematic.svg" alt="Schematic of the motor controller: power input, H-bridge, buck converter, STM32 and connectors" loading="lazy"></div><figcaption>Full schematic &middot; click to zoom, scroll to pan</figcaption></figure>
+
+    <h3 class="dsub">Design notes</h3>
+    <div class="dcols rv">
+      <div class="dbox"><h3>Current control</h3><ul class="hwlist"><li>A 5 m&Omega; shunt feeds the driver&#x27;s 20 V/V amplifier, so the ADC reads 0.1 V per amp.</li><li>The chop limit follows the reference voltage from the DAC, so firmware sets the limit. A resistor holds it low at reset, so the bridge cannot push current before firmware runs.</li></ul></div><div class="dbox"><h3>Bridge layout</h3><ul class="hwlist"><li>The motor connector sits between the two half-bridge columns, so each phase reaches its pin without crossing the other.</li><li>The gate loops follow the driver&#x27;s pin order and do not cross.</li><li>A solid ground plane sits directly under the power copper.</li></ul></div><div class="dbox"><h3>Power and protection</h3><ul class="hwlist"><li>A buck converter steps the supply down to 5 V, which is OR-ed with USB power and then regulated to 3.3 V.</li><li>The 0.7 MHz buck was chosen because the faster part cannot reach 28 V in at its minimum on-time.</li><li>A 28 V TVS clamps surges. A fuse goes in the supply lead, not on the board.</li></ul></div>
+    </div>
+
+    <h3 class="dsub">Open items before ordering</h3>
+    <div class="dbox"><ul class="hwlist">
+      <li>Check the driver&#x27;s thermal pad size against the package drawing.</li>
+      <li>Confirm the XT60 pin-1 polarity against the actual part.</li>
+      <li>Order 4 layers, 1.6 mm, with 2 oz outer copper for the 10 A paths.</li>
+      <li>Build a prototype: the 10 A rating is calculated, and switching edges and temperature are still untested.</li>
+      <li>Write the firmware. The pin map in the design is its contract.</li>
+    </ul></div>
+
+    <div class="pnav"><a class="prev" href="#hardware" data-go="hardware"><b class="ar">&larr;</b> All boards <span>Back</span></a><a class="next" href="#home" data-go="home"><span>Back to</span> Home <b class="ar">&uarr;</b></a></div>
   </section>
 
   <section class="page" id="game-pressure" hidden>
@@ -1472,7 +1571,7 @@ h1.wave .ch.sp { width:.28em }
     pages.forEach(function(p){ p.hidden=(p!==pg); p.classList.remove('enter'); });
     void pg.offsetWidth; pg.classList.add('enter');
     onProj = PROJ.indexOf(pg.id) >= 0;
-    var grp = onProj ? 'projects' : (pg.id==='demos' ? 'demos' : (pg.id==='games' || pg.id.indexOf('game-')===0) ? 'games' : (pg.id==='dev' || pg.id.indexOf('dev-')===0) ? 'dev' : 'home');
+    var grp = onProj ? 'projects' : (pg.id==='demos' ? 'demos' : (pg.id==='games' || pg.id.indexOf('game-')===0) ? 'games' : (pg.id==='dev' || pg.id.indexOf('dev-')===0) ? 'dev' : (pg.id==='hardware' || pg.id.indexOf('hw-')===0) ? 'hardware' : 'home');
     tabs.forEach(function(t){ if(t.getAttribute('data-group')===grp) t.setAttribute('aria-current','page'); else t.removeAttribute('aria-current'); });
     stabs.forEach(function(t){ if(t.getAttribute('data-go')===pg.id) t.setAttribute('aria-current','page'); else t.removeAttribute('aria-current'); });
     openSub(false); moveInd(); moveInd2();
@@ -3609,7 +3708,8 @@ h1.wave .ch.sp { width:.28em }
     var Ur=UPS[host.getAttribute('data-up')||'y']||UPS.y, Um=m4();
     Um[0]=Ur[0]; Um[1]=Ur[3]; Um[2]=Ur[6]; Um[4]=Ur[1]; Um[5]=Ur[4]; Um[6]=Ur[7]; Um[8]=Ur[2]; Um[9]=Ur[5]; Um[10]=Ur[8]; Um[15]=1;
     var radius=Math.sqrt(model.ext[0]*model.ext[0]+model.ext[1]*model.ext[1]+model.ext[2]*model.ext[2]);
-    var D0=radius*2.7, st={ yaw:.75, pitch:.3, dist:D0, t:[0,0,0], auto:true, edges:true, drag:null, dirty:true, raf:0, last:0 };
+    var Y0=parseFloat(host.getAttribute('data-yaw')), P0=parseFloat(host.getAttribute('data-pitch')); if(isNaN(Y0)) Y0=.75; if(isNaN(P0)) P0=.3;
+    var D0=radius*2.7, st={ yaw:Y0, pitch:P0, dist:D0, t:[0,0,0], auto:true, edges:true, drag:null, dirty:true, raf:0, last:0 };
     var bg=[.93,.91,.91], edgeCol=[.13,.12,.14];
     function readBg(){ var c=getComputedStyle(host).getPropertyValue('--m3d-bg').trim(); var m=/^#?([0-9a-f]{6})$/i.exec(c); if(m){ var n=parseInt(m[1],16); bg=[(n>>16&255)/255,(n>>8&255)/255,(n&255)/255]; } }
     function resize(){ var dpr=Math.min(2,window.devicePixelRatio||1), w=cv.clientWidth, h=cv.clientHeight; if(!w||!h) return false; var W=Math.round(w*dpr), H=Math.round(h*dpr); if(cv.width!==W||cv.height!==H){ cv.width=W; cv.height=H; } return true; }
@@ -3658,7 +3758,7 @@ h1.wave .ch.sp { width:.28em }
     function syncAuto(){ if(bAuto){ bAuto.setAttribute('aria-pressed',st.auto ? 'true' : 'false'); } }
     if(bAuto) bAuto.addEventListener('click',function(){ st.auto=!st.auto; syncAuto(); });
     if(bEdges) bEdges.addEventListener('click',function(){ st.edges=!st.edges; bEdges.setAttribute('aria-pressed',st.edges ? 'true' : 'false'); st.dirty=true; });
-    if(bReset) bReset.addEventListener('click',function(){ st.yaw=.75; st.pitch=.3; st.dist=D0; st.t=[0,0,0]; st.dirty=true; });
+    if(bReset) bReset.addEventListener('click',function(){ st.yaw=Y0; st.pitch=P0; st.dist=D0; st.t=[0,0,0]; st.dirty=true; });
     if(bFull){ if(host.requestFullscreen) bFull.addEventListener('click',function(){ if(document.fullscreenElement) document.exitFullscreen(); else host.requestFullscreen(); }); else bFull.hidden=true; }
     document.addEventListener('fullscreenchange',function(){ st.dirty=true; });
     if(window.matchMedia){ var mq=matchMedia('(prefers-color-scheme: dark)'); if(mq.addEventListener) mq.addEventListener('change',function(){ st.dirty=true; }); if(matchMedia('(prefers-reduced-motion: reduce)').matches) st.auto=false; }
@@ -3695,5 +3795,17 @@ h1.wave .ch.sp { width:.28em }
 })();
 </script>
 
+<script>
+/* Hardware tab: layout view switcher and click-to-zoom drawings */
+(function(){
+  var tabs=[].slice.call(document.querySelectorAll('[data-hwview]')), views=[].slice.call(document.querySelectorAll('.hwview'));
+  tabs.forEach(function(b){ b.addEventListener('click',function(){
+    var v=b.getAttribute('data-hwview');
+    tabs.forEach(function(x){ x.setAttribute('aria-pressed', x===b ? 'true' : 'false'); });
+    views.forEach(function(f){ f.hidden = f.getAttribute('data-view')!==v; });
+  }); });
+  [].slice.call(document.querySelectorAll('.hwzoom')).forEach(function(z){ z.addEventListener('click',function(){ z.classList.toggle('on'); }); });
+})();
+</script>
 </body>
 </html>
