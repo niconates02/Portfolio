@@ -476,6 +476,46 @@ h1.wave .ch.sp { width:.28em }
 .resbtn svg { flex:none }
 .cta small { font:500 12px var(--f-mono); letter-spacing:.06em; text-transform:uppercase; color:var(--muted) }
 @media (prefers-reduced-motion:no-preference) { .resbtn { transition:transform .2s, filter .2s } .resbtn:hover { transform:translateY(-2px) } }
+/* ---- Dev tab: personal projects, status, links and devlogs ---- */
+.dintro { margin:0 0 20px }
+.dfilter { margin:0 0 22px }
+.dstat { display:inline-block; font:600 11px var(--f-mono); letter-spacing:.09em; text-transform:uppercase; padding:3px 8px; border:1px solid var(--accent); color:var(--accent); border-radius:3px }
+.dstat.live { background:var(--accent); color:var(--paper) }
+.dcard .gthumb { background:var(--accent-soft) }
+.dcard .gthumb svg { color:var(--ink) }
+.dcard .gbody .dstat { justify-self:start; margin-top:4px }
+.dhero { display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr); gap:28px; align-items:start; background:var(--paper); border:1px solid var(--line); padding:22px; margin-bottom:22px }
+.dhero p { margin:0 0 12px; max-width:68ch }
+.dhero .lede { margin-bottom:14px }
+.dfacts { display:grid; grid-template-columns:auto minmax(0,1fr); gap:8px 16px; margin:0; font-size:14.5px; align-self:start; border-left:1px solid var(--line); padding-left:24px }
+.dfacts dt { font:500 11.5px var(--f-mono); letter-spacing:.08em; text-transform:uppercase; color:var(--muted); padding-top:3px }
+.dfacts dd { margin:0 }
+.dlinks { display:flex; flex-wrap:wrap; gap:10px; margin-top:18px }
+.dlink { display:inline-flex; align-items:center; gap:8px; font:600 14px var(--f-body); color:var(--accent); background:transparent; border:1px solid var(--accent); padding:9px 16px; border-radius:6px; text-decoration:none }
+.dlink:hover { background:var(--accent); color:var(--paper) }
+.dlink.off { color:var(--muted); border:1px dashed var(--line); cursor:default; background:transparent }
+.dlink.off:hover { background:transparent; color:var(--muted) }
+.dlink small { font:500 11px var(--f-mono); letter-spacing:.08em; text-transform:uppercase }
+.dcols { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px; margin-bottom:26px }
+.dbox { background:var(--paper); border:1px solid var(--line); padding:18px 20px }
+.dbox h3 { font-size:21px; margin-bottom:12px }
+.dcheck { list-style:none; padding:0; margin:0; display:grid; gap:9px; font-size:14.5px }
+.dcheck li { display:grid; grid-template-columns:20px minmax(0,1fr); gap:6px }
+.dcheck li::before { font-family:var(--f-mono); color:var(--muted) }
+.dcheck li.done::before { content:"\2713"; color:var(--accent); font-weight:700 }
+.dcheck li.doing::before { content:"\25D0"; color:var(--accent) }
+.dcheck li.plan::before { content:"\25CB" }
+.dkey { display:flex; flex-wrap:wrap; gap:14px; margin-top:14px; font:500 11.5px var(--f-mono); letter-spacing:.06em; text-transform:uppercase; color:var(--muted) }
+.dlogs { display:grid; gap:14px; margin-bottom:12px }
+.dlog { display:grid; gap:4px; background:var(--paper); border:1px solid var(--line); border-left:3px solid var(--accent); padding:16px 20px }
+.dlog .dmeta { display:flex; flex-wrap:wrap; gap:8px 12px; align-items:center; font:500 12px var(--f-mono); letter-spacing:.08em; text-transform:uppercase; color:var(--muted) }
+.dlog .dmeta a { color:var(--accent); text-decoration:none; font-weight:600 }
+.dlog h3 { font-size:clamp(19px,2.2vw,23px); margin:2px 0 2px }
+.dlog p { margin:0; font-size:14.5px; max-width:72ch }
+.dsub { margin:30px 0 12px; font-size:clamp(22px,2.6vw,28px) }
+.dshot { min-height:150px }
+#devGrid > [hidden] { display:none }
+@media (max-width:760px) { .dhero { grid-template-columns:minmax(0,1fr) } .dfacts { border-left:0; padding-left:0; border-top:1px solid var(--line); padding-top:16px } }
 </style>
 </head>
 <body>
@@ -489,6 +529,7 @@ h1.wave .ch.sp { width:.28em }
       <a class="tab tab-projects" href="#projects" data-go="projects" data-group="projects" aria-haspopup="true">Projects <span class="car" aria-hidden="true">&#9662;</span></a>
       <a class="tab" href="#demos" data-go="demos" data-group="demos">Demos</a>
       <a class="tab" href="#games" data-go="games" data-group="games">Games</a>
+      <a class="tab" href="#dev" data-go="dev" data-group="dev">Dev</a>
       <span class="ind" aria-hidden="true"></span>
     </nav>
   </div>
@@ -554,7 +595,7 @@ h1.wave .ch.sp { width:.28em }
     <div class="counts"><span><b>8</b> featured</span><span><b>1</b> smaller</span></div>
     
 <article class="proj card" id="vp25">
-  <div class="m3d" data-model3d="vp25-75"><canvas tabindex="0" role="img" aria-label="Interactive 3D model of the VP25 and VP75 four-station valve test frame. Drag to rotate, scroll to zoom, right-drag to pan, or use the arrow keys."></canvas><div class="m3d-msg">Loading 3D model&hellip;</div><div class="m3d-bar"><button type="button" data-m3d="auto" aria-pressed="true">Auto-rotate</button><button type="button" data-m3d="reset">Reset view</button><button type="button" data-m3d="full">Full screen</button><span>Drag to rotate &middot; scroll to zoom &middot; right-drag to pan</span></div></div>
+  <div class="m3d" data-model3d="vp25-75"><canvas tabindex="0" role="img" aria-label="Interactive 3D model of the VP25 and VP75 four-station valve test frame. Drag to rotate, scroll to zoom, right-drag to pan, or use the arrow keys."></canvas><div class="m3d-msg">Loading 3D model&hellip;</div><div class="m3d-bar"><button type="button" data-m3d="auto" aria-pressed="true">Auto-rotate</button><button type="button" data-m3d="edges" aria-pressed="true">Edges</button><button type="button" data-m3d="reset">Reset view</button><button type="button" data-m3d="full">Full screen</button><span>Drag to rotate &middot; scroll to zoom &middot; right-drag to pan</span></div></div>
   <div class="text">
     <div class="tb"><span>DWG</span><b>VP25&amp;75-1041</b><span>2026</span></div>
     <h3><span class="sweep">4-Station Valve Test Frame</span></h3>
@@ -565,7 +606,7 @@ h1.wave .ch.sp { width:.28em }
   </div>
 </article>
 <article class="proj card" id="rf400">
-  <div class="m3d" data-model3d="rf400"><canvas tabindex="0" role="img" aria-label="Interactive 3D model of the RF400 large-valve hydrostatic test system. Drag to rotate, scroll to zoom, right-drag to pan, or use the arrow keys."></canvas><div class="m3d-msg">Loading 3D model&hellip;</div><div class="m3d-bar"><button type="button" data-m3d="auto" aria-pressed="true">Auto-rotate</button><button type="button" data-m3d="reset">Reset view</button><button type="button" data-m3d="full">Full screen</button><span>Drag to rotate &middot; scroll to zoom &middot; right-drag to pan</span></div></div>
+  <div class="m3d" data-model3d="rf400"><canvas tabindex="0" role="img" aria-label="Interactive 3D model of the RF400 large-valve hydrostatic test system. Drag to rotate, scroll to zoom, right-drag to pan, or use the arrow keys."></canvas><div class="m3d-msg">Loading 3D model&hellip;</div><div class="m3d-bar"><button type="button" data-m3d="auto" aria-pressed="true">Auto-rotate</button><button type="button" data-m3d="edges" aria-pressed="true">Edges</button><button type="button" data-m3d="reset">Reset view</button><button type="button" data-m3d="full">Full screen</button><span>Drag to rotate &middot; scroll to zoom &middot; right-drag to pan</span></div></div>
   <div class="text">
     <div class="tb"><span>DWG</span><b>RF400-1025</b><span>2026</span></div>
     <h3><span class="sweep">Large-Valve Hydrostatic Test System</span></h3>
@@ -576,7 +617,7 @@ h1.wave .ch.sp { width:.28em }
   </div>
 </article>
 <article class="proj card" id="rf150">
-  <div class="m3d" data-model3d="rf150"><canvas tabindex="0" role="img" aria-label="Interactive 3D model of the RF150 hydrostatic valve test system. Drag to rotate, scroll to zoom, right-drag to pan, or use the arrow keys."></canvas><div class="m3d-msg">Loading 3D model&hellip;</div><div class="m3d-bar"><button type="button" data-m3d="auto" aria-pressed="true">Auto-rotate</button><button type="button" data-m3d="reset">Reset view</button><button type="button" data-m3d="full">Full screen</button><span>Drag to rotate &middot; scroll to zoom &middot; right-drag to pan</span></div></div>
+  <div class="m3d" data-model3d="rf150"><canvas tabindex="0" role="img" aria-label="Interactive 3D model of the RF150 hydrostatic valve test system. Drag to rotate, scroll to zoom, right-drag to pan, or use the arrow keys."></canvas><div class="m3d-msg">Loading 3D model&hellip;</div><div class="m3d-bar"><button type="button" data-m3d="auto" aria-pressed="true">Auto-rotate</button><button type="button" data-m3d="edges" aria-pressed="true">Edges</button><button type="button" data-m3d="reset">Reset view</button><button type="button" data-m3d="full">Full screen</button><span>Drag to rotate &middot; scroll to zoom &middot; right-drag to pan</span></div></div>
   <div class="text">
     <div class="tb"><span>DWG</span><b>RF150-1040</b><span>2026</span></div>
     <h3><span class="sweep">Hydrostatic Valve Test System</span></h3>
@@ -587,7 +628,7 @@ h1.wave .ch.sp { width:.28em }
   </div>
 </article>
 <article class="proj card" id="cva">
-  <div class="m3d" data-model3d="cva003-1043" data-up="-z"><canvas tabindex="0" role="img" aria-label="Interactive 3D model of the CVA003 pneumatic valve test cabinet. Drag to rotate, scroll to zoom, right-drag to pan, or use the arrow keys."></canvas><div class="m3d-msg">Loading 3D model&hellip;</div><div class="m3d-bar"><button type="button" data-m3d="auto" aria-pressed="true">Auto-rotate</button><button type="button" data-m3d="reset">Reset view</button><button type="button" data-m3d="full">Full screen</button><span>Drag to rotate &middot; scroll to zoom &middot; right-drag to pan</span></div></div>
+  <div class="m3d" data-model3d="cva003-1043" data-up="-z"><canvas tabindex="0" role="img" aria-label="Interactive 3D model of the CVA003 pneumatic valve test cabinet. Drag to rotate, scroll to zoom, right-drag to pan, or use the arrow keys."></canvas><div class="m3d-msg">Loading 3D model&hellip;</div><div class="m3d-bar"><button type="button" data-m3d="auto" aria-pressed="true">Auto-rotate</button><button type="button" data-m3d="edges" aria-pressed="true">Edges</button><button type="button" data-m3d="reset">Reset view</button><button type="button" data-m3d="full">Full screen</button><span>Drag to rotate &middot; scroll to zoom &middot; right-drag to pan</span></div></div>
   <div class="text">
     <div class="tb"><span>DWG</span><b>CVA003-1043</b><span>2026</span></div>
     <h3><span class="sweep">Pneumatic Valve Test Cabinet</span></h3>
@@ -598,7 +639,7 @@ h1.wave .ch.sp { width:.28em }
   </div>
 </article>
 <article class="proj card" id="rv006">
-  <div class="m3d" data-model3d="rv006-1032"><canvas tabindex="0" role="img" aria-label="Interactive 3D model of the RV006 locking-ram hydrostatic test system. Drag to rotate, scroll to zoom, right-drag to pan, or use the arrow keys."></canvas><div class="m3d-msg">Loading 3D model&hellip;</div><div class="m3d-bar"><button type="button" data-m3d="auto" aria-pressed="true">Auto-rotate</button><button type="button" data-m3d="reset">Reset view</button><button type="button" data-m3d="full">Full screen</button><span>Drag to rotate &middot; scroll to zoom &middot; right-drag to pan</span></div></div>
+  <div class="m3d" data-model3d="rv006-1032"><canvas tabindex="0" role="img" aria-label="Interactive 3D model of the RV006 locking-ram hydrostatic test system. Drag to rotate, scroll to zoom, right-drag to pan, or use the arrow keys."></canvas><div class="m3d-msg">Loading 3D model&hellip;</div><div class="m3d-bar"><button type="button" data-m3d="auto" aria-pressed="true">Auto-rotate</button><button type="button" data-m3d="edges" aria-pressed="true">Edges</button><button type="button" data-m3d="reset">Reset view</button><button type="button" data-m3d="full">Full screen</button><span>Drag to rotate &middot; scroll to zoom &middot; right-drag to pan</span></div></div>
   <div class="text">
     <div class="tb"><span>DWG</span><b>RV006-1032</b><span>2026</span></div>
     <h3><span class="sweep">Locking-Ram Hydrostatic Test Circuit</span></h3>
@@ -609,7 +650,7 @@ h1.wave .ch.sp { width:.28em }
   </div>
 </article>
 <article class="proj card" id="vp150">
-  <div class="m3d" data-model3d="vp150-1042"><canvas tabindex="0" role="img" aria-label="Interactive 3D model of the VP150 vertical press valve test system. Drag to rotate, scroll to zoom, right-drag to pan, or use the arrow keys."></canvas><div class="m3d-msg">Loading 3D model&hellip;</div><div class="m3d-bar"><button type="button" data-m3d="auto" aria-pressed="true">Auto-rotate</button><button type="button" data-m3d="reset">Reset view</button><button type="button" data-m3d="full">Full screen</button><span>Drag to rotate &middot; scroll to zoom &middot; right-drag to pan</span></div></div>
+  <div class="m3d" data-model3d="vp150-1042"><canvas tabindex="0" role="img" aria-label="Interactive 3D model of the VP150 vertical press valve test system. Drag to rotate, scroll to zoom, right-drag to pan, or use the arrow keys."></canvas><div class="m3d-msg">Loading 3D model&hellip;</div><div class="m3d-bar"><button type="button" data-m3d="auto" aria-pressed="true">Auto-rotate</button><button type="button" data-m3d="edges" aria-pressed="true">Edges</button><button type="button" data-m3d="reset">Reset view</button><button type="button" data-m3d="full">Full screen</button><span>Drag to rotate &middot; scroll to zoom &middot; right-drag to pan</span></div></div>
   <div class="text">
     <div class="tb"><span>DWG</span><b>VP150-1042</b><span>2026</span></div>
     <h3><span class="sweep">150-Ton Vertical Press Valve Test System</span></h3>
@@ -619,7 +660,7 @@ h1.wave .ch.sp { width:.28em }
   </div>
 </article>
 <article class="proj card" id="rv008-1036">
-  <div class="m3d" data-model3d="rv008-1036"><canvas tabindex="0" role="img" aria-label="Interactive 3D model of the RV008-1036 air-release valve tester. Drag to rotate, scroll to zoom, right-drag to pan, or use the arrow keys."></canvas><div class="m3d-msg">Loading 3D model&hellip;</div><div class="m3d-bar"><button type="button" data-m3d="auto" aria-pressed="true">Auto-rotate</button><button type="button" data-m3d="reset">Reset view</button><button type="button" data-m3d="full">Full screen</button><span>Drag to rotate &middot; scroll to zoom &middot; right-drag to pan</span></div></div>
+  <div class="m3d" data-model3d="rv008-1036"><canvas tabindex="0" role="img" aria-label="Interactive 3D model of the RV008-1036 air-release valve tester. Drag to rotate, scroll to zoom, right-drag to pan, or use the arrow keys."></canvas><div class="m3d-msg">Loading 3D model&hellip;</div><div class="m3d-bar"><button type="button" data-m3d="auto" aria-pressed="true">Auto-rotate</button><button type="button" data-m3d="edges" aria-pressed="true">Edges</button><button type="button" data-m3d="reset">Reset view</button><button type="button" data-m3d="full">Full screen</button><span>Drag to rotate &middot; scroll to zoom &middot; right-drag to pan</span></div></div>
   <div class="text">
     <div class="tb"><span>DWG</span><b>RV008-1036</b><span>2026</span></div>
     <h3><span class="sweep">Air-Release Valve Tester with Hydraulic Clamp</span></h3>
@@ -629,7 +670,7 @@ h1.wave .ch.sp { width:.28em }
   </div>
 </article>
 <article class="proj card" id="rv008-1035">
-  <div class="m3d" data-model3d="rv008-1035"><canvas tabindex="0" role="img" aria-label="Interactive 3D model of the RV008-1035 bench air-release valve tester. Drag to rotate, scroll to zoom, right-drag to pan, or use the arrow keys."></canvas><div class="m3d-msg">Loading 3D model&hellip;</div><div class="m3d-bar"><button type="button" data-m3d="auto" aria-pressed="true">Auto-rotate</button><button type="button" data-m3d="reset">Reset view</button><button type="button" data-m3d="full">Full screen</button><span>Drag to rotate &middot; scroll to zoom &middot; right-drag to pan</span></div></div>
+  <div class="m3d" data-model3d="rv008-1035"><canvas tabindex="0" role="img" aria-label="Interactive 3D model of the RV008-1035 bench air-release valve tester. Drag to rotate, scroll to zoom, right-drag to pan, or use the arrow keys."></canvas><div class="m3d-msg">Loading 3D model&hellip;</div><div class="m3d-bar"><button type="button" data-m3d="auto" aria-pressed="true">Auto-rotate</button><button type="button" data-m3d="edges" aria-pressed="true">Edges</button><button type="button" data-m3d="reset">Reset view</button><button type="button" data-m3d="full">Full screen</button><span>Drag to rotate &middot; scroll to zoom &middot; right-drag to pan</span></div></div>
   <div class="text">
     <div class="tb"><span>DWG</span><b>RV008-1035</b><span>2026</span></div>
     <h3><span class="sweep">Bench Air-Release Valve Tester</span></h3>
@@ -916,7 +957,202 @@ h1.wave .ch.sp { width:.28em }
       </a>
       <div class="gsoon" role="img" aria-label="More games coming soon"><b>More games</b><span>Coming soon</span></div>
     </div>
-    <div class="pnav"><a class="prev" href="#demos" data-go="demos"><b class="ar">&larr;</b> Demo videos <span>Back</span></a><a class="next" href="#home" data-go="home"><span>Back to</span> Home <b class="ar">&uarr;</b></a></div>
+    <div class="pnav"><a class="prev" href="#demos" data-go="demos"><b class="ar">&larr;</b> Demo videos <span>Back</span></a><a class="next" href="#dev" data-go="dev"><span>Next</span> Dev work <b class="ar">&rarr;</b></a></div>
+  </section>
+
+  <section class="page" id="dev" hidden>
+    <div class="sechead"><h2>Developer work</h2><p>Games, tools, mods and plugins I build on my own time</p></div>
+    <p class="lede dintro rv">A running log of what I make outside work. Every project has its own page with a status, links and a devlog. Nothing is available to download yet; builds and links will be added once each project is ready to share.</p>
+    <div class="chipbar dfilter rv" style="--i:1" role="group" aria-label="Filter projects">
+      <button type="button" data-f="all" aria-pressed="true">All</button>
+      <button type="button" data-f="game" aria-pressed="false">Games</button>
+      <button type="button" data-f="tool" aria-pressed="false">Tools</button>
+      <button type="button" data-f="mod" aria-pressed="false">Mods</button>
+      <button type="button" data-f="plugin" aria-pressed="false">Plugins</button>
+    </div>
+    <div class="pgrid" id="devGrid">
+      <a class="gcard dcard card rv" style="--i:2" href="#dev-beast-slayers" data-go="dev-beast-slayers" data-kind="game">
+        <div class="gthumb" aria-hidden="true"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" focusable="false"><path d="M33.9 37.5L14.0 49.0L-5.9 37.5L-5.9 14.5L14.0 3.0L33.9 14.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M75.5 37.5L55.6 49.0L35.7 37.5L35.7 14.5L55.6 3.0L75.5 14.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M117.1 37.5L97.1 49.0L77.2 37.5L77.2 14.5L97.1 3.0L117.1 14.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M158.6 37.5L138.7 49.0L118.8 37.5L118.8 14.5L138.7 3.0L158.6 14.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M200.2 37.5L180.3 49.0L160.4 37.5L160.4 14.5L180.3 3.0L200.2 14.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M241.8 37.5L221.8 49.0L201.9 37.5L201.9 14.5L221.8 3.0L241.8 14.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M283.3 37.5L263.4 49.0L243.5 37.5L243.5 14.5L263.4 3.0L283.3 14.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M324.9 37.5L305.0 49.0L285.1 37.5L285.1 14.5L305.0 3.0L324.9 14.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M54.7 73.5L34.8 85.0L14.9 73.5L14.9 50.5L34.8 39.0L54.7 50.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M96.3 73.5L76.4 85.0L56.4 73.5L56.4 50.5L76.4 39.0L96.3 50.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M137.8 73.5L117.9 85.0L98.0 73.5L98.0 50.5L117.9 39.0L137.8 50.5Z" style="fill:var(--accent-soft);stroke:var(--accent)" stroke-width="1.4"/><path d="M179.4 73.5L159.5 85.0L139.6 73.5L139.6 50.5L159.5 39.0L179.4 50.5Z" style="fill:var(--accent-soft);stroke:var(--accent)" stroke-width="1.4"/><path d="M221.0 73.5L201.1 85.0L181.1 73.5L181.1 50.5L201.1 39.0L221.0 50.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M262.5 73.5L242.6 85.0L222.7 73.5L222.7 50.5L242.6 39.0L262.5 50.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M304.1 73.5L284.2 85.0L264.3 73.5L264.3 50.5L284.2 39.0L304.1 50.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M345.7 73.5L325.8 85.0L305.9 73.5L305.9 50.5L325.8 39.0L345.7 50.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M33.9 109.5L14.0 121.0L-5.9 109.5L-5.9 86.5L14.0 75.0L33.9 86.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M75.5 109.5L55.6 121.0L35.7 109.5L35.7 86.5L55.6 75.0L75.5 86.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M117.1 109.5L97.1 121.0L77.2 109.5L77.2 86.5L97.1 75.0L117.1 86.5Z" style="fill:var(--accent-soft);stroke:var(--accent)" stroke-width="1.4"/><path d="M158.6 109.5L138.7 121.0L118.8 109.5L118.8 86.5L138.7 75.0L158.6 86.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M200.2 109.5L180.3 121.0L160.4 109.5L160.4 86.5L180.3 75.0L200.2 86.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M241.8 109.5L221.8 121.0L201.9 109.5L201.9 86.5L221.8 75.0L241.8 86.5Z" style="fill:var(--accent);stroke:var(--accent)" stroke-width="1.4"/><path d="M283.3 109.5L263.4 121.0L243.5 109.5L243.5 86.5L263.4 75.0L283.3 86.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M324.9 109.5L305.0 121.0L285.1 109.5L285.1 86.5L305.0 75.0L324.9 86.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M54.7 145.5L34.8 157.0L14.9 145.5L14.9 122.5L34.8 111.0L54.7 122.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M96.3 145.5L76.4 157.0L56.4 145.5L56.4 122.5L76.4 111.0L96.3 122.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M137.8 145.5L117.9 157.0L98.0 145.5L98.0 122.5L117.9 111.0L137.8 122.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M179.4 145.5L159.5 157.0L139.6 145.5L139.6 122.5L159.5 111.0L179.4 122.5Z" style="fill:var(--accent);stroke:var(--accent)" stroke-width="1.4"/><path d="M221.0 145.5L201.1 157.0L181.1 145.5L181.1 122.5L201.1 111.0L221.0 122.5Z" style="fill:var(--accent-soft);stroke:var(--accent)" stroke-width="1.4"/><path d="M262.5 145.5L242.6 157.0L222.7 145.5L222.7 122.5L242.6 111.0L262.5 122.5Z" style="fill:var(--accent-soft);stroke:var(--accent)" stroke-width="1.4"/><path d="M304.1 145.5L284.2 157.0L264.3 145.5L264.3 122.5L284.2 111.0L304.1 122.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M345.7 145.5L325.8 157.0L305.9 145.5L305.9 122.5L325.8 111.0L345.7 122.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M33.9 181.5L14.0 193.0L-5.9 181.5L-5.9 158.5L14.0 147.0L33.9 158.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M75.5 181.5L55.6 193.0L35.7 181.5L35.7 158.5L55.6 147.0L75.5 158.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M117.1 181.5L97.1 193.0L77.2 181.5L77.2 158.5L97.1 147.0L117.1 158.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M158.6 181.5L138.7 193.0L118.8 181.5L118.8 158.5L138.7 147.0L158.6 158.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M200.2 181.5L180.3 193.0L160.4 181.5L160.4 158.5L180.3 147.0L200.2 158.5Z" style="fill:var(--accent-soft);stroke:var(--accent)" stroke-width="1.4"/><path d="M241.8 181.5L221.8 193.0L201.9 181.5L201.9 158.5L221.8 147.0L241.8 158.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M283.3 181.5L263.4 193.0L243.5 181.5L243.5 158.5L263.4 147.0L283.3 158.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M324.9 181.5L305.0 193.0L285.1 181.5L285.1 158.5L305.0 147.0L324.9 158.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M54.7 217.5L34.8 229.0L14.9 217.5L14.9 194.5L34.8 183.0L54.7 194.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M96.3 217.5L76.4 229.0L56.4 217.5L56.4 194.5L76.4 183.0L96.3 194.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M137.8 217.5L117.9 229.0L98.0 217.5L98.0 194.5L117.9 183.0L137.8 194.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M179.4 217.5L159.5 229.0L139.6 217.5L139.6 194.5L159.5 183.0L179.4 194.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M221.0 217.5L201.1 229.0L181.1 217.5L181.1 194.5L201.1 183.0L221.0 194.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M262.5 217.5L242.6 229.0L222.7 217.5L222.7 194.5L242.6 183.0L262.5 194.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M304.1 217.5L284.2 229.0L264.3 217.5L264.3 194.5L284.2 183.0L304.1 194.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><path d="M345.7 217.5L325.8 229.0L305.9 217.5L305.9 194.5L325.8 183.0L345.7 194.5Z" style="fill:var(--paper);stroke:var(--line)" stroke-width="1.4"/><circle cx="97.1" cy="98.0" r="8" style="fill:var(--ink)"/><circle cx="97.1" cy="98.0" r="3" style="fill:var(--paper)"/><circle cx="201.1" cy="134.0" r="8" style="fill:var(--ink)"/><circle cx="201.1" cy="134.0" r="3" style="fill:var(--paper)"/><circle cx="180.3" cy="170.0" r="8" style="fill:var(--ink)"/><circle cx="180.3" cy="170.0" r="3" style="fill:var(--paper)"/><path d="M221.8 87.0 l-9 12 h18 z" style="fill:var(--paper)"/></svg></div>
+        <div class="gbody">
+          <div class="tb"><span>GAME</span><b>BS</b><span>HEX TACTICS</span></div>
+          <h3><span class="sweep">Beast Slayers</span></h3>
+          <p>A hex tactics game with an overworld to roam, a company of three monster slayers and a grim bestiary.</p>
+          <span class="dstat live">In development</span>
+          <div class="gmeta"><span>Unity</span><span class="go">Open &rarr;</span></div>
+        </div>
+      </a>
+      <a class="gcard dcard card rv" style="--i:3" href="#dev-understory" data-go="dev-understory" data-kind="game">
+        <div class="gthumb" aria-hidden="true"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" focusable="false">
+  <circle cx="238" cy="52" r="26" style="fill:var(--paper)"/><circle cx="248" cy="46" r="22" style="fill:var(--accent-soft)"/>
+  <path d="M0 132H320V180H0Z" style="fill:var(--ink)" opacity=".92"/>
+  <g fill="none" stroke-linecap="round" style="stroke:var(--ink)" stroke-width="3">
+    <path d="M30 140Q28 100 40 70"/><path d="M44 140Q50 108 62 92"/><path d="M60 140Q58 112 52 84"/>
+    <path d="M250 140Q244 104 256 76"/><path d="M268 140Q276 110 292 100"/><path d="M286 140Q284 112 276 90"/>
+    <path d="M110 140Q106 112 116 96"/><path d="M122 140Q130 120 146 114"/>
+  </g>
+  <g style="fill:var(--paper)" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="190" cy="124" rx="19" ry="11"/><ellipse cx="208" cy="120" rx="9" ry="7.5"/>
+    <circle cx="205" cy="113" r="4.5"/><circle cx="215" cy="113" r="4.5"/>
+    <circle cx="213" cy="120" r="1.4" style="fill:var(--ink)"/>
+    <path d="M171 126Q150 130 144 116Q140 108 148 104" fill="none" style="stroke:var(--paper)" stroke-width="2.4"/>
+  </g>
+</svg></div>
+        <div class="gbody">
+          <div class="tb"><span>GAME</span><b>US</b><span>GROUND LEVEL</span></div>
+          <h3><span class="sweep">Understory</span></h3>
+          <p>A 3D game at ground level among the reeds and roots, played as small animals, starting with a mouse.</p>
+          <span class="dstat live">In development</span>
+          <div class="gmeta"><span>Unity</span><span class="go">Open &rarr;</span></div>
+        </div>
+      </a>
+      <a class="gcard dcard card rv" style="--i:4" href="#dev-scamper" data-go="dev-scamper" data-kind="tool">
+        <div class="gthumb" aria-hidden="true"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" focusable="false">
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--ink)" stroke-width="3.2">
+    <path d="M130 56L120 94M120 94L96 124M120 94L142 126M130 56L156 76L176 90M130 56L108 78L92 70"/>
+    <circle cx="136" cy="40" r="11"/>
+  </g>
+  <g style="fill:var(--accent)"><circle cx="130" cy="56" r="5"/><circle cx="120" cy="94" r="5"/><circle cx="96" cy="124" r="5"/><circle cx="142" cy="126" r="5"/><circle cx="156" cy="76" r="5"/><circle cx="176" cy="90" r="5"/><circle cx="108" cy="78" r="5"/><circle cx="92" cy="70" r="5"/></g>
+  <path d="M30 152H290" style="stroke:var(--line)" stroke-width="2"/>
+  <g style="fill:var(--paper);stroke:var(--ink)" stroke-width="1.6"><rect x="48" y="146" width="12" height="12" transform="rotate(45 54 152)"/><rect x="110" y="146" width="12" height="12" transform="rotate(45 116 152)"/><rect x="176" y="146" width="12" height="12" transform="rotate(45 182 152)"/><rect x="238" y="146" width="12" height="12" transform="rotate(45 244 152)"/></g>
+  <rect x="48" y="26" width="2" height="0" />
+  <g fill="none" style="stroke:var(--muted)" stroke-width="2" stroke-linecap="round"><path d="M226 56H286M226 76H270M226 96H282"/></g>
+</svg></div>
+        <div class="gbody">
+          <div class="tb"><span>TOOL</span><b>SC</b><span>RIG &amp; CLIPS</span></div>
+          <h3><span class="sweep">Scamper</span></h3>
+          <p>A desktop tool that rigs FBX characters and builds their animation clips and collision hulls.</p>
+          <span class="dstat">v0.15.0</span>
+          <div class="gmeta"><span>Windows app</span><span class="go">Open &rarr;</span></div>
+        </div>
+      </a>
+      <div class="gsoon" data-kind="mod plugin" role="img" aria-label="Mods and plugins coming soon"><b>Mods &amp; plugins</b><span>Coming soon</span></div>
+    </div>
+    <h3 class="dsub">Latest devlog</h3>
+    <div class="dlogs">
+      <article class="dlog">
+        <div class="dmeta"><time>Oct 21, 2026</time><a href="#dev-beast-slayers" data-go="dev-beast-slayers">Beast Slayers</a></div>
+        <h3>v0.41.0: the world gets an overhaul</h3>
+        <p>The overworld now blends terrain from one hex type into the next, scatters sites across the map, hides the unexplored behind a fog of war, and drifts clouds over it. Slayers also gain traits.</p>
+      </article>
+      <article class="dlog">
+        <div class="dmeta"><time>Oct 20, 2026</time><a href="#dev-beast-slayers" data-go="dev-beast-slayers">Beast Slayers</a></div>
+        <h3>Music for the menu and the battlefield</h3>
+        <p>A looping D-minor menu theme and a battle theme with its own intro, loop and ending now play in the game, written to the dark-fantasy brief.</p>
+      </article>
+      <article class="dlog">
+        <div class="dmeta"><time>Oct 20, 2026</time><a href="#dev-understory" data-go="dev-understory">Understory</a></div>
+        <h3>V0.52.5: a calmer walk</h3>
+        <p>The mouse walk settles at 1.5 units per second. The version before it shortened the leap to half a second and calmed the tail.</p>
+      </article>
+      <article class="dlog">
+        <div class="dmeta"><time>Oct 18, 2026</time><a href="#dev-scamper" data-go="dev-scamper">Scamper</a></div>
+        <h3>Scamper v0.15.0 is out</h3>
+        <p>Version 0.15.0 is published as a release with a rebuilt Windows executable, and adds static-prop hulls for collision shapes.</p>
+      </article>
+    </div>
+    <!--
+      HOW TO ADD A PROJECT
+      1. Copy one <a class="gcard dcard card"> block above and change href, data-kind (game, tool, mod or plugin), title, text and status.
+      2. Copy one <section class="page" id="dev-..."> block below and give it the same id as the card's href (it must start with dev-).
+      3. Add devlog entries as <article class="dlog"> blocks, newest first, on the project page and (optionally) in the Latest devlog list above.
+    -->
+    <div class="pnav"><a class="prev" href="#games" data-go="games"><b class="ar">&larr;</b> Games <span>Back</span></a><a class="next" href="#home" data-go="home"><span>Back to</span> Home <b class="ar">&uarr;</b></a></div>
+  </section>
+
+  <section class="page" id="dev-beast-slayers" hidden>
+    <a class="gback" href="#dev" data-go="dev">&larr; All dev work</a>
+    <div class="sechead"><h2>Beast Slayers</h2><p>A hex tactics game with an overworld to roam</p></div>
+    <div class="dhero rv">
+      <div>
+        <div class="tb"><span>GAME</span><b>BS</b><span>HEX TACTICS</span></div>
+        <p class="lede">Lead a company of three monster slayers across a dark-fantasy overworld, then fight what you find on a hex battlefield.</p>
+        <p>The overworld borrows the feel of Battle Brothers: you travel between sites, manage a small company and take on contracts. The monsters lean toward the grim creatures of Fear &amp; Hunger. Battles play out on a hex grid.</p><p>The interface follows a low-saturation dark-fantasy look: bone, faded cyan and dull red, with no glow.</p>
+        <div class="dlinks"><span class="dlink off" aria-disabled="true">Builds <small>not public yet</small></span><span class="dlink off" aria-disabled="true">Source <small>private</small></span></div>
+      </div>
+      <dl class="dfacts"><dt>Status</dt><dd>In development</dd><dt>Genre</dt><dd>Hex tactics with an overworld</dd><dt>Engine</dt><dd>Unity</dd><dt>Platform</dt><dd>Windows</dd><dt>Latest build</dt><dd>v0.41.0 (Oct 2026)</dd><dt>Source</dt><dd>Private for now</dd></dl>
+    </div>
+    <div class="dcols rv" style="--i:1">
+      <div class="dbox"><h3>Progress</h3><ul class="dcheck"><li class="done"><span>Overworld with blended terrain, map sites, fog of war and drifting clouds</span></li><li class="done"><span>Company screen, night events and a journal</span></li><li class="done"><span>Menu and battle music</span></li><li class="done"><span>Spear weapon menu and battle art pass</span></li><li class="doing"><span>Interface update in the dark-fantasy style</span></li><li class="doing"><span>Boot and title screens</span></li><li class="plan"><span>Isometric battle view</span></li><li class="plan"><span>Seamless blends between hex types</span></li><li class="plan"><span>2D dynamic lighting</span></li></ul><div class="dkey"><span>&#10003; done</span><span>&#9680; in progress</span><span>&#9675; planned</span></div></div>
+      <div class="gsoon dshot" role="img" aria-label="Screenshots"><b>Screenshots</b><span>Coming soon</span></div>
+    </div>
+    <h3 class="dsub">Devlog</h3>
+    <div class="dlogs rv" style="--i:2">
+      <article class="dlog">
+        <div class="dmeta"><time>Oct 21, 2026</time></div>
+        <h3>v0.41.0: the world gets an overhaul</h3>
+        <p>The overworld now blends terrain from one hex type into the next, scatters sites across the map, hides the unexplored behind a fog of war, and drifts clouds over it. Slayers also gain traits.</p>
+      </article>
+      <article class="dlog">
+        <div class="dmeta"><time>Oct 20, 2026</time></div>
+        <h3>Music for the menu and the battlefield</h3>
+        <p>A looping D-minor menu theme and a battle theme with its own intro, loop and ending now play in the game, written to the dark-fantasy brief.</p>
+      </article>
+    </div>
+    <div class="pnav"><a class="prev" href="#dev" data-go="dev"><b class="ar">&larr;</b> Dev work <span>Back</span></a><a class="next" href="#dev-understory" data-go="dev-understory"><span>Next</span> Understory <b class="ar">&rarr;</b></a></div>
+  </section>
+
+  <section class="page" id="dev-understory" hidden>
+    <a class="gback" href="#dev" data-go="dev">&larr; All dev work</a>
+    <div class="sechead"><h2>Understory</h2><p>A 3D game at ground level</p></div>
+    <div class="dhero rv">
+      <div>
+        <div class="tb"><span>GAME</span><b>US</b><span>GROUND LEVEL</span></div>
+        <p class="lede">Scurry through a forest seen from the ground up, as a mouse among creatures many times your size.</p>
+        <p>Understory is in early development. The work so far is movement and animation, the first creatures, forest art and the music.</p><p>The mouse already walks, trots, runs and leaps, with hull-based hitboxes for the body, tail and ears. The takahe and cricket have their own animation sets.</p>
+        <div class="dlinks"><span class="dlink off" aria-disabled="true">Builds <small>not public yet</small></span><span class="dlink off" aria-disabled="true">Source <small>private</small></span></div>
+      </div>
+      <dl class="dfacts"><dt>Status</dt><dd>In development</dd><dt>Genre</dt><dd>3D game</dd><dt>Engine</dt><dd>Unity</dd><dt>Platform</dt><dd>Windows</dd><dt>Latest build</dt><dd>V0.52.5 (Oct 2026)</dd><dt>Source</dt><dd>Private for now</dd></dl>
+    </div>
+    <div class="dcols rv" style="--i:1">
+      <div class="dbox"><h3>Progress</h3><ul class="dcheck"><li class="done"><span>Mouse walk, trot, run, leap and dive</span></li><li class="done"><span>Hull-based hitboxes for tail and ears</span></li><li class="done"><span>Takahe and cricket with animation sets</span></li><li class="done"><span>Forest trees with far-distance meshes</span></li><li class="done"><span>Swamp night soundtrack</span></li><li class="doing"><span>Gait polish: bound, leap and walk speed</span></li><li class="doing"><span>A leaner rat to replace the first one</span></li><li class="plan"><span>Root-ridge replacement models</span></li><li class="plan"><span>Health model</span></li></ul><div class="dkey"><span>&#10003; done</span><span>&#9680; in progress</span><span>&#9675; planned</span></div></div>
+      <div class="gsoon dshot" role="img" aria-label="Screenshots"><b>Screenshots</b><span>Coming soon</span></div>
+    </div>
+    <h3 class="dsub">Devlog</h3>
+    <div class="dlogs rv" style="--i:2">
+      <article class="dlog">
+        <div class="dmeta"><time>Oct 20, 2026</time></div>
+        <h3>V0.52.5: a calmer walk</h3>
+        <p>The mouse walk settles at 1.5 units per second. The version before it shortened the leap to half a second and calmed the tail.</p>
+      </article>
+      <article class="dlog">
+        <div class="dmeta"><time>Oct 19, 2026</time></div>
+        <h3>The takahe and the cricket arrive</h3>
+        <p>Animation clips and distance meshes for the takahe, plus the cricket and its spawns, were built for V0.52.2.</p>
+      </article>
+      <article class="dlog">
+        <div class="dmeta"><time>Oct 18, 2026</time></div>
+        <h3>The mouse leap</h3>
+        <p>The sprint dive was remade as a parabolic leap, 56 frames long, launched from the run.</p>
+      </article>
+    </div>
+    <div class="pnav"><a class="prev" href="#dev-beast-slayers" data-go="dev-beast-slayers"><b class="ar">&larr;</b> Beast Slayers <span>Back</span></a><a class="next" href="#dev-scamper" data-go="dev-scamper"><span>Next</span> Scamper <b class="ar">&rarr;</b></a></div>
+  </section>
+
+  <section class="page" id="dev-scamper" hidden>
+    <a class="gback" href="#dev" data-go="dev">&larr; All dev work</a>
+    <div class="sechead"><h2>Scamper</h2><p>A rig and clip tool for FBX characters</p></div>
+    <div class="dhero rv">
+      <div>
+        <div class="tb"><span>TOOL</span><b>SC</b><span>RIG &amp; CLIPS</span></div>
+        <p class="lede">Take a character mesh, rig it, and turn out the animation clips and collision shapes a game needs.</p>
+        <p>Scamper started as a helper for Understory and grew into its own program. It reads FBX characters, builds a rig, and generates clip sets such as walk, trot, run and leap.</p><p>It also builds hull shapes for static props, so the game can collide with them.</p>
+        <div class="dlinks"><span class="dlink off" aria-disabled="true">Builds <small>not public yet</small></span><span class="dlink off" aria-disabled="true">Source <small>private</small></span></div>
+      </div>
+      <dl class="dfacts"><dt>Status</dt><dd>Active</dd><dt>Type</dt><dd>Desktop tool</dd><dt>Platform</dt><dd>Windows</dd><dt>Format</dt><dd>FBX</dd><dt>Latest version</dt><dd>v0.15.0 (Oct 18, 2026)</dd><dt>Source</dt><dd>Private for now</dd></dl>
+    </div>
+    <div class="dcols rv" style="--i:1">
+      <div class="dbox"><h3>Progress</h3><ul class="dcheck"><li class="done"><span>Rig FBX characters</span></li><li class="done"><span>Generate walk, trot, run and leap clips</span></li><li class="done"><span>Static-prop collision hulls</span></li><li class="done"><span>Windows executable build</span></li><li class="doing"><span>Building the full Understory animal set</span></li></ul><div class="dkey"><span>&#10003; done</span><span>&#9680; in progress</span><span>&#9675; planned</span></div></div>
+      <div class="gsoon dshot" role="img" aria-label="Screenshots"><b>Screenshots</b><span>Coming soon</span></div>
+    </div>
+    <h3 class="dsub">Devlog</h3>
+    <div class="dlogs rv" style="--i:2">
+      <article class="dlog">
+        <div class="dmeta"><time>Oct 18, 2026</time></div>
+        <h3>Scamper v0.15.0 is out</h3>
+        <p>Version 0.15.0 is published as a release with a rebuilt Windows executable, and adds static-prop hulls for collision shapes.</p>
+      </article>
+    </div>
+    <div class="pnav"><a class="prev" href="#dev-understory" data-go="dev-understory"><b class="ar">&larr;</b> Understory <span>Back</span></a><a class="next" href="#dev" data-go="dev"><span>Next</span> All dev work <b class="ar">&rarr;</b></a></div>
   </section>
 
   <section class="page" id="game-pressure" hidden>
@@ -1239,7 +1475,7 @@ h1.wave .ch.sp { width:.28em }
     pages.forEach(function(p){ p.hidden=(p!==pg); p.classList.remove('enter'); });
     void pg.offsetWidth; pg.classList.add('enter');
     onProj = PROJ.indexOf(pg.id) >= 0;
-    var grp = onProj ? 'projects' : (pg.id==='demos' ? 'demos' : (pg.id==='games' || pg.id.indexOf('game-')===0) ? 'games' : 'home');
+    var grp = onProj ? 'projects' : (pg.id==='demos' ? 'demos' : (pg.id==='games' || pg.id.indexOf('game-')===0) ? 'games' : (pg.id==='dev' || pg.id.indexOf('dev-')===0) ? 'dev' : 'home');
     tabs.forEach(function(t){ if(t.getAttribute('data-group')===grp) t.setAttribute('aria-current','page'); else t.removeAttribute('aria-current'); });
     stabs.forEach(function(t){ if(t.getAttribute('data-go')===pg.id) t.setAttribute('aria-current','page'); else t.removeAttribute('aria-current'); });
     openSub(false); moveInd(); moveInd2();
@@ -3266,7 +3502,8 @@ h1.wave .ch.sp { width:.28em }
 </script>
 
 <script>
-/* Self-contained 3D viewer: plain WebGL2, no libraries and no extra files. The mesh is stored (gzipped) inside the page. */
+/* Self-contained 3D viewer: plain WebGL2, no libraries and no extra files. Parts are stored once and placed many times (instancing),
+   with smooth shading and CAD feature edges, and the model data is gzipped. */
 (function(){
   var hosts=[].slice.call(document.querySelectorAll('[data-model3d]'));
   if(!hosts.length) return;
@@ -3277,26 +3514,48 @@ h1.wave .ch.sp { width:.28em }
     var ds=new DecompressionStream('gzip'), w=ds.writable.getWriter(); w.write(bytes); w.close();
     return new Response(ds.readable).arrayBuffer();
   }
-  /* blob (little endian): u32 magic 0x0233444D, u32 nChunks, f32 centre[3], f32 half[3], u32 nPal, palette bytes (padded to 4),
-     then per chunk: u32 nVerts, u32 nIdx, int16 pos[nVerts*3] (padded to 4), u8 colour[nVerts] (padded to 4), u16 idx[nIdx] (padded to 4) */
+  /* blob (little endian): u32 magic 0x0433444D, u32 nProto, u32 nInst, f32 centre[3], f32 half[3], u32 nPal, palette bytes (padded to 4),
+     then per part: u32 nVerts, u32 nIdx, u32 nEdges, u32 0, f32 centre[3], f32 half[3], int16 pos[nVerts*3], int8 octahedral normal[nVerts*2],
+     u16 idx[nIdx], int16 edge end points[nEdges*2*3] (each array padded to 4);
+     then the placements: u32 part[nInst], u8 colour[nInst] (padded to 4), f32 matrix[nInst*12] (3x4, row-major, model units) */
   function parse(buf){
-    var dv=new DataView(buf); if(dv.getUint32(0,true)!==0x0233444D) throw new Error('bad model');
-    var nc=dv.getUint32(4,true), half=[dv.getFloat32(20,true),dv.getFloat32(24,true),dv.getFloat32(28,true)], np=dv.getUint32(32,true), o=36;
-    var pal=new Uint8Array(buf,o,np*3); o+=(np*3+3)&~3;
-    var chunks=[];
-    for(var c=0;c<nc;c++){
-      var nv=dv.getUint32(o,true), ni=dv.getUint32(o+4,true); o+=8;
+    var dv=new DataView(buf); if(dv.getUint32(0,true)!==0x0433444D) throw new Error('bad model');
+    var np=dv.getUint32(4,true), ni=dv.getUint32(8,true);
+    var C=[dv.getFloat32(12,true),dv.getFloat32(16,true),dv.getFloat32(20,true)], half=[dv.getFloat32(24,true),dv.getFloat32(28,true),dv.getFloat32(32,true)];
+    var npal=dv.getUint32(36,true), o=40, pal=new Uint8Array(buf,o,npal*3); o+=(npal*3+3)&~3;
+    var parts=[];
+    for(var p=0;p<np;p++){
+      var nv=dv.getUint32(o,true), nx=dv.getUint32(o+4,true), ne=dv.getUint32(o+8,true); o+=16;
+      var c=[dv.getFloat32(o,true),dv.getFloat32(o+4,true),dv.getFloat32(o+8,true)], h=[dv.getFloat32(o+12,true),dv.getFloat32(o+16,true),dv.getFloat32(o+20,true)]; o+=24;
       var pos=new Int16Array(buf,o,nv*3); o+=(nv*6+3)&~3;
-      var col=new Uint8Array(buf,o,nv); o+=(nv+3)&~3;
-      var idx=new Uint16Array(buf,o,ni); o+=(ni*2+3)&~3;
-      chunks.push({ nv:nv, ni:ni, pos:pos, col:col, idx:idx });
+      var nrm=new Int8Array(buf,o,nv*2); o+=(nv*2+3)&~3;
+      var idx=new Uint16Array(buf,o,nx); o+=(nx*2+3)&~3;
+      var ep=new Int16Array(buf,o,ne*6); o+=(ne*12+3)&~3;
+      parts.push({ nv:nv, nx:nx, ne:ne, c:c, h:h, pos:pos, nrm:nrm, idx:idx, ep:ep, inst:[] });
     }
+    var ip=new Uint32Array(buf,o,ni); o+=ni*4; var ic=new Uint8Array(buf,o,ni); o+=(ni+3)&~3; var im=new Float32Array(buf,o,ni*12);
+    for(var i=0;i<ni;i++) parts[ip[i]].inst.push(i);
     var mx=Math.max(half[0],half[1],half[2]);
-    return { chunks:chunks, pal:pal, np:np, ext:[half[0]/mx,half[1]/mx,half[2]/mx] };
+    return { parts:parts, pal:pal, np:npal, C:C, mx:mx, ext:[half[0]/mx,half[1]/mx,half[2]/mx], ip:ip, ic:ic, im:im };
   }
 
-  var VS='#version 300 es\nprecision highp float;\nin vec3 aPos; in float aCol;\nuniform mat4 uMVP; uniform mat4 uMV; uniform vec3 uPal[32];\nout vec3 vPos; out vec3 vCol;\nvoid main(){ vPos=(uMV*vec4(aPos,1.0)).xyz; vCol=uPal[int(aCol+0.5)]; gl_Position=uMVP*vec4(aPos,1.0); }';
-  var FS='#version 300 es\nprecision highp float;\nin vec3 vPos; in vec3 vCol; out vec4 o;\nvoid main(){\n vec3 n=normalize(cross(dFdx(vPos),dFdy(vPos))); if(n.z<0.0) n=-n;\n vec3 L1=normalize(vec3(-0.45,0.7,0.6)), L2=normalize(vec3(0.75,-0.25,0.45));\n float d=max(dot(n,L1),0.0)*0.72+max(dot(n,L2),0.0)*0.26;\n vec3 H=normalize(L1+vec3(0.0,0.0,1.0)); float sp=pow(max(dot(n,H),0.0),48.0)*0.18;\n o=vec4(vCol*(0.34+d)+vec3(sp),1.0); }';
+  var DEC='vec3 n=vec3(e,1.0-abs(e.x)-abs(e.y)); if(n.z<0.0) n.xy=(1.0-abs(n.yx))*vec2(n.x>=0.0?1.0:-1.0, n.y>=0.0?1.0:-1.0);\n';
+  var VS='#version 300 es\nprecision highp float;\nin vec3 aPos; in vec2 aNrm; in vec4 aR0; in vec4 aR1; in vec4 aR2; in float aCol;\n'
+    +'uniform mat4 uMVP; uniform mat4 uMV; uniform mat3 uNM; uniform vec3 uPal[32]; uniform vec3 uC; uniform vec3 uH; uniform vec3 uSC; uniform float uK;\n'
+    +'out vec3 vPos; out vec3 vCol; out vec3 vNrm; out float vFlat;\n'
+    +'void main(){\n vec3 l=uC+aPos*uH; vec3 w=vec3(dot(aR0.xyz,l)+aR0.w, dot(aR1.xyz,l)+aR1.w, dot(aR2.xyz,l)+aR2.w); w=(w-uSC)*uK;\n'
+    +' vPos=(uMV*vec4(w,1.0)).xyz; vCol=uPal[int(aCol+0.5)];\n vFlat=(aNrm.x<-127.5) ? 1.0 : 0.0;\n vec2 e=aNrm/127.0; '+DEC
+    +' vec3 nw=vec3(dot(aR0.xyz,n),dot(aR1.xyz,n),dot(aR2.xyz,n)); vNrm=uNM*nw;\n gl_Position=uMVP*vec4(w,1.0); }';
+  var FS='#version 300 es\nprecision highp float;\nin vec3 vPos; in vec3 vCol; in vec3 vNrm; in float vFlat; out vec4 o;\n'
+    +'void main(){\n vec3 V=normalize(-vPos); vec3 fn=normalize(cross(dFdx(vPos),dFdy(vPos)));\n vec3 n=(vFlat>0.5 || dot(vNrm,vNrm)<1e-6) ? fn : normalize(vNrm);\n if(dot(n,V)<0.0) n=-n;\n'
+    +' vec3 L1=normalize(vec3(-0.45,0.7,0.6)), L2=normalize(vec3(0.75,-0.25,0.45));\n'
+    +' float hemi=0.5+0.5*n.y; float d=max(dot(n,L1),0.0)*0.62+max(dot(n,L2),0.0)*0.22;\n'
+    +' vec3 H=normalize(L1+V); float sp=pow(max(dot(n,H),0.0),56.0)*0.16;\n'
+    +' float rim=pow(1.0-max(dot(n,V),0.0),3.0)*0.10;\n'
+    +' o=vec4(vCol*(0.26+0.16*hemi+d)+vec3(sp+rim),1.0); }';
+  var VSE='#version 300 es\nprecision highp float;\nin vec3 aPos; in vec4 aR0; in vec4 aR1; in vec4 aR2;\nuniform mat4 uMVP; uniform vec3 uC; uniform vec3 uH; uniform vec3 uSC; uniform float uK;\n'
+    +'void main(){ vec3 l=uC+aPos*uH; vec3 w=vec3(dot(aR0.xyz,l)+aR0.w, dot(aR1.xyz,l)+aR1.w, dot(aR2.xyz,l)+aR2.w); w=(w-uSC)*uK; gl_Position=uMVP*vec4(w,1.0); }';
+  var FSE='#version 300 es\nprecision highp float;\nuniform vec3 uEdge; out vec4 o;\nvoid main(){ o=vec4(uEdge,1.0); }';
 
   function m4(){ return new Float32Array(16); }
   function persp(f,a,n,fa){ var m=m4(), t=1/Math.tan(f/2); m[0]=t/a; m[5]=t; m[10]=(fa+n)/(n-fa); m[11]=-1; m[14]=2*fa*n/(n-fa); return m; }
@@ -3316,36 +3575,63 @@ h1.wave .ch.sp { width:.28em }
     var cv=host.querySelector('canvas'), msg=host.querySelector('.m3d-msg'), gl=cv.getContext('webgl2',{antialias:true,alpha:false});
     if(!gl){ if(msg){ msg.textContent='3D needs WebGL2, which this browser does not provide.'; msg.hidden=false; } return; }
     function sh(t,s){ var x=gl.createShader(t); gl.shaderSource(x,s); gl.compileShader(x); if(!gl.getShaderParameter(x,gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(x)); return x; }
-    var pr=gl.createProgram(); gl.attachShader(pr,sh(gl.VERTEX_SHADER,VS)); gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,FS)); gl.linkProgram(pr);
-    if(!gl.getProgramParameter(pr,gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(pr));
-    gl.useProgram(pr);
-    var aPos=gl.getAttribLocation(pr,'aPos'), aCol=gl.getAttribLocation(pr,'aCol'), uMVP=gl.getUniformLocation(pr,'uMVP'), uMV=gl.getUniformLocation(pr,'uMV');
+    function prog(v,f){ var p=gl.createProgram(); gl.attachShader(p,sh(gl.VERTEX_SHADER,v)); gl.attachShader(p,sh(gl.FRAGMENT_SHADER,f)); gl.linkProgram(p); if(!gl.getProgramParameter(p,gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(p)); return p; }
+    var pr=prog(VS,FS), pe=prog(VSE,FSE);
+    function loc(p,n){ return gl.getUniformLocation(p,n); }
+    var A={ pos:gl.getAttribLocation(pr,'aPos'), nrm:gl.getAttribLocation(pr,'aNrm'), r0:gl.getAttribLocation(pr,'aR0'), r1:gl.getAttribLocation(pr,'aR1'), r2:gl.getAttribLocation(pr,'aR2'), col:gl.getAttribLocation(pr,'aCol') };
+    var AE={ pos:gl.getAttribLocation(pe,'aPos'), r0:gl.getAttribLocation(pe,'aR0'), r1:gl.getAttribLocation(pe,'aR1'), r2:gl.getAttribLocation(pe,'aR2') };
+    var U={ mvp:loc(pr,'uMVP'), mv:loc(pr,'uMV'), nm:loc(pr,'uNM'), pal:loc(pr,'uPal'), c:loc(pr,'uC'), h:loc(pr,'uH'), sc:loc(pr,'uSC'), k:loc(pr,'uK') };
+    var UE={ mvp:loc(pe,'uMVP'), c:loc(pe,'uC'), h:loc(pe,'uH'), sc:loc(pe,'uSC'), k:loc(pe,'uK'), edge:loc(pe,'uEdge') };
     var pal=new Float32Array(96); for(var i=0;i<model.np && i<32;i++){ pal[i*3]=model.pal[i*3]/255; pal[i*3+1]=model.pal[i*3+1]/255; pal[i*3+2]=model.pal[i*3+2]/255; }
-    gl.uniform3fv(gl.getUniformLocation(pr,'uPal'),pal);
-    var draws=model.chunks.map(function(c){
+    gl.useProgram(pr); gl.uniform3fv(U.pal,pal);
+    var K=1/model.mx;
+    var draws=model.parts.map(function(p){
+      var n=p.inst.length, d=new Float32Array(n*13);
+      for(var j=0;j<n;j++){ var i=p.inst[j]; d.set(model.im.subarray(i*12,i*12+12),j*13); d[j*13+12]=model.ic[i]; }
+      var ib=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,ib); gl.bufferData(gl.ARRAY_BUFFER,d,gl.STATIC_DRAW);
+      function bindInst(a,withCol){
+        [a.r0,a.r1,a.r2].forEach(function(at,k){ gl.enableVertexAttribArray(at); gl.vertexAttribPointer(at,4,gl.FLOAT,false,52,k*16); gl.vertexAttribDivisor(at,1); });
+        if(withCol){ gl.enableVertexAttribArray(a.col); gl.vertexAttribPointer(a.col,1,gl.FLOAT,false,52,48); gl.vertexAttribDivisor(a.col,1); }
+      }
       var vao=gl.createVertexArray(); gl.bindVertexArray(vao);
-      var pb=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,pb); gl.bufferData(gl.ARRAY_BUFFER,c.pos,gl.STATIC_DRAW); gl.enableVertexAttribArray(aPos); gl.vertexAttribPointer(aPos,3,gl.SHORT,true,0,0);
-      var cb=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,cb); gl.bufferData(gl.ARRAY_BUFFER,c.col,gl.STATIC_DRAW); gl.enableVertexAttribArray(aCol); gl.vertexAttribPointer(aCol,1,gl.UNSIGNED_BYTE,false,0,0);
-      var ib=gl.createBuffer(); gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,ib); gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,c.idx,gl.STATIC_DRAW);
-      return { vao:vao, n:c.ni };
+      var pb=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,pb); gl.bufferData(gl.ARRAY_BUFFER,p.pos,gl.STATIC_DRAW); gl.enableVertexAttribArray(A.pos); gl.vertexAttribPointer(A.pos,3,gl.SHORT,true,0,0);
+      var nb=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,nb); gl.bufferData(gl.ARRAY_BUFFER,p.nrm,gl.STATIC_DRAW); gl.enableVertexAttribArray(A.nrm); gl.vertexAttribPointer(A.nrm,2,gl.BYTE,false,0,0);
+      gl.bindBuffer(gl.ARRAY_BUFFER,ib); bindInst(A,true);
+      var xb=gl.createBuffer(); gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,xb); gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,p.idx,gl.STATIC_DRAW);
+      var evao=null;
+      if(p.ne){
+        evao=gl.createVertexArray(); gl.bindVertexArray(evao);
+        var eb=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,eb); gl.bufferData(gl.ARRAY_BUFFER,p.ep,gl.STATIC_DRAW); gl.enableVertexAttribArray(AE.pos); gl.vertexAttribPointer(AE.pos,3,gl.SHORT,true,0,0);
+        gl.bindBuffer(gl.ARRAY_BUFFER,ib); bindInst(AE,false);
+      }
+      gl.bindVertexArray(null);
+      return { vao:vao, evao:evao, nx:p.nx, ne:p.ne, n:n, c:p.c, h:p.h };
     });
-    var S=m4(); S[0]=model.ext[0]; S[5]=model.ext[1]; S[10]=model.ext[2]; S[15]=1;
     /* models are Y-up by default; data-up turns a model that was drawn with another up axis (z, -z, x, -x, -y) */
     var UPS={ y:[1,0,0,0,1,0,0,0,1], z:[1,0,0,0,0,1,0,-1,0], '-z':[1,0,0,0,0,-1,0,1,0], '-y':[1,0,0,0,-1,0,0,0,-1], x:[0,-1,0,1,0,0,0,0,1], '-x':[0,1,0,-1,0,0,0,0,1] };
-    var Ur=UPS[host.getAttribute('data-up')||'y']||UPS.y, U=m4();
-    U[0]=Ur[0]; U[1]=Ur[3]; U[2]=Ur[6]; U[4]=Ur[1]; U[5]=Ur[4]; U[6]=Ur[7]; U[8]=Ur[2]; U[9]=Ur[5]; U[10]=Ur[8]; U[15]=1;
-    var SU=mul(U,S);
+    var Ur=UPS[host.getAttribute('data-up')||'y']||UPS.y, Um=m4();
+    Um[0]=Ur[0]; Um[1]=Ur[3]; Um[2]=Ur[6]; Um[4]=Ur[1]; Um[5]=Ur[4]; Um[6]=Ur[7]; Um[8]=Ur[2]; Um[9]=Ur[5]; Um[10]=Ur[8]; Um[15]=1;
     var radius=Math.sqrt(model.ext[0]*model.ext[0]+model.ext[1]*model.ext[1]+model.ext[2]*model.ext[2]);
-    var D0=radius*2.7, st={ yaw:.75, pitch:.3, dist:D0, t:[0,0,0], auto:true, drag:null, dirty:true, raf:0, last:0 };
-    var bg=[.93,.91,.91];
+    var D0=radius*2.7, st={ yaw:.75, pitch:.3, dist:D0, t:[0,0,0], auto:true, edges:true, drag:null, dirty:true, raf:0, last:0 };
+    var bg=[.93,.91,.91], edgeCol=[.13,.12,.14];
     function readBg(){ var c=getComputedStyle(host).getPropertyValue('--m3d-bg').trim(); var m=/^#?([0-9a-f]{6})$/i.exec(c); if(m){ var n=parseInt(m[1],16); bg=[(n>>16&255)/255,(n>>8&255)/255,(n&255)/255]; } }
     function resize(){ var dpr=Math.min(2,window.devicePixelRatio||1), w=cv.clientWidth, h=cv.clientHeight; if(!w||!h) return false; var W=Math.round(w*dpr), H=Math.round(h*dpr); if(cv.width!==W||cv.height!==H){ cv.width=W; cv.height=H; } return true; }
     function draw(){
       if(!resize()) return; readBg();
       gl.viewport(0,0,cv.width,cv.height); gl.clearColor(bg[0],bg[1],bg[2],1); gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT); gl.enable(gl.DEPTH_TEST);
-      var P=persp(.62,cv.width/cv.height,radius*.05,radius*12), V=viewM(rot(st.yaw,st.pitch),st.dist,st.t), MV=mul(V,SU), MVP=mul(P,MV);
-      gl.uniformMatrix4fv(uMV,false,MV); gl.uniformMatrix4fv(uMVP,false,MVP);
-      draws.forEach(function(d){ gl.bindVertexArray(d.vao); gl.drawElements(gl.TRIANGLES,d.n,gl.UNSIGNED_SHORT,0); });
+      var R=rot(st.yaw,st.pitch), tl=Math.sqrt(st.t[0]*st.t[0]+st.t[1]*st.t[1]+st.t[2]*st.t[2]);
+      var nr=Math.max(radius*.02,st.dist-radius*1.05-tl), fr=st.dist+radius*1.05+tl;   /* tight depth range: far less flicker between close surfaces */
+      var P=persp(.62,cv.width/cv.height,nr,fr), V=viewM(R,st.dist,st.t), MV=mul(V,Um), MVP=mul(P,MV);
+      var NM=new Float32Array(9); for(var cc=0;cc<3;cc++) for(var rr=0;rr<3;rr++) NM[cc*3+rr]=R[rr*3]*Ur[cc]+R[rr*3+1]*Ur[3+cc]+R[rr*3+2]*Ur[6+cc];
+      gl.enable(gl.POLYGON_OFFSET_FILL); gl.polygonOffset(1,1);
+      gl.useProgram(pr); gl.uniformMatrix4fv(U.mvp,false,MVP); gl.uniformMatrix4fv(U.mv,false,MV); gl.uniformMatrix3fv(U.nm,false,NM); gl.uniform3fv(U.sc,model.C); gl.uniform1f(U.k,K);
+      draws.forEach(function(d){ gl.uniform3fv(U.c,d.c); gl.uniform3fv(U.h,d.h); gl.bindVertexArray(d.vao); gl.drawElementsInstanced(gl.TRIANGLES,d.nx,gl.UNSIGNED_SHORT,0,d.n); });
+      gl.disable(gl.POLYGON_OFFSET_FILL);
+      if(st.edges){
+        gl.useProgram(pe); gl.uniformMatrix4fv(UE.mvp,false,MVP); gl.uniform3fv(UE.sc,model.C); gl.uniform1f(UE.k,K); gl.uniform3fv(UE.edge,edgeCol);
+        draws.forEach(function(d){ if(!d.evao) return; gl.uniform3fv(UE.c,d.c); gl.uniform3fv(UE.h,d.h); gl.bindVertexArray(d.evao); gl.drawArraysInstanced(gl.LINES,0,d.ne*2,d.n); });
+      }
+      gl.bindVertexArray(null);
       st.dirty=false;
     }
     function frame(ts){ st.raf=requestAnimationFrame(frame); var dt=st.last ? Math.max(0,Math.min(.05,(ts-st.last)/1000)) : 0; st.last=ts; if(st.auto && !st.drag){ st.yaw+=dt*.3; st.dirty=true; } if(st.dirty) draw(); }
@@ -3371,9 +3657,10 @@ h1.wave .ch.sp { width:.28em }
       else if(k==='+'||k==='=') st.dist=Math.max(radius*.4,st.dist*.9); else if(k==='-') st.dist=Math.min(radius*5,st.dist*1.1); else ok=false;
       if(ok){ st.auto=false; syncAuto(); st.dirty=true; e.preventDefault(); }
     });
-    var bAuto=host.querySelector('[data-m3d="auto"]'), bReset=host.querySelector('[data-m3d="reset"]'), bFull=host.querySelector('[data-m3d="full"]');
+    var bAuto=host.querySelector('[data-m3d="auto"]'), bReset=host.querySelector('[data-m3d="reset"]'), bFull=host.querySelector('[data-m3d="full"]'), bEdges=host.querySelector('[data-m3d="edges"]');
     function syncAuto(){ if(bAuto){ bAuto.setAttribute('aria-pressed',st.auto ? 'true' : 'false'); } }
     if(bAuto) bAuto.addEventListener('click',function(){ st.auto=!st.auto; syncAuto(); });
+    if(bEdges) bEdges.addEventListener('click',function(){ st.edges=!st.edges; bEdges.setAttribute('aria-pressed',st.edges ? 'true' : 'false'); st.dirty=true; });
     if(bReset) bReset.addEventListener('click',function(){ st.yaw=.75; st.pitch=.3; st.dist=D0; st.t=[0,0,0]; st.dirty=true; });
     if(bFull){ if(host.requestFullscreen) bFull.addEventListener('click',function(){ if(document.fullscreenElement) document.exitFullscreen(); else host.requestFullscreen(); }); else bFull.hidden=true; }
     document.addEventListener('fullscreenchange',function(){ st.dirty=true; });
@@ -3382,7 +3669,7 @@ h1.wave .ch.sp { width:.28em }
     window.addEventListener('resize',function(){ st.dirty=true; });
     syncAuto(); draw(); start();
     if(msg) msg.hidden=true;
-    st.draw=draw; st.gl=gl; st.radius=radius; st.S=S; host.__m3d=st;
+    st.draw=draw; st.gl=gl; st.radius=radius; host.__m3d=st;
   }
 
   /* model data lives in a separate file models/<id>.js that defines window.M3D[id] */
@@ -3391,7 +3678,7 @@ h1.wave .ch.sp { width:.28em }
     return new Promise(function(res,rej){
       var tries=0;
       (function attempt(){
-        var s=document.createElement('script'); s.src='models/'+id+'.js?v=20261005'+(tries ? '&r='+tries : '');
+        var s=document.createElement('script'); s.src='models/'+id+'.js?v=20261021'+(tries ? '&r='+tries : '');
         s.onload=function(){ if(window.M3D && window.M3D[id]) res(window.M3D[id]); else rej(new Error('empty')); };
         s.onerror=function(){ s.remove(); if(++tries<3) setTimeout(attempt,600*tries); else rej(new Error('missing')); };
         document.head.appendChild(s);
@@ -3408,6 +3695,19 @@ h1.wave .ch.sp { width:.28em }
     }
     if('IntersectionObserver' in window){ var io=new IntersectionObserver(function(en){ if(en[0].isIntersecting){ io.disconnect(); load(); } },{ rootMargin:'300px' }); io.observe(host); } else load();
   });
+})();
+</script>
+
+<script>
+/* Dev tab: filter the project cards by kind */
+(function(){
+  var bar=document.querySelector('.dfilter'), grid=document.getElementById('devGrid'); if(!bar||!grid) return;
+  var btns=[].slice.call(bar.querySelectorAll('button')), cards=[].slice.call(grid.children);
+  btns.forEach(function(b){ b.addEventListener('click',function(){
+    var f=b.getAttribute('data-f');
+    btns.forEach(function(x){ x.setAttribute('aria-pressed', x===b ? 'true' : 'false'); });
+    cards.forEach(function(c){ var k=(c.getAttribute('data-kind')||'').split(' '); c.hidden = !(f==='all' || k.indexOf(f)>=0); });
+  }); });
 })();
 </script>
 
