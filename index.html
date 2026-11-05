@@ -576,6 +576,14 @@ h1.wave .ch.sp { width:.28em }
 .dshots { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin-bottom:22px }
 .dshots figure:first-child { grid-column:1/-1 }
 @media (max-width:760px) { .dshots { grid-template-columns:minmax(0,1fr) } }
+.hwtable { width:100%; border-collapse:collapse; font-size:14px; margin:0 }
+.hwtable th, .hwtable td { text-align:left; padding:8px 12px 8px 0; border-bottom:1px solid var(--line); vertical-align:top }
+.hwtable th { font:500 11.5px var(--f-mono); letter-spacing:.07em; text-transform:uppercase; color:var(--muted) }
+.hwtwo { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin-bottom:8px }
+.hwtwo .m3d { aspect-ratio:4/3; margin:0 }
+.hwtwo .hwcap { font:500 12px var(--f-mono); letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin:6px 0 0 }
+.hwscroll { overflow-x:auto }
+@media (max-width:760px) { .hwtwo { grid-template-columns:minmax(0,1fr) } }
 </style>
 </head>
 <body>
@@ -1275,7 +1283,7 @@ h1.wave .ch.sp { width:.28em }
   </section>
 
   <section class="page" id="hardware" hidden>
-    <nav class="devbar rv" aria-label="Hardware projects"><a href="#hardware" data-go="hardware" aria-current="page">All boards</a><a href="#hw-motor-controller" data-go="hw-motor-controller"><img src="images/hw/mc-icon.jpg" alt="" width="24" height="24">Motor Controller</a></nav>
+    <nav class="devbar rv" aria-label="Hardware projects"><a href="#hardware" data-go="hardware" aria-current="page">All boards</a><a href="#hw-motor-controller" data-go="hw-motor-controller"><img src="images/hw/mc-icon.jpg" alt="" width="24" height="24">Motor Controller</a><a href="#hw-bldc" data-go="hw-bldc"><img src="images/hw/bl-icon.jpg" alt="" width="24" height="24">3-Phase BLDC</a><a href="#hw-embedded-controller" data-go="hw-embedded-controller"><img src="images/hw/ec-icon.jpg" alt="" width="24" height="24">Embedded Controller</a><a href="#hw-precision-analog" data-go="hw-precision-analog"><img src="images/hw/af-icon.jpg" alt="" width="24" height="24">Precision Analog</a><a href="#hw-buck" data-go="hw-buck"><img src="images/hw/bk-icon.jpg" alt="" width="24" height="24">Buck Converter</a></nav>
     <div class="sechead"><h2>Hardware design</h2><p>Circuit boards and schematics I have designed</p></div>
     <p class="lede dintro rv">Boards I have designed from the schematic through layout and 3D model. Each page shows the schematic, the PCB layout and an interactive 3D view.</p>
     <div class="pgrid">
@@ -1289,20 +1297,60 @@ h1.wave .ch.sp { width:.28em }
           <div class="gmeta"><span>KiCad 10 &middot; 4 layers</span><span class="go">Open &rarr;</span></div>
         </div>
       </a>
+      <a class="gcard dcard card rv" style="--i:2" href="#hw-bldc" data-go="hw-bldc">
+        <div class="gthumb dthumb hw" aria-hidden="true"><img src="images/hw/bl-render-iso.jpg" alt="3D render of the three-phase motor controller board" loading="lazy"></div>
+        <div class="gbody">
+          <div class="tb"><span>PCB</span><b>BL</b><span>BLDC</span></div>
+          <h3><span class="sweep">3-Phase BLDC Controller</span></h3>
+          <p>A 12 to 50 V, 20 A controller for brushless motors, with field-oriented control, a smart gate driver and CAN.</p>
+          <span class="dstat live">Designed</span>
+          <div class="gmeta"><span>KiCad 10 &middot; 4 layers</span><span class="go">Open &rarr;</span></div>
+        </div>
+      </a>
+      <a class="gcard dcard card rv" style="--i:3" href="#hw-embedded-controller" data-go="hw-embedded-controller">
+        <div class="gthumb dthumb hw" aria-hidden="true"><img src="images/hw/ec-render-iso.jpg" alt="3D render of the embedded controller board" loading="lazy"></div>
+        <div class="gbody">
+          <div class="tb"><span>PCB</span><b>EC</b><span>CONTROLLER</span></div>
+          <h3><span class="sweep">Embedded Controller</span></h3>
+          <p>A 24 V industrial-style controller: STM32G4, USB-C, CAN-FD, RS-485 and isolated digital inputs and outputs.</p>
+          <span class="dstat live">Designed</span>
+          <div class="gmeta"><span>KiCad 10 &middot; 4 layers</span><span class="go">Open &rarr;</span></div>
+        </div>
+      </a>
+      <a class="gcard dcard card rv" style="--i:4" href="#hw-precision-analog" data-go="hw-precision-analog">
+        <div class="gthumb dthumb hw" aria-hidden="true"><img src="images/hw/af-render-iso.jpg" alt="3D render of the precision analog front-end board" loading="lazy"></div>
+        <div class="gbody">
+          <div class="tb"><span>PCB</span><b>AF</b><span>ANALOG</span></div>
+          <h3><span class="sweep">Precision Analog Front End</span></h3>
+          <p>Two 24-bit ADCs for a PT100, a load cell and a &plusmn;10 V input, with its accuracy predicted by calculation.</p>
+          <span class="dstat live">Designed</span>
+          <div class="gmeta"><span>KiCad 10 &middot; 4 layers</span><span class="go">Open &rarr;</span></div>
+        </div>
+      </a>
+      <a class="gcard dcard card rv" style="--i:5" href="#hw-buck" data-go="hw-buck">
+        <div class="gthumb dthumb hw" aria-hidden="true"><img src="images/hw/bk-render-iso.jpg" alt="3D render of the buck converter board" loading="lazy"></div>
+        <div class="gbody">
+          <div class="tb"><span>PCB</span><b>BK</b><span>POWER</span></div>
+          <h3><span class="sweep">Synchronous Buck Converter</span></h3>
+          <p>16 to 48 V in, 12 V at 8 A out, laid out twice, once well and once badly, to show why layout matters.</p>
+          <span class="dstat live">Designed</span>
+          <div class="gmeta"><span>KiCad 10 &middot; 2 boards</span><span class="go">Open &rarr;</span></div>
+        </div>
+      </a>
       <div class="gsoon" role="img" aria-label="More boards coming soon"><b>More boards</b><span>Coming soon</span></div>
     </div>
     <div class="pnav"><a class="prev" href="#dev" data-go="dev"><b class="ar">&larr;</b> Dev work <span>Back</span></a><a class="next" href="#home" data-go="home"><span>Back to</span> Home <b class="ar">&uarr;</b></a></div>
   </section>
 
   <section class="page" id="hw-motor-controller" hidden>
-    <nav class="devbar rv" aria-label="Hardware projects"><a href="#hardware" data-go="hardware">All boards</a><a href="#hw-motor-controller" data-go="hw-motor-controller" aria-current="page"><img src="images/hw/mc-icon.jpg" alt="" width="24" height="24">Motor Controller</a></nav>
+    <nav class="devbar rv" aria-label="Hardware projects"><a href="#hardware" data-go="hardware">All boards</a><a href="#hw-motor-controller" data-go="hw-motor-controller" aria-current="page"><img src="images/hw/mc-icon.jpg" alt="" width="24" height="24">Motor Controller</a><a href="#hw-bldc" data-go="hw-bldc"><img src="images/hw/bl-icon.jpg" alt="" width="24" height="24">3-Phase BLDC</a><a href="#hw-embedded-controller" data-go="hw-embedded-controller"><img src="images/hw/ec-icon.jpg" alt="" width="24" height="24">Embedded Controller</a><a href="#hw-precision-analog" data-go="hw-precision-analog"><img src="images/hw/af-icon.jpg" alt="" width="24" height="24">Precision Analog</a><a href="#hw-buck" data-go="hw-buck"><img src="images/hw/bk-icon.jpg" alt="" width="24" height="24">Buck Converter</a></nav>
     <div class="sechead"><h2>Brushed DC Motor Controller</h2><p>12 to 24 V, 10 A H-bridge with an onboard STM32</p></div>
     <div class="dhero rv">
       <div>
         <div class="tb"><span>PCB</span><b>MC</b><span>REV A</span></div>
         <p class="lede">A single-channel controller for a brushed DC motor: gate driver, four power MOSFETs, current sensing, USB-C and a microcontroller on one 96 &times; 65 mm board.</p>
         <p>The firmware sets the current limit through a DAC, reads motor current, supply voltage and FET temperature, and drives the bridge with PWM. An encoder port and an AUX port (serial and RC pulse input) are on the board.</p>
-        <p>I drew the schematic, placed and routed the board, and checked it with KiCad&#x27;s rule checks. It has not been built or tested yet.</p>
+        <p>I drew the schematic, placed and routed the board, and checked it with KiCad&#x27;s rule checks and a design checklist. It has not been built or tested yet.</p>
       </div>
       <dl class="dfacts">
         <dt>Status</dt><dd>Rev A, design checks clean, not built yet</dd>
@@ -1321,13 +1369,13 @@ h1.wave .ch.sp { width:.28em }
     <p class="hwnote">3D model exported from the KiCad board file (STEP).</p>
 
     <h3 class="dsub">PCB layout</h3>
-    <div class="hwtabs" role="group" aria-label="Layout views">
+    <div class="hwtabs" data-group="mc" role="group" aria-label="Layout views">
       <button type="button" data-hwview="top" aria-pressed="true">Top layer</button>
       <button type="button" data-hwview="bottom" aria-pressed="false">Bottom layer</button>
       <button type="button" data-hwview="rtop" aria-pressed="false">Render, top</button>
       <button type="button" data-hwview="rbottom" aria-pressed="false">Render, bottom</button>
     </div>
-    <figure class="hwframe dark hwview" data-view="top"><img src="images/hw/mc-layout-top.svg" alt="Top copper layer, silkscreen and board outline of the motor controller" loading="lazy"><figcaption>Top copper, silkscreen and outline &middot; exported from KiCad</figcaption></figure><figure class="hwframe dark hwview" data-view="bottom" hidden><img src="images/hw/mc-layout-bottom.svg" alt="Bottom copper layer of the motor controller, mirrored" loading="lazy"><figcaption>Bottom copper and silkscreen, seen from below &middot; exported from KiCad</figcaption></figure><figure class="hwframe  hwview" data-view="rtop" hidden><img src="images/hw/mc-render-top.jpg" alt="Rendered top side of the motor controller board" loading="lazy"><figcaption>Rendered top side</figcaption></figure><figure class="hwframe  hwview" data-view="rbottom" hidden><img src="images/hw/mc-render-bottom.jpg" alt="Rendered bottom side of the motor controller board" loading="lazy"><figcaption>Rendered bottom side</figcaption></figure>
+    <figure class="hwframe dark hwview" data-view="top" data-group="mc"><img src="images/hw/mc-layout-top.svg" alt="Top copper layer, silkscreen and board outline of the motor controller" loading="lazy"><figcaption>Top copper, silkscreen and outline &middot; exported from KiCad</figcaption></figure><figure class="hwframe dark hwview" data-view="bottom" data-group="mc" hidden><img src="images/hw/mc-layout-bottom.svg" alt="Bottom copper layer of the motor controller, mirrored" loading="lazy"><figcaption>Bottom copper and silkscreen, seen from below &middot; exported from KiCad</figcaption></figure><figure class="hwframe  hwview" data-view="rtop" data-group="mc" hidden><img src="images/hw/mc-render-top.jpg" alt="Rendered top side of the motor controller board" loading="lazy"><figcaption>Rendered top side</figcaption></figure><figure class="hwframe  hwview" data-view="rbottom" data-group="mc" hidden><img src="images/hw/mc-render-bottom.jpg" alt="Rendered bottom side of the motor controller board" loading="lazy"><figcaption>Rendered bottom side</figcaption></figure>
     <p class="hwnote">Power copper is on the top layer, with a solid ground plane directly under it. The gate drives and current-sense lines are routed by hand.</p>
 
     <h3 class="dsub">Schematic</h3>
@@ -1335,7 +1383,7 @@ h1.wave .ch.sp { width:.28em }
 
     <h3 class="dsub">Design notes</h3>
     <div class="dcols rv">
-      <div class="dbox"><h3>Current control</h3><ul class="hwlist"><li>A 5 m&Omega; shunt feeds the driver&#x27;s 20 V/V amplifier, so the ADC reads 0.1 V per amp.</li><li>The chop limit follows the reference voltage from the DAC, so firmware sets the limit. A resistor holds it low at reset, so the bridge cannot push current before firmware runs.</li></ul></div><div class="dbox"><h3>Bridge layout</h3><ul class="hwlist"><li>The motor connector sits between the two half-bridge columns, so each phase reaches its pin without crossing the other.</li><li>The gate loops follow the driver&#x27;s pin order and do not cross.</li><li>A solid ground plane sits directly under the power copper.</li></ul></div><div class="dbox"><h3>Power and protection</h3><ul class="hwlist"><li>A buck converter steps the supply down to 5 V, which is OR-ed with USB power and then regulated to 3.3 V.</li><li>The 0.7 MHz buck was chosen because the faster part cannot reach 28 V in at its minimum on-time.</li><li>A 28 V TVS clamps surges. A fuse goes in the supply lead, not on the board.</li></ul></div>
+      <div class="dbox"><h3>Current control</h3><ul class="hwlist"><li>A 5 m&Omega; shunt feeds the driver&#x27;s 20 V/V amplifier, so the ADC reads 0.1 V per amp.</li><li>The chop limit follows the reference voltage from the DAC, so firmware sets the limit. A resistor holds it low at reset, so the bridge cannot push current before firmware runs.</li></ul></div><div class="dbox"><h3>Bridge layout</h3><ul class="hwlist"><li>The motor connector sits between the two half-bridge columns, so each phase reaches its pin without crossing the other.</li><li>The gate loops follow the driver&#x27;s pin order and do not cross.</li><li>A solid ground plane sits directly under the power copper.</li><li>The shunt&#x27;s sense lines run as a pair into the driver, and the sense net joins ground only at the shunt, through a net tie, so the ground pour never touches it.</li></ul></div><div class="dbox"><h3>Power and protection</h3><ul class="hwlist"><li>A buck converter steps the supply down to 5 V, which is OR-ed with USB power and then regulated to 3.3 V.</li><li>The 0.7 MHz buck was chosen because the faster part cannot reach 28 V in at its minimum on-time.</li><li>A 28 V TVS clamps surges. A fuse goes in the supply lead, not on the board.</li></ul></div>
     </div>
 
     <h3 class="dsub">Open items before ordering</h3>
@@ -1344,10 +1392,149 @@ h1.wave .ch.sp { width:.28em }
       <li>Confirm the XT60 pin-1 polarity against the actual part.</li>
       <li>Order 4 layers, 1.6 mm, with 2 oz outer copper for the 10 A paths.</li>
       <li>Build a prototype: the 10 A rating is calculated, and switching edges and temperature are still untested.</li>
-      <li>Write the firmware. The pin map in the design is its contract.</li>
+      <li>Write the firmware. The pin map in the design is its contract.</li><li>Eighteen small routing findings remain in the fine-pitch fan-outs, mostly around the MCU and the USB-C connector. Each needs a hand reroute, because every automatic fix broke the 0.2 mm clearance.</li>
     </ul></div>
 
-    <div class="pnav"><a class="prev" href="#hardware" data-go="hardware"><b class="ar">&larr;</b> All boards <span>Back</span></a><a class="next" href="#home" data-go="home"><span>Back to</span> Home <b class="ar">&uarr;</b></a></div>
+    <div class="pnav"><a class="prev" href="#hardware" data-go="hardware"><b class="ar">&larr;</b> All boards <span>Back</span></a><a class="next" href="#hw-bldc" data-go="hw-bldc"><span>Next</span> 3-Phase BLDC <b class="ar">&rarr;</b></a></div>
+  </section>
+
+  <section class="page" id="hw-embedded-controller" hidden>
+    <nav class="devbar rv" aria-label="Hardware projects"><a href="#hardware" data-go="hardware">All boards</a><a href="#hw-motor-controller" data-go="hw-motor-controller"><img src="images/hw/mc-icon.jpg" alt="" width="24" height="24">Motor Controller</a><a href="#hw-bldc" data-go="hw-bldc"><img src="images/hw/bl-icon.jpg" alt="" width="24" height="24">3-Phase BLDC</a><a href="#hw-embedded-controller" data-go="hw-embedded-controller" aria-current="page"><img src="images/hw/ec-icon.jpg" alt="" width="24" height="24">Embedded Controller</a><a href="#hw-precision-analog" data-go="hw-precision-analog"><img src="images/hw/af-icon.jpg" alt="" width="24" height="24">Precision Analog</a><a href="#hw-buck" data-go="hw-buck"><img src="images/hw/bk-icon.jpg" alt="" width="24" height="24">Buck Converter</a></nav>
+    <div class="sechead"><h2>Embedded Controller</h2><p>STM32G4, 9 to 36 V, USB-C, CAN-FD, RS-485, isolated I/O</p></div>
+    <div class="dhero rv">
+      <div>
+        <div class="tb"><span>PCB</span><b>EC</b><span>CONTROLLER</span></div>
+        <p class="lede">A small industrial-style controller that runs from a 24 V supply and talks on four interfaces, with isolated inputs and protected outputs.</p>
+        <p>This board is about system integration: power entry, protection, isolation, and a pin map checked against the MCU&#x27;s own pin database. An expansion port carries SPI and I&sup2;C so a second board, such as an analog front end, can plug in.</p>
+        <p>I drew the schematic in four sheets, placed and routed the board, and ran the rule checks. It is designed but not built, and every figure on this page is a prediction from my calculation script, not a measurement.</p>
+      </div>
+      <dl class="dfacts">
+        <dt>Status</dt><dd>Designed, not built (Nov 2026)</dd>
+        <dt>Input</dt><dd>9 to 36 V DC, reverse-polarity protected</dd>
+        <dt>MCU</dt><dd>STM32G474RET6, LQFP-64</dd>
+        <dt>Interfaces</dt><dd>USB-C, CAN-FD, RS-485, I&sup2;C, SPI</dd>
+        <dt>I/O</dt><dd>4 isolated 24 V inputs, 4 protected outputs</dd>
+        <dt>Board</dt><dd>80 &times; 60 mm, 4 layers</dd>
+        <dt>Tool</dt><dd>KiCad 10</dd>
+      </dl>
+    </div>
+
+    <h3 class="dsub">3D view</h3>
+    <div class="m3d wide rv" data-model3d="embedded-controller-pcb" data-up="z" data-yaw=".35" data-pitch=".95"><canvas tabindex="0" role="img" aria-label="Interactive 3D model of the embedded controller board. Drag to rotate, scroll to zoom, right-drag to pan, or use the arrow keys."></canvas><div class="m3d-msg">Loading 3D model&hellip;</div><div class="m3d-bar"><button type="button" data-m3d="auto" aria-pressed="true">Auto-rotate</button><button type="button" data-m3d="edges" aria-pressed="true">Edges</button><button type="button" data-m3d="reset">Reset view</button><button type="button" data-m3d="full">Full screen</button><span>Drag to rotate &middot; scroll to zoom &middot; right-drag to pan</span></div></div>
+    <p class="hwnote">3D model exported from the KiCad board file (STEP).</p>
+
+    <h3 class="dsub">PCB layout</h3>
+    <div class="hwtabs" data-group="ecl" role="group" aria-label="Layout views"><button type="button" data-hwview="top" aria-pressed="true">Top layer</button><button type="button" data-hwview="bottom" aria-pressed="false">Bottom layer</button><button type="button" data-hwview="rtop" aria-pressed="false">Render, top</button><button type="button" data-hwview="rbottom" aria-pressed="false">Render, bottom</button></div><figure class="hwframe dark hwview" data-view="top" data-group="ecl"><img src="images/hw/ec-layout-top.svg" alt="Top copper layer, silkscreen and board outline of the embedded controller" loading="lazy"><figcaption>Top copper, silkscreen and outline &middot; exported from KiCad</figcaption></figure><figure class="hwframe dark hwview" data-view="bottom" data-group="ecl" hidden><img src="images/hw/ec-layout-bottom.svg" alt="Bottom copper layer of the embedded controller, mirrored" loading="lazy"><figcaption>Bottom copper and silkscreen, seen from below &middot; exported from KiCad</figcaption></figure><figure class="hwframe  hwview" data-view="rtop" data-group="ecl" hidden><img src="images/hw/ec-render-top.jpg" alt="Rendered top side of the embedded controller board" loading="lazy"><figcaption>Rendered top side</figcaption></figure><figure class="hwframe  hwview" data-view="rbottom" data-group="ecl" hidden><img src="images/hw/ec-render-bottom.jpg" alt="Rendered bottom side of the embedded controller board" loading="lazy"><figcaption>Rendered bottom side</figcaption></figure>
+    <p class="hwnote">Four layers: top signal, a ground plane, an inner signal and ground layer, and bottom signal with ground.</p>
+
+    <h3 class="dsub">Schematic</h3>
+    <div class="hwtabs" data-group="ecs" role="group" aria-label="Schematic sheets"><button type="button" data-hwview="s0" aria-pressed="true">Overview</button><button type="button" data-hwview="s1" aria-pressed="false">Power</button><button type="button" data-hwview="s2" aria-pressed="false">MCU</button><button type="button" data-hwview="s3" aria-pressed="false">Comms</button><button type="button" data-hwview="s4" aria-pressed="false">I/O</button></div><figure class="hwframe paper hwview" data-view="s0" data-group="ecs"><div class="hwzoom" title="Click to zoom"><img src="images/hw/ec-sch-overview.svg" alt="Schematic sheet: Overview sheet" loading="lazy"></div><figcaption>Overview sheet &middot; click to zoom, scroll to pan</figcaption></figure><figure class="hwframe paper hwview" data-view="s1" data-group="ecs" hidden><div class="hwzoom" title="Click to zoom"><img src="images/hw/ec-sch-power.svg" alt="Schematic sheet: Power entry, buck, power mux and 3.3 V" loading="lazy"></div><figcaption>Power entry, buck, power mux and 3.3 V &middot; click to zoom, scroll to pan</figcaption></figure><figure class="hwframe paper hwview" data-view="s2" data-group="ecs" hidden><div class="hwzoom" title="Click to zoom"><img src="images/hw/ec-sch-mcu.svg" alt="Schematic sheet: STM32G474, debug, EEPROM and expansion" loading="lazy"></div><figcaption>STM32G474, debug, EEPROM and expansion &middot; click to zoom, scroll to pan</figcaption></figure><figure class="hwframe paper hwview" data-view="s3" data-group="ecs" hidden><div class="hwzoom" title="Click to zoom"><img src="images/hw/ec-sch-comms.svg" alt="Schematic sheet: USB-C, CAN-FD and RS-485" loading="lazy"></div><figcaption>USB-C, CAN-FD and RS-485 &middot; click to zoom, scroll to pan</figcaption></figure><figure class="hwframe paper hwview" data-view="s4" data-group="ecs" hidden><div class="hwzoom" title="Click to zoom"><img src="images/hw/ec-sch-io.svg" alt="Schematic sheet: 24 V digital inputs and outputs" loading="lazy"></div><figcaption>24 V digital inputs and outputs &middot; click to zoom, scroll to pan</figcaption></figure>
+
+    <h3 class="dsub">Design notes</h3>
+    <div class="dcols rv">
+      <div class="dbox"><h3>Power and protection</h3><ul class="hwlist"><li>An ideal-diode controller with a power FET gives reverse-polarity protection, and a bidirectional 36 V TVS clamps surges, so it survives a reversed 36 V supply.</li><li>A 70 V-rated buck steps the input down to 5 V. A power mux joins it with USB power, and a regulator makes the 3.3 V rail, with a filtered analog 3.3 V for the converter and reference.</li><li>The buck is the LMR36510 and not the LMR51430, because the TVS clamps at 58 V and the smaller part is only rated to 38 V.</li></ul></div><div class="dbox"><h3>Interfaces and I/O</h3><ul class="hwlist"><li>CAN-FD sits on FDCAN2 with split termination, because FDCAN1 is only available on the USB pins or the boot pin. RS-485 has bias and termination.</li><li>Four inputs go through isolators to the 24 V industrial input standard, and four protected high-side outputs are driven through a buffer.</li><li>The expansion connector carries SPI and I&sup2;C, and there is a Qwiic port, a 10-pin SWD header and a Tag-Connect footprint.</li></ul></div><div class="dbox"><h3>Checked by script</h3><ul class="hwlist"><li>A calculation script covers the buck, the current budget, the LDO temperature, the TVS, inrush, the crystals, the terminations and the USB pair.</li><li>Every pin function was checked against the MCU symbol&#x27;s alternate-function list: no mismatches and no pin used twice.</li><li>On the numbers: 273 mA on 3.3 V and 445 mA on 5 V with every optional load on, and about 109 mA from a 24 V supply for the logic.</li><li>Every track-shape rule on the board passes. Clean-up scripts and a few hand fixes took the findings from 394 to none.</li></ul></div>
+    </div>
+
+    <h3 class="dsub">Open items before ordering</h3>
+    <div class="dbox"><ul class="hwlist">
+      <li>The MCU datasheet could not be retrieved, so the oscillator and run-current figures are not on file.</li>
+      <li>The 32 kHz crystal&#x27;s gain margin is 2.1 against a target of 5, using assumed crystal data. Check a lower-ESR crystal or a higher drive setting.</li>
+      <li>The high-side outputs are rated 35 V while the input goes to 36 V, so the outputs are specified to 35 V.</li>
+      <li>Several datasheets were not read, so those values are marked as assumed in the report.</li>
+      <li>There is no input fuse on the board, so an upstream fuse is assumed.</li><li>A few tracks are necked below their class width over short stretches. The highest current on any of them is the 5 V rail at 445 mA on 0.24 mm, about half of what that width carries.</li>
+      <li>Review the isolated input&#x27;s field-side copper and one tight pad clearance against the fab&#x27;s limits before ordering.</li>
+    </ul></div>
+
+    <div class="pnav"><a class="prev" href="#hw-bldc" data-go="hw-bldc"><b class="ar">&larr;</b> 3-Phase BLDC <span>Back</span></a><a class="next" href="#hw-precision-analog" data-go="hw-precision-analog"><span>Next</span> Precision Analog <b class="ar">&rarr;</b></a></div>
+  </section>
+
+  <section class="page" id="hw-bldc" hidden>
+    <nav class="devbar rv" aria-label="Hardware projects"><a href="#hardware" data-go="hardware">All boards</a><a href="#hw-motor-controller" data-go="hw-motor-controller"><img src="images/hw/mc-icon.jpg" alt="" width="24" height="24">Motor Controller</a><a href="#hw-bldc" data-go="hw-bldc" aria-current="page"><img src="images/hw/bl-icon.jpg" alt="" width="24" height="24">3-Phase BLDC</a><a href="#hw-embedded-controller" data-go="hw-embedded-controller"><img src="images/hw/ec-icon.jpg" alt="" width="24" height="24">Embedded Controller</a><a href="#hw-precision-analog" data-go="hw-precision-analog"><img src="images/hw/af-icon.jpg" alt="" width="24" height="24">Precision Analog</a><a href="#hw-buck" data-go="hw-buck"><img src="images/hw/bk-icon.jpg" alt="" width="24" height="24">Buck Converter</a></nav>
+    <div class="sechead"><h2>3-Phase BLDC Controller</h2><p>12 to 50 V, 20 A, field-oriented control</p></div>
+    <div class="dhero rv">
+      <div>
+        <div class="tb"><span>PCB</span><b>BL</b><span>BLDC</span></div>
+        <p class="lede">A three-phase motor controller for brushless DC and PMSM motors, with field-oriented or six-step control, sensored or sensorless.</p>
+        <p>It uses a 170 MHz STM32G431 microcontroller, a smart gate driver with built-in current-sense amplifiers, and six 80 V MOSFETs. It has Hall and encoder inputs, two CAN ports in a daisy chain, a UART and a debug header.</p><p>I drew the schematic, placed and routed the board, and ran the rule checks. The design checks come back clean, and the numbers on this page come from the design files and the datasheets, not from measurements.</p>
+      </div>
+      <dl class="dfacts"><dt>Status</dt><dd>Designed, checks clean (Nov 2026)</dd><dt>Supply</dt><dd>12 to 50 V DC</dd><dt>Current</dt><dd>20 A, sensing about &plusmn;41 A</dd><dt>MCU</dt><dd>STM32G431CBT6</dd><dt>Gate driver</dt><dd>TI DRV8323RS</dd><dt>Power stage</dt><dd>6 &times; 80 V, 2.6 m&Omega; MOSFETs</dd><dt>Interfaces</dt><dd>CAN &times;2, UART, SWD, Hall and encoder</dd><dt>Board</dt><dd>95 &times; 70 mm, 4 layers</dd><dt>Tool</dt><dd>KiCad 10</dd></dl>
+    </div>
+<h3 class="dsub">3D view</h3>
+    <div class="m3d wide rv" data-model3d="bldc-controller-pcb" data-up="z" data-yaw=".35" data-pitch=".95"><canvas tabindex="0" role="img" aria-label="Interactive 3D model of the three-phase motor controller board. Drag to rotate, scroll to zoom, right-drag to pan, or use the arrow keys."></canvas><div class="m3d-msg">Loading 3D model&hellip;</div><div class="m3d-bar"><button type="button" data-m3d="auto" aria-pressed="true">Auto-rotate</button><button type="button" data-m3d="edges" aria-pressed="true">Edges</button><button type="button" data-m3d="reset">Reset view</button><button type="button" data-m3d="full">Full screen</button><span>Drag to rotate &middot; scroll to zoom &middot; right-drag to pan</span></div></div>
+    <p class="hwnote">3D model exported from the KiCad board file (STEP).</p>
+    <h3 class="dsub">PCB layout</h3>
+    <div class="hwtabs" data-group="blp" role="group" aria-label="Layout views"><button type="button" data-hwview="top" aria-pressed="true">Top layer</button><button type="button" data-hwview="bottom" aria-pressed="false">Bottom layer</button><button type="button" data-hwview="rtop" aria-pressed="false">Render, top</button><button type="button" data-hwview="rbottom" aria-pressed="false">Render, bottom</button></div><figure class="hwframe dark hwview" data-view="top" data-group="blp"><img src="images/hw/bl-layout-top.svg" alt="PCB view: Top layer" loading="lazy"><figcaption>Top copper, silkscreen and outline &middot; exported from KiCad</figcaption></figure><figure class="hwframe dark hwview" data-view="bottom" data-group="blp" hidden><img src="images/hw/bl-layout-bottom.svg" alt="PCB view: Bottom layer" loading="lazy"><figcaption>Bottom copper and silkscreen, seen from below &middot; exported from KiCad</figcaption></figure><figure class="hwframe  hwview" data-view="rtop" data-group="blp" hidden><img src="images/hw/bl-render-top.jpg" alt="PCB view: Render, top" loading="lazy"><figcaption>Rendered top side</figcaption></figure><figure class="hwframe  hwview" data-view="rbottom" data-group="blp" hidden><img src="images/hw/bl-render-bottom.jpg" alt="PCB view: Render, bottom" loading="lazy"><figcaption>Rendered bottom side</figcaption></figure>
+    <p class="hwnote">Four layers: the top carries the signals and the power pours, the first inner layer is one solid ground plane, and the second inner layer carries the bus voltage under the power stage and 3.3 V elsewhere.</p>
+    <h3 class="dsub">Schematic</h3>
+    <figure class="hwframe paper"><div class="hwzoom" title="Click to zoom"><img src="images/hw/bl-sch.svg" alt="Schematic: Full schematic (one A1 sheet)" loading="lazy"></div><figcaption>Full schematic (one A1 sheet) &middot; click to zoom, scroll to pan</figcaption></figure>
+    <h3 class="dsub">Design notes</h3>
+    <div class="dcols rv"><div class="dbox"><h3>Control</h3><ul class="hwlist"><li>The MCU&#x27;s advanced timer drives all six gates, and its two ADCs sample all three phase currents at the same instant. That supports field-oriented control or simple six-step drive, with Hall sensors, an encoder or back-EMF sensing.</li><li>The gate driver&#x27;s gate current is set over SPI, so the gate resistors are 0 &Omega;. The driver&#x27;s enable pin is pulled down, so it stays asleep until firmware wakes it.</li><li>CAN-FD sits on the pins shared with USB, so there is no USB: the board is configured over UART or CAN.</li></ul></div><div class="dbox"><h3>Power stage and sensing</h3><ul class="hwlist"><li>Six 80 V, 2.6 m&Omega; MOSFETs make three half-bridges, one column per phase, each with a 1 m&Omega; low-side shunt. At the sense amplifier&#x27;s gain of 40, the range is about &plusmn;41 A.</li><li>Bulk capacitance is three 100 &micro;F, 63 V capacitors, plus six 2.2 &micro;F, 100 V capacitors under the half-bridges. A 51 V TVS protects the bus, and the XT60 connector is keyed instead of adding reverse-polarity protection.</li><li>The driver&#x27;s own buck makes the 5 V rail, and a small regulator makes the 3.3 V rail.</li></ul></div><div class="dbox"><h3>Checks</h3><ul class="hwlist"><li>The schematic netlist matches the design script on all 343 pins, and the electrical rules check reports no violations.</li><li>The board check reports no unconnected nets, no clearance errors and no shorts. The first inner layer is one solid ground plane with no signal tracks, and every track-shape rule passes: no right-angle or acute corners, no jogs and no dangling copper.</li><li>Everything is generated from a parts-and-pins script and a set of helper scripts, then tidied.</li></ul></div></div>
+    <h3 class="dsub">Open items before ordering</h3>
+    <div class="dbox"><ul class="hwlist"><li>The sense amplifiers&#x27; negative inputs go to ground, not Kelvin-routed. For the best current accuracy, hand-route each one to the ground end of its shunt.</li><li>The driver&#x27;s calibration pin is tied to ground, so run the offset calibration over SPI.</li><li>The driver&#x27;s shutdown pin is left floating, so the buck is always on, with no undervoltage lockout divider.</li><li>Order 2 oz outer copper. The 0.2 mm power clearance is fine with solder mask at 50 V, but below the IPC-2221 guideline for uncoated boards.</li><li>Some of the driver&#x27;s escape traces are 0.1 mm, which needs a 4 mil track-and-space process.</li></ul></div>
+    <div class="pnav"><a class="prev" href="#hw-motor-controller" data-go="hw-motor-controller"><b class="ar">&larr;</b> Motor Controller <span>Back</span></a><a class="next" href="#hw-embedded-controller" data-go="hw-embedded-controller"><span>Next</span> Embedded Controller <b class="ar">&rarr;</b></a></div>
+  </section>
+
+  <section class="page" id="hw-precision-analog" hidden>
+    <nav class="devbar rv" aria-label="Hardware projects"><a href="#hardware" data-go="hardware">All boards</a><a href="#hw-motor-controller" data-go="hw-motor-controller"><img src="images/hw/mc-icon.jpg" alt="" width="24" height="24">Motor Controller</a><a href="#hw-bldc" data-go="hw-bldc"><img src="images/hw/bl-icon.jpg" alt="" width="24" height="24">3-Phase BLDC</a><a href="#hw-embedded-controller" data-go="hw-embedded-controller"><img src="images/hw/ec-icon.jpg" alt="" width="24" height="24">Embedded Controller</a><a href="#hw-precision-analog" data-go="hw-precision-analog" aria-current="page"><img src="images/hw/af-icon.jpg" alt="" width="24" height="24">Precision Analog</a><a href="#hw-buck" data-go="hw-buck"><img src="images/hw/bk-icon.jpg" alt="" width="24" height="24">Buck Converter</a></nav>
+    <div class="sechead"><h2>Precision Analog Front End</h2><p>Two 24-bit ADCs: PT100, load cell and &plusmn;10 V</p></div>
+    <div class="dhero rv">
+      <div>
+        <div class="tb"><span>PCB</span><b>AF</b><span>ANALOG</span></div>
+        <p class="lede">A measurement board whose performance I predicted by calculation, term by term, before building anything.</p>
+        <p>It reads a PT100 temperature sensor, a load cell and a &plusmn;10 V signal with two ADS1220 ADCs, and plugs into the embedded controller through its expansion header.</p><p>I drew the schematic in three wired sheets, placed and routed the board, and wrote the calculation script that produces the noise and error budgets.</p>
+      </div>
+      <dl class="dfacts"><dt>Status</dt><dd>Designed, not built (Nov 2026)</dd><dt>ADCs</dt><dd>2 &times; ADS1220, 24-bit</dd><dt>Channels</dt><dd>PT100, load cell, &plusmn;10 V</dd><dt>Host link</dt><dd>2&times;8 header to the embedded controller</dd><dt>Supply</dt><dd>Host 5 V and 3.3 V</dd><dt>Board</dt><dd>72 &times; 54 mm, 4 layers</dd><dt>Tool</dt><dd>KiCad 10</dd></dl>
+    </div>
+<h3 class="dsub">3D view</h3>
+    <div class="m3d wide rv" data-model3d="precision-afe-pcb" data-up="z" data-yaw=".35" data-pitch=".95"><canvas tabindex="0" role="img" aria-label="Interactive 3D model of the precision analog front-end board. Drag to rotate, scroll to zoom, right-drag to pan, or use the arrow keys."></canvas><div class="m3d-msg">Loading 3D model&hellip;</div><div class="m3d-bar"><button type="button" data-m3d="auto" aria-pressed="true">Auto-rotate</button><button type="button" data-m3d="edges" aria-pressed="true">Edges</button><button type="button" data-m3d="reset">Reset view</button><button type="button" data-m3d="full">Full screen</button><span>Drag to rotate &middot; scroll to zoom &middot; right-drag to pan</span></div></div>
+    <p class="hwnote">3D model exported from the KiCad board file (STEP).</p>
+    <h3 class="dsub">PCB layout</h3>
+    <div class="hwtabs" data-group="afl" role="group" aria-label="Layout views"><button type="button" data-hwview="top" aria-pressed="true">Top layer</button><button type="button" data-hwview="bottom" aria-pressed="false">Bottom layer</button><button type="button" data-hwview="rtop" aria-pressed="false">Render, top</button><button type="button" data-hwview="rbottom" aria-pressed="false">Render, bottom</button></div><figure class="hwframe dark hwview" data-view="top" data-group="afl"><img src="images/hw/af-layout-top.svg" alt="PCB view: Top layer" loading="lazy"><figcaption>Top copper, silkscreen and outline &middot; exported from KiCad</figcaption></figure><figure class="hwframe dark hwview" data-view="bottom" data-group="afl" hidden><img src="images/hw/af-layout-bottom.svg" alt="PCB view: Bottom layer" loading="lazy"><figcaption>Bottom copper and silkscreen, seen from below &middot; exported from KiCad</figcaption></figure><figure class="hwframe  hwview" data-view="rtop" data-group="afl" hidden><img src="images/hw/af-render-top.jpg" alt="PCB view: Render, top" loading="lazy"><figcaption>Rendered top side</figcaption></figure><figure class="hwframe  hwview" data-view="rbottom" data-group="afl" hidden><img src="images/hw/af-render-bottom.jpg" alt="PCB view: Render, bottom" loading="lazy"><figcaption>Rendered bottom side</figcaption></figure>
+    <p class="hwnote">Every part is on the top side, a limit of my board generator. Four layers.</p>
+    <h3 class="dsub">Schematic</h3>
+    <div class="hwtabs" data-group="afs" role="group" aria-label="Schematic sheets"><button type="button" data-hwview="s0" aria-pressed="true">Overview</button><button type="button" data-hwview="s1" aria-pressed="false">Host link</button><button type="button" data-hwview="s2" aria-pressed="false">ADC A</button><button type="button" data-hwview="s3" aria-pressed="false">ADC B</button></div><figure class="hwframe paper hwview" data-view="s0" data-group="afs"><div class="hwzoom" title="Click to zoom"><img src="images/hw/af-sch-overview.svg" alt="Schematic sheet: Overview sheet" loading="lazy"></div><figcaption>Overview sheet &middot; click to zoom, scroll to pan</figcaption></figure><figure class="hwframe paper hwview" data-view="s1" data-group="afs" hidden><div class="hwzoom" title="Click to zoom"><img src="images/hw/af-sch-host.svg" alt="Schematic sheet: Host link, supplies and test points" loading="lazy"></div><figcaption>Host link, supplies and test points &middot; click to zoom, scroll to pan</figcaption></figure><figure class="hwframe paper hwview" data-view="s2" data-group="afs" hidden><div class="hwzoom" title="Click to zoom"><img src="images/hw/af-sch-adca.svg" alt="Schematic sheet: ADC A: 3-wire PT100" loading="lazy"></div><figcaption>ADC A: 3-wire PT100 &middot; click to zoom, scroll to pan</figcaption></figure><figure class="hwframe paper hwview" data-view="s3" data-group="afs" hidden><div class="hwzoom" title="Click to zoom"><img src="images/hw/af-sch-adcb.svg" alt="Schematic sheet: ADC B: load cell and &plusmn;10 V input" loading="lazy"></div><figcaption>ADC B: load cell and &plusmn;10 V input &middot; click to zoom, scroll to pan</figcaption></figure>
+    <h3 class="dsub">Predicted performance</h3>
+    <div class="dbox"><div class="hwscroll"><table class="hwtable"><thead><tr><th>Channel</th><th>Noise-free resolution</th><th>Error after a 2-point calibration (worst case / typical)</th><th>Uncalibrated (worst case / typical)</th></tr></thead><tbody><tr><td>PT100 temperature, with excitation swapping</td><td>6.4 m&deg;C peak to peak</td><td>0.22 / 0.08 &deg;C (0.49 / 0.29 &deg;C with 10 &Omega; leads and 1 % mismatch)</td><td>0.93 / 0.61 &deg;C</td></tr><tr><td>Load cell, 5 kg, 2 mV/V</td><td>0.20 g peak to peak</td><td>9.2 / 4.7 g</td><td>20.9 / 9.7 g</td></tr><tr><td>&plusmn;10 V input, at 10 V</td><td>0.11 mV peak to peak</td><td>4.8 / 2.4 mV</td><td>23.3 / 13.6 mV</td></tr></tbody></table></div></div>
+    <p class="hwnote">At 20 samples per second, over &plusmn;25 &deg;C around a 25 &deg;C calibration. These are calculated predictions, not measurements.</p>
+
+    <h3 class="dsub">Calculation plots</h3>
+    <div class="dshots rv"><figure class="hwframe paper"><img src="images/hw/af-noise.png" alt="Noise budget plot for the precision front end" loading="lazy"><figcaption>Noise budget</figcaption></figure><figure class="hwframe paper"><img src="images/hw/af-filter.png" alt="Input filter response plot" loading="lazy"><figcaption>Input filter response</figcaption></figure><figure class="hwframe paper"><img src="images/hw/af-rtd.png" alt="PT100 temperature range plot" loading="lazy"><figcaption>PT100 input range</figcaption></figure><figure class="hwframe paper"><img src="images/hw/af-v10.png" alt="Plot of the plus or minus 10 volt input transfer function" loading="lazy"><figcaption>&plusmn;10 V input transfer</figcaption></figure></div>
+    <h3 class="dsub">Design notes</h3>
+    <div class="dcols rv"><div class="dbox"><h3>Measurement approach</h3><ul class="hwlist"><li>Two 24-bit delta-sigma ADCs share one SPI bus. One measures a 3-wire PT100 temperature sensor, and the other measures a load cell and a &plusmn;10 V input.</li><li>Everything is ratiometric: the PT100 uses its own reference resistor, the bridge uses its supply as both excitation and reference, and the &plusmn;10 V input uses a precision reference. Supply noise barely shows in the results, so no regulator is needed.</li></ul></div><div class="dbox"><h3>Accuracy tricks</h3><ul class="hwlist"><li>Swapping the two excitation currents on alternate conversions cancels their 0.3 % mismatch to first order. That mismatch was the largest PT100 error, at 0.89 &deg;C.</li><li>A summing divider pulls the &plusmn;10 V input to mid-scale around the 2.5 V reference, so a single 0 to 5 V supply can read bipolar signals.</li></ul></div><div class="dbox"><h3>Protection and supply</h3><ul class="hwlist"><li>Every input has series resistors, low-leakage clamp diodes and a differential and common-mode filter. The common-mode capacitors are 1 % C0G parts, because their mismatch sets the line-frequency rejection.</li><li>The board runs from the host&#x27;s 5 V and 3.3 V through ferrite beads, drawing about 20.6 mA and 0.9 mA, and connects to the embedded controller through a 16-way ribbon cable.</li></ul></div></div>
+    <h3 class="dsub">Open items before ordering</h3>
+    <div class="dbox"><ul class="hwlist"><li>Check the assumptions table in my calculation report. Two datasheets were not retrieved, for the ferrite bead and one TVS.</li><li>Some datasheet figures have no maximum and are used as typical values.</li><li>Line-frequency rejection is weaker with the ADC&#x27;s internal oscillator than the datasheet figure, which needs an external clock. A 4.096 MHz oscillator is the upgrade path.</li><li>One excitation terminal has only a 5.5 V TVS.</li><li>The analog nets were autorouted and not hand-polished, so check guard rings and the pair symmetry of each input before ordering.</li><li>Two short sections are necked to 60 % of their class width to fit tight spots. The narrowest power section is the analog supply at 0.18 mm for about 1 mm, carrying 20.6 mA.</li></ul></div>
+    <div class="pnav"><a class="prev" href="#hw-embedded-controller" data-go="hw-embedded-controller"><b class="ar">&larr;</b> Embedded Controller <span>Back</span></a><a class="next" href="#hw-buck" data-go="hw-buck"><span>Next</span> Buck Converter <b class="ar">&rarr;</b></a></div>
+  </section>
+
+  <section class="page" id="hw-buck" hidden>
+    <nav class="devbar rv" aria-label="Hardware projects"><a href="#hardware" data-go="hardware">All boards</a><a href="#hw-motor-controller" data-go="hw-motor-controller"><img src="images/hw/mc-icon.jpg" alt="" width="24" height="24">Motor Controller</a><a href="#hw-bldc" data-go="hw-bldc"><img src="images/hw/bl-icon.jpg" alt="" width="24" height="24">3-Phase BLDC</a><a href="#hw-embedded-controller" data-go="hw-embedded-controller"><img src="images/hw/ec-icon.jpg" alt="" width="24" height="24">Embedded Controller</a><a href="#hw-precision-analog" data-go="hw-precision-analog"><img src="images/hw/af-icon.jpg" alt="" width="24" height="24">Precision Analog</a><a href="#hw-buck" data-go="hw-buck" aria-current="page"><img src="images/hw/bk-icon.jpg" alt="" width="24" height="24">Buck Converter</a></nav>
+    <div class="sechead"><h2>Synchronous Buck Converter</h2><p>16 to 48 V in, 12 V at 8 A out, laid out twice</p></div>
+    <div class="dhero rv">
+      <div>
+        <div class="tb"><span>PCB</span><b>BK</b><span>POWER</span></div>
+        <p class="lede">A 100 W synchronous buck converter designed from first principles, with the same circuit laid out twice to show why layout matters.</p>
+        <p>It uses a controller with external FETs, not an all-in-one module, so the FET choice, the loop compensation and the layout are all my own work.</p><p>Both boards pass the rule checks. Every performance figure on this page is a prediction from my calculation script, not a measurement.</p>
+      </div>
+      <dl class="dfacts"><dt>Status</dt><dd>Designed, not built (Nov 2026)</dd><dt>Input</dt><dd>16 to 48 V DC, 48 V TVS</dd><dt>Output</dt><dd>12 V, 8 A (limit 11 A)</dd><dt>Switching</dt><dd>400 kHz, voltage mode</dd><dt>Controller</dt><dd>TI LM5146, external FETs</dd><dt>Efficiency</dt><dd>94.9 to 96.9 % at 8 A (predicted)</dd><dt>Board</dt><dd>86 &times; 56 mm, 4 layers</dd><dt>Tool</dt><dd>KiCad 10</dd></dl>
+    </div>
+<h3 class="dsub">3D view</h3>
+    <div class="hwtwo"><div><div class="m3d rv" data-model3d="buck-a-pcb" data-up="z" data-yaw=".35" data-pitch=".95"><canvas tabindex="0" role="img" aria-label="Interactive 3D model of buck converter board A. Drag to rotate, scroll to zoom, right-drag to pan, or use the arrow keys."></canvas><div class="m3d-msg">Loading 3D model&hellip;</div><div class="m3d-bar"><button type="button" data-m3d="auto" aria-pressed="true">Auto-rotate</button><button type="button" data-m3d="edges" aria-pressed="true">Edges</button><button type="button" data-m3d="reset">Reset view</button><button type="button" data-m3d="full">Full screen</button><span>Drag to rotate &middot; scroll to zoom &middot; right-drag to pan</span></div></div><p class="hwcap">Board A &middot; tight layout</p></div><div><div class="m3d rv" data-model3d="buck-b-pcb" data-up="z" data-yaw=".35" data-pitch=".95"><canvas tabindex="0" role="img" aria-label="Interactive 3D model of buck converter board B. Drag to rotate, scroll to zoom, right-drag to pan, or use the arrow keys."></canvas><div class="m3d-msg">Loading 3D model&hellip;</div><div class="m3d-bar"><button type="button" data-m3d="auto" aria-pressed="true">Auto-rotate</button><button type="button" data-m3d="edges" aria-pressed="true">Edges</button><button type="button" data-m3d="reset">Reset view</button><button type="button" data-m3d="full">Full screen</button><span>Drag to rotate &middot; scroll to zoom &middot; right-drag to pan</span></div></div><p class="hwcap">Board B &middot; deliberately loose layout</p></div></div>
+    <p class="hwnote">3D models exported from the KiCad board files (STEP).</p>
+    <h3 class="dsub">Board A against Board B</h3>
+    <p class="lede dintro">The same circuit laid out twice. Board A follows the textbook rules, and Board B breaks them on purpose, to show why layout matters.</p>
+    <div class="dbox"><div class="hwscroll"><table class="hwtable"><thead><tr><th></th><th>Board A: tight hot loop</th><th>Board B: large hot loop</th></tr></thead><tbody><tr><td>Input capacitors</td><td>At the FET drain and source, straddling the edge of the supply and ground pours</td><td>Parked by the input connector, 15 to 20 mm away</td></tr><tr><td>Supply to the first FET</td><td>Wide pour</td><td>A 3 mm neck about 12 mm long</td></tr><tr><td>Ground return under the power stage</td><td>Solid ground plane directly underneath</td><td>Ground plane slotted under the power stage, so the return detours around</td></tr><tr><td>Hot-loop perimeter (estimated from the layout)</td><td>About 17 mm, returning on the plane 0.2 mm below</td><td>About 90 mm</td></tr><tr><td>Gate drive</td><td>Gate-drive capacitor right on the driver pins, short gate loops</td><td>Same parts, but the FETs sit 12 mm further away, so the gate loops grow</td></tr></tbody></table></div></div>
+    <h3 class="dsub">PCB layout</h3>
+    <div class="hwtabs" data-group="bkl" role="group" aria-label="Layout views"><button type="button" data-hwview="atop" aria-pressed="true">Board A, top</button><button type="button" data-hwview="btop" aria-pressed="false">Board B, top</button><button type="button" data-hwview="abot" aria-pressed="false">Board A, bottom</button><button type="button" data-hwview="bbot" aria-pressed="false">Board B, bottom</button><button type="button" data-hwview="ratop" aria-pressed="false">Render, A top</button><button type="button" data-hwview="rbtop" aria-pressed="false">Render, B top</button></div><figure class="hwframe dark hwview" data-view="atop" data-group="bkl"><img src="images/hw/bk-layout-a-top.svg" alt="PCB view: Board A, top" loading="lazy"><figcaption>Board A top copper, silkscreen and outline &middot; exported from KiCad</figcaption></figure><figure class="hwframe dark hwview" data-view="btop" data-group="bkl" hidden><img src="images/hw/bk-layout-b-top.svg" alt="PCB view: Board B, top" loading="lazy"><figcaption>Board B top copper, silkscreen and outline &middot; exported from KiCad</figcaption></figure><figure class="hwframe dark hwview" data-view="abot" data-group="bkl" hidden><img src="images/hw/bk-layout-a-bottom.svg" alt="PCB view: Board A, bottom" loading="lazy"><figcaption>Board A bottom copper, seen from below &middot; exported from KiCad</figcaption></figure><figure class="hwframe dark hwview" data-view="bbot" data-group="bkl" hidden><img src="images/hw/bk-layout-b-bottom.svg" alt="PCB view: Board B, bottom" loading="lazy"><figcaption>Board B bottom copper, seen from below &middot; exported from KiCad</figcaption></figure><figure class="hwframe  hwview" data-view="ratop" data-group="bkl" hidden><img src="images/hw/bk-render-a-top.jpg" alt="PCB view: Render, A top" loading="lazy"><figcaption>Rendered top side of board A</figcaption></figure><figure class="hwframe  hwview" data-view="rbtop" data-group="bkl" hidden><img src="images/hw/bk-render-b-top.jpg" alt="PCB view: Render, B top" loading="lazy"><figcaption>Rendered top side of board B</figcaption></figure>
+    <p class="hwnote">Four layers on both boards: power pours on top, a solid ground plane on the first inner layer, signals and ground on the others.</p>
+    <h3 class="dsub">Schematic</h3>
+    <figure class="hwframe paper"><div class="hwzoom" title="Click to zoom"><img src="images/hw/bk-sch.svg" alt="Schematic: Full schematic (one A2 sheet)" loading="lazy"></div><figcaption>Full schematic (one A2 sheet) &middot; click to zoom, scroll to pan</figcaption></figure>
+    <h3 class="dsub">Calculation plots</h3>
+    <div class="dshots rv"><figure class="hwframe paper"><img src="images/hw/bk-bode.png" alt="Predicted Bode plot of the buck converter control loop" loading="lazy"><figcaption>Predicted loop response, 24 V in, 8 A</figcaption></figure><figure class="hwframe paper"><img src="images/hw/bk-efficiency.png" alt="Predicted efficiency of the buck converter against load" loading="lazy"><figcaption>Predicted efficiency</figcaption></figure></div>
+    <h3 class="dsub">Design notes</h3>
+    <div class="dcols rv"><div class="dbox"><h3>Gate drive and efficiency</h3><ul class="hwlist"><li>The controller&#x27;s internal supply is fed from the 12 V output through a Schottky diode, not from the 48 V input. That cuts the gate-drive loss from 2.7 W to 0.67 W, the biggest single efficiency gain.</li><li>Predicted efficiency at 8 A is 96.9 % at 16 V in, 96.4 % at 24 V and 94.9 % at 48 V.</li></ul></div><div class="dbox"><h3>Inductor and current limit</h3><ul class="hwlist"><li>A 6.8 &micro;H inductor gives 41 % ripple at 48 V, and the worst-case peak current is 9.65 A against a 21.8 A saturation rating.</li><li>Valley current limiting senses the low-side FET&#x27;s on-resistance, and the sense current&#x27;s temperature coefficient tracks the FET as it heats up.</li></ul></div><div class="dbox"><h3>Compensation</h3><ul class="hwlist"><li>Type-III compensation, designed to the controller datasheet: the zeros sit at half the crossover frequency and at the crossover, and the poles at half the switching frequency and at the output capacitors&#x27; ESR zero.</li><li>Predicted crossover is about 43 kHz with about 80&deg; of phase margin. A 10 &Omega; resistor with two test points marks where a Bode injection signal would go.</li></ul></div></div>
+    <h3 class="dsub">Open items before ordering</h3>
+    <div class="dbox"><ul class="hwlist"><li>Check every value marked as assumed in the calculation script: FET on-resistance at temperature, gate-drive resistance, capacitor derating, polymer capacitor ESR, inductor core loss, and the low-side FET&#x27;s gate and recovery charges.</li><li>The polymer output capacitors have no part number yet: 100 &micro;F, 25 V, 25 m&Omega; ESR or less, in an 8 &times; 10 mm can.</li><li>Analog and power ground share one plane. A split with a single join was tried, then dropped to keep the routing clean at this power level.</li><li>The high-side gate drive drops to the bottom layer through one via, because there is no room on top.</li><li>Simulation is not done: neither a circuit simulation of the loop and switch-node ringing, nor a thermal simulation.</li></ul></div>
+    <div class="pnav"><a class="prev" href="#hw-precision-analog" data-go="hw-precision-analog"><b class="ar">&larr;</b> Precision Analog <span>Back</span></a><a class="next" href="#home" data-go="home"><span>Back to</span> Home <b class="ar">&uarr;</b></a></div>
   </section>
 
   <section class="page" id="game-pressure" hidden>
@@ -3897,14 +4084,16 @@ h1.wave .ch.sp { width:.28em }
 </script>
 
 <script>
-/* Hardware tab: layout view switcher and click-to-zoom drawings */
+/* Hardware tab: view switchers (one group per tab bar) and click-to-zoom drawings */
 (function(){
-  var tabs=[].slice.call(document.querySelectorAll('[data-hwview]')), views=[].slice.call(document.querySelectorAll('.hwview'));
-  tabs.forEach(function(b){ b.addEventListener('click',function(){
-    var v=b.getAttribute('data-hwview');
-    tabs.forEach(function(x){ x.setAttribute('aria-pressed', x===b ? 'true' : 'false'); });
-    views.forEach(function(f){ f.hidden = f.getAttribute('data-view')!==v; });
-  }); });
+  [].slice.call(document.querySelectorAll('.hwtabs')).forEach(function(bar){
+    var g=bar.getAttribute('data-group'), tabs=[].slice.call(bar.querySelectorAll('[data-hwview]')), views=[].slice.call(document.querySelectorAll('.hwview[data-group="'+g+'"]'));
+    tabs.forEach(function(b){ b.addEventListener('click',function(){
+      var v=b.getAttribute('data-hwview');
+      tabs.forEach(function(x){ x.setAttribute('aria-pressed', x===b ? 'true' : 'false'); });
+      views.forEach(function(f){ f.hidden = f.getAttribute('data-view')!==v; });
+    }); });
+  });
   [].slice.call(document.querySelectorAll('.hwzoom')).forEach(function(z){ z.addEventListener('click',function(){ z.classList.toggle('on'); }); });
 })();
 </script>
