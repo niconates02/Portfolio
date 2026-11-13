@@ -1,8 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
 <meta name="description" content="Engineering portfolio of Nicolas Nates: electromechanical design, robotics, automation and hardware design.">
 <style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}
 /* simulation clips */
@@ -788,6 +789,31 @@ h1.wave .ch.sp { width:.28em }
 @media (max-width:760px) { .rbfeat { grid-template-columns:minmax(0,1fr) } .fstats { grid-template-columns:repeat(2,minmax(0,1fr)) } }
 .devtag { position:fixed; right:14px; bottom:14px; z-index:90; font:600 12px var(--f-mono); letter-spacing:.06em; text-transform:uppercase; text-decoration:none; color:var(--paper); background:var(--accent); padding:8px 12px; border-radius:999px; box-shadow:0 6px 18px -8px rgba(0,0,0,.5) }
 .devtag:hover { filter:brightness(1.1) }
+</style>
+
+<style id="mobile">
+/* ===== Phones: same site as desktop, laid out to fit ===== */
+@media (max-width:700px) {
+  .topbar { transition:transform .25s ease }
+  .topbar.tuck { transform:translateY(-100%) }
+  .topbar .in { padding-top:8px; padding-bottom:2px; gap:2px; min-height:0 }
+  .tabs { flex-wrap:wrap; overflow:visible; width:calc(100% + 16px); margin-inline:-8px; gap:0 }
+  .tab { padding:9px 8px 11px; font-size:14.5px }
+  .tab::after { left:8px; right:8px; bottom:4px }
+  .tab[aria-current="page"]::after { transform:scaleX(1); opacity:1; height:3px; border-radius:2px }
+  .ind { display:none }
+  .subbar .in2 { justify-content:flex-start }
+  .devbar { flex-wrap:wrap; overflow:visible; row-gap:2px }
+  .devbar a { padding:9px 10px 10px }
+}
+/* 3D models: swipe up/down scrolls the page, swipe sideways turns the model, pinch zooms */
+@media (pointer:coarse) {
+  .m3d canvas { touch-action:pan-y }
+}
+@media (max-width:560px) {
+  .m3d-bar span { display:block; order:-2; margin:0; font-size:10px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100% }
+  .m3d-bar::before { content:""; order:-1; flex-basis:100%; height:0 }
+}
 </style>
 </head>
 <body>
@@ -4459,9 +4485,9 @@ h1.wave .ch.sp { width:.28em }
     function start(){ if(!st.raf){ st.last=0; st.raf=requestAnimationFrame(frame); } }
     function stop(){ if(st.raf){ cancelAnimationFrame(st.raf); st.raf=0; } }
     if('IntersectionObserver' in window) new IntersectionObserver(function(en){ if(en[0].isIntersecting) start(); else stop(); },{ threshold:.02 }).observe(host);
-    cv.addEventListener('pointerdown',function(e){ try { cv.setPointerCapture(e.pointerId); } catch(_) {} st.drag={ x:e.clientX, y:e.clientY, pan:(e.button===2||e.shiftKey) }; st.auto=false; syncAuto(); e.preventDefault(); });
+    cv.addEventListener('pointerdown',function(e){ try { cv.setPointerCapture(e.pointerId); } catch(_) {} st.drag={ x:e.clientX, y:e.clientY, pan:(e.button===2||e.shiftKey) }; if(e.pointerType!=='touch'){ st.auto=false; syncAuto(); } e.preventDefault(); });
     cv.addEventListener('pointermove',function(e){
-      if(!st.drag) return; var dx=e.clientX-st.drag.x, dy=e.clientY-st.drag.y; st.drag.x=e.clientX; st.drag.y=e.clientY;
+      if(!st.drag) return; var dx=e.clientX-st.drag.x, dy=e.clientY-st.drag.y; st.drag.x=e.clientX; st.drag.y=e.clientY; if(st.auto && (e.pointerType!=='touch' || Math.abs(dx)>Math.abs(dy))){ st.auto=false; syncAuto(); }
       if(st.drag.pan){ var R=rot(st.yaw,st.pitch), k=st.dist*.0017; for(var a=0;a<3;a++) st.t[a]+=(-R[a]*dx+R[3+a]*dy)*k; }
       else { st.yaw+=dx*.0085; st.pitch=Math.max(-1.5,Math.min(1.5,st.pitch+dy*.0085)); }
       st.dirty=true;
@@ -4621,6 +4647,28 @@ h1.wave .ch.sp { width:.28em }
     b.addEventListener('click', function(){ var s = dl.classList.toggle('short'); b.textContent = s ? 'All specs (+' + ((kids.length - keep) / 2) + ')' : 'Fewer specs'; });
     dl.appendChild(b);
   });
+})();
+</script>
+
+<script>
+/* phones: the menu tucks away while scrolling down and comes back on any scroll up; 3D hint matches touch */
+(function(){
+  var bar=document.querySelector('.topbar'); if(!bar || !window.matchMedia) return;
+  var mq=matchMedia('(max-width:700px)'), last=window.scrollY, ticking=false;
+  window.addEventListener('scroll',function(){
+    if(ticking) return; ticking=true;
+    requestAnimationFrame(function(){
+      var y=window.scrollY, d=y-last;
+      if(!mq.matches || y<80) bar.classList.remove('tuck');
+      else if(d>6) bar.classList.add('tuck');
+      else if(d<-6) bar.classList.remove('tuck');
+      last=y; ticking=false;
+    });
+  },{ passive:true });
+  bar.addEventListener('focusin',function(){ bar.classList.remove('tuck'); });
+  if(matchMedia('(pointer:coarse)').matches){
+    [].slice.call(document.querySelectorAll('.m3d-bar span')).forEach(function(s){ s.textContent='Swipe sideways to turn \u00b7 pinch to zoom'; });
+  }
 })();
 </script>
 </body>
